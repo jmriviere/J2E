@@ -30,7 +30,7 @@ body {
 
 }
 
-a { color: #CCFF00; }
+a { color: #FF6600; }
 a:hover { color: #FFFFFF; }
 
 #templatemo_background_section_top {
@@ -125,8 +125,20 @@ a:hover { color: #FFFFFF; }
 	background:url(images/templatemo_search_box_bg.jpg) no-repeat;
 }
 
-#textfield{
-	width: 200px;
+#login{
+	width: 85px;
+	height: 18px;
+	margin-top: 15px;
+	margin-left: 15px;
+	background: #000;
+	color: #FFF;
+	border: solid 1px #3b3b3b;
+	padding-top: 5px;
+	padding-left: 5px;
+}
+
+#pass{
+	width: 85px;
 	height: 18px;
 	margin-top: 15px;
 	margin-left: 15px;
@@ -138,7 +150,7 @@ a:hover { color: #FFFFFF; }
 }
 
 #button{
-	background: url(images/templatemo_button.jpg); 
+	background: url(images/login_button.jpg); 
 	border: none;
 	cursor: pointer;
 	font-size: 12px;
@@ -196,7 +208,7 @@ a:hover { color: #FFFFFF; }
 }
 
 #templatemo_menu_section li a:hover, #templatemo_menu_section li .current{
-	color: #ccff00;
+	color: #FF6600;
 	height:36px;
 	background:url(images/templatemo_menu_current.jpg) repeat-x;
 }
@@ -240,7 +252,7 @@ a:hover { color: #FFFFFF; }
 
 .templatemo_post_top h1{
 	font-size: 18px;
-	color:#ccff00;
+	color:#FF6600;
 	font-weight:bold;
 	padding-top: 15px;
 	padding-left: 25px;
@@ -353,7 +365,7 @@ span.post{
 .templatemo_section_box_mid p a{
 	
 	font-size: 12px;
-	color:#ccff00;
+	color:#FF6600;
 
 }
 
