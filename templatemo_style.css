@@ -5,29 +5,18 @@ CSS Credit: http://www.templatemo.com/
 */
 
 html {
-
 	background: #333333;
-
 }
 
 body {
-
 	margin: 0;
-
 	padding:0;
-
 	font-family: Arial, Helvetica, sans-serif;
-
 	font-size: 12px;
-
 	line-height: 1.5em;
-
 	color: #333333;
-
 	width: 100%;
-
 	display: table;
-
 }
 
 a { color: #FF6600; }
@@ -85,7 +74,6 @@ a:hover { color: #FFFFFF; }
 
 /* Logo Area */
 #templatemo_logo_section {
-
 	width:auto;
 	height:auto;
 	margin-top:60px;
@@ -96,7 +84,6 @@ a:hover { color: #FFFFFF; }
 
 
 #templatemo_logo_section h1 {
-	
 	padding-top: 10px;
 	font-size: 42px;
 	color:#999999;
@@ -106,12 +93,10 @@ a:hover { color: #FFFFFF; }
 }
 
 #templatemo_logo_section h2{
-	
 	font-size:18px;
 	color:#999999;
 	padding-top:5px;
 	font-weight: normal;
-	
 }
 /* End Of Logo Area*/
 /* Search Box*/
@@ -223,6 +208,11 @@ a:hover { color: #FFFFFF; }
 	float: left;
 	margin: 10px 0px 10px 35px;
 	
+}
+
+#templatemo_subtitle {
+	color: #FF6600;
+  text-align: center;
 }
 
 * html #templatemo_left_section {
