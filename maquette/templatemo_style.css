@@ -470,45 +470,17 @@ span.post{
 	width: 552px;
 	margin-top: 5px;
 	margin-bottom: 15px;
+	background: url(images/templatemo_post_middle.jpg);
 }
 
 .chat_textbox {
   width: 551px;
   height: 260px;
+  margin-left: 10px;
   font-color: white;
-	background: url(images/templatemo_post_middle.jpg);
 }
 
-/*
-#templatemo_search_box{
-	width: 338px;
-	height: 52px;
-	float: right;
-	margin-top: 90px;
-	margin-right: 20px;
-	background:url(images/templatemo_search_box_bg.jpg) no-repeat;
-}
-
-
-#button{
-	background: url(images/login_button.jpg); 
-	border: none;
-	cursor: pointer;
-	font-size: 12px;
-	font-weight: bold;
-	height: 25px;
-	margin-left: 10px;
-	padding: 0 5px;
-	text-align: center;
-	vertical-align: bottom;
-	white-space: pre;
-	width: 80px;
-	color: #fff;
-}
- *
- */
-
-#chat_messagebox {
+.chat_messagebox {
   width: 551px;
 	height: 52px;
   font-color: white;
@@ -517,7 +489,7 @@ span.post{
 	background: url(images/templatemo_post_bottom.jpg) no-repeat;
 }
 
-#chat_message {
+.chat_message {
 	width: 456px;
 	height: 18px;
 	margin-top: 15px;
@@ -531,7 +503,7 @@ span.post{
   */
 }
 
-#envoi {
+.envoi {
   width: 80px;
   height: 18px;
   margin-left: 5px;
