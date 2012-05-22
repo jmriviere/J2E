@@ -465,3 +465,21 @@ span.post{
 	color: #fff;
 
 }
+
+.chat_css {
+	width: 552px;
+	margin-top: 5px;
+	margin-bottom: 15px;
+}
+
+.chat_textbox {
+  width: 551px;
+  height: 500px;
+  margin-bottom: 15px;
+	background: url(images/templatemo_post_middle.jpg);
+}
+
+.chat_messagebox {
+  width: 551px;
+  margin-bottom: 5px;
+}
