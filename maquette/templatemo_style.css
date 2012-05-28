@@ -5,27 +5,20 @@ CSS Credit: http://www.templatemo.com/
 */
 
 html {
+
 	background: #333333; 
+
 }
 
 body {
-
 	margin: 0;
-
 	padding:0;
-
 	font-family: Arial, Helvetica, sans-serif;
-
 	font-size: 12px;
-
 	line-height: 1.5em;
-
 	color: #333333;
-
 	width: 100%;
-
 	display: table;
-
 }
 
 a { color: #FF6600; }
@@ -83,7 +76,6 @@ a:hover { color: #FFFFFF; }
 
 /* Logo Area */
 #templatemo_logo_section {
-
 	width:auto;
 	height:auto;
 	margin-top:60px;
@@ -94,7 +86,6 @@ a:hover { color: #FFFFFF; }
 
 
 #templatemo_logo_section h1 {
-	
 	padding-top: 10px;
 	font-size: 42px;
 	color:#999999;
@@ -104,12 +95,10 @@ a:hover { color: #FFFFFF; }
 }
 
 #templatemo_logo_section h2{
-	
 	font-size:18px;
 	color:#999999;
 	padding-top:5px;
 	font-weight: normal;
-	
 }
 /* End Of Logo Area*/
 /* Search Box*/
@@ -221,6 +210,11 @@ a:hover { color: #FFFFFF; }
 	float: left;
 	margin: 10px 0px 10px 35px;
 	
+}
+
+#templatemo_subtitle {
+	color: #FF6600;
+  text-align: center;
 }
 
 * html #templatemo_left_section {
@@ -472,4 +466,57 @@ span.post{
 	padding: 10px 0;
 	color: #fff;
 
+}
+
+.chat_css {
+	width: 552px;
+	margin-top: 5px;
+	margin-bottom: 15px;
+	background: url(images/templatemo_post_middle.jpg);
+}
+
+.chat_textbox {
+  width: 551px;
+  height: 260px;
+  margin-left: 10px;
+  font-color: white;
+}
+
+.chat_messagebox {
+  width: 551px;
+	height: 52px;
+  font-color: white;
+	margin-right: 20px;
+  margin-bottom: 5px;
+	background: url(images/templatemo_post_bottom.jpg) no-repeat;
+}
+
+.chat_message {
+	width: 456px;
+	height: 18px;
+	margin-top: 15px;
+	margin-left: 2px;
+	background: #000;
+	color: #FFF;
+	border: solid 1px #3b3b3b;
+  /*
+	padding-top: 5px;
+	padding-left: 5px;
+  */
+}
+
+.envoi {
+  width: 80px;
+  height: 18px;
+  margin-left: 5px;
+	margin-top: 15px;
+	border: none;
+	cursor: pointer;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 0 5px;
+  text-align: center;
+	vertical-align: center;
+	white-space: pre;
+	color: #fff;
 }
