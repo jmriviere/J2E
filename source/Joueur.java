@@ -32,6 +32,9 @@ public class Joueur {
 		this.login = login;
 		this.password = password;
 		this.mail = mail;
+		this.partie = new List<Partie>();
+		this.ami = new List<Joueur>();
+		this.hautFait = new List<HautFait>();
 	}
 	
 	public String getLogin() {
@@ -42,14 +45,14 @@ public class Joueur {
 		this.login = login;
 	}
 	
+	public String getPassword() {
+		return this.password;
+	}
+	
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	public boolean equalsPassword(String password) {
-		return this.password.equals(password);
-	}
-	
 	public String getMail() {
 		return this.mail;
 	}
@@ -57,7 +60,39 @@ public class Joueur {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
+
+	public Equipe getEquipe() {
+		return this.equipe;
+	}
+
+	public void setEquipe(Equipe equipe) {
+		this.equipe = equipe;	
+	}
+
+	public List<Partie> getPartie() {
+		return this.partie;
+	}
 	
+	public void addPartie(Partie partie) {
+		this.partie.add(partie);
+	}
+	
+	public List<Joueur> getAmi() {
+		return this.ami;
+	}
+	
+	public void addAmi(Joueur ami) {
+		this.ami.add(ami);
+	}
+	
+	public List<HautFait> getHautFait() {
+		return this.hautFait;
+	}
+	
+	public void addHautFait(HautFait hautFait) {
+		this.hautFait.add(hautFait);
+	}
+
 	@Override
 	public String toString() {
 		return this.login;
@@ -65,11 +100,10 @@ public class Joueur {
 	
 	@Override
 	public boolean equals(Object other) {
-		if (!(other instanceof Joueur))
+		if (!(other instanceof Joueur)) {
 			return false;
-		
+		}
 		return this.getLogin().equals(((Joueur) other).getLogin());
 	}
-	
 }
 
