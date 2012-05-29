@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="JEEEJB">
+        <wb-resource deploy-path="/" source-path="/ejbModule"/>
+        <property name="java-output-path" value="/JEEEJB/build/classes"/>
+        <property name="ClientProject" value="JEEEJBClient"/>
+        <property name="ClientJARURI" value="JEEEJBClient.jar"/>
+    </wb-module>
+</project-modules>
