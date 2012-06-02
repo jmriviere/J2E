@@ -18,7 +18,7 @@
 	Pseudo : <%out.print(infos.getPseudo);%><br /> 
 	Jeux joués : <%out.print(infos.getJeux);%><br />
 
-	<form action="ServJeux" method="post">
+	<form action="ServJeux" >
 		<input type="hidden" name="act" value="profJoueurPri">
 		<input type="hidden" name="joueurCible" value=<%=infos.getPseudo%>>
 		<input type="submit" name="page" value="Hauts faits"><br />
