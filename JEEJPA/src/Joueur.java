@@ -15,9 +15,7 @@ public class Joueur implements Serializable {
 	private String password;
 	
 	@Column(unique=true, nullable=false)
-	private String mail;
-	
-	
+	private String mail;	
 	
 	@ManyToOne
 	private Equipe equipe;

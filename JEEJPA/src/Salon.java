@@ -12,18 +12,11 @@ public class Salon implements Serializable {
 	@Id
 	private String name;
 	
-	@Column(nullable=false)
-	@OneToOne
-	private Joueur chef;
+	@Column(unique=true, nullable=true)
+	private Equipe equipe;	
 	
 	@OneToMany
-	private List<Joueur> membre;
-	
-	@OneToOne
-	private Salon salon;
-	
-	@ManyToMany
-	private List<HautFait> hautFait;
+	private List<Partie> partie;	
 
 	public Salon() {
 		super();
