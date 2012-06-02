@@ -26,7 +26,7 @@
 	                	<form action="/JEE/accueil" method="post">
     	            		<input name="login" type="text" id="login" value="identifiant" onfocus="clearText(this)"/>
 							<input name="pass" type="password" id="pass" value="mot de passe" onfocus="clearText(this)"/>
-        	            	<input type="button" name="Connexion" value="Connexion" alt="Connexion" id="button" title="Connexion" onclick="checkLogin()"/>
+        	            	<input type="button" name="Connexion" value="" alt="Connexion" id="button" title="Connexion" onclick="checkLogin()"/>
 						</form>
                 	</div>
          		</div><!-- end of headder -->
