@@ -13,18 +13,18 @@ public class Partie implements Serializable {
 	private int partieId;
 	
 	@Column(nullable=false)
-	private Equipe equipe;	
+	private Joueur joueur1;	
 	
-	@Column(unique=true, nullable=true)
-	private String region;
+	@Column(nullable=false)
+	private Joueur joueur2;
 	
 	@OneToMany
-	private List<Partie> partie;	
-
-	
+	private List<Coup> coup;	
 	
 	public Partie() {
 		super();
 	}
+	
+	
    
 }
