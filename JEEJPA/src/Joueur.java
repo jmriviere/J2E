@@ -26,6 +26,9 @@ public class Joueur implements Serializable {
 	@Column(nullable=true)
 	private String region;
 	
+	@Column(nullable=true)
+	private String sexe;
+	
 	@ManyToOne
 	private Equipe equipe;
 	
@@ -75,6 +78,30 @@ public class Joueur implements Serializable {
 		this.mail = mail;
 	}
 
+	public String getNom() {
+		return this.nom;
+	}
+	
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	
+	public String getPrenom() {
+		return this.prenom;
+	}
+	
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+	
+	public String getSexe() {
+		return this.sexe;
+	}
+	
+	public void setSexe(String sexe) {
+		this.sexe = sexe;
+	}
+	
 	public Equipe getEquipe() {
 		return this.equipe;
 	}
