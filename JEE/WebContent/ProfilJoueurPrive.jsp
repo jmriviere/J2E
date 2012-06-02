@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link href="templatemo_style.css" rel="stylesheet" type="text/css" />
+	<link href="css/templatemo_style.css" rel="stylesheet" type="text/css" />
 	<title>Votre Profil</title>
 </head>
 <body>
@@ -18,7 +18,7 @@
 	Pseudo : <%out.print(infos.getPseudo);%><br /> 
 	Jeux joués : <%out.print(infos.getJeux);%><br />
 
-	<form action="ServJeux" method="post">
+	<form action="ServJeux" >
 		<input type="hidden" name="act" value="profJoueurPri">
 		<input type="hidden" name="joueurCible" value=<%=infos.getPseudo%>>
 		<input type="submit" name="page" value="Hauts faits"><br />
