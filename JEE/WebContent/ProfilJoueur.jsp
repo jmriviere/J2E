@@ -19,7 +19,7 @@
 		Jeux joués : <%out.print(infos.getJeux);%><br />
 	</div><!-- end of templatemo_background_section_top-->
 
-	<form action="Servjeux" method="post">
+	<form action="Servjeux" >
 		<input type="hidden" name="act" value="profJoueurPub">
 		<input type="hidden" name="joueurCible" value=<%=infos.getPseudo%>>
 		<input type="submit" name="page" value="Hauts faits"><br />
