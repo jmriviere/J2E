@@ -4,5 +4,6 @@
 		<class>Joueur</class>
 		<class>Equipe</class>
 		<class>Salon</class>
+		<class>Partie</class>
 	</persistence-unit>
 </persistence>

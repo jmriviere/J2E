@@ -44,8 +44,8 @@ public class Salon implements Serializable {
 		this.equipe = equipe;
 	}
 	
-	public Equipe getRegion() {
-		return this.equipe;
+	public String getRegion() {
+		return this.region;
 	}
 	
 	public void setRegion(String region) {
