@@ -1,10 +1,11 @@
-// package ?
-
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
 
 @Entity
-public class Joueur {
+public class Joueur implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Column(unique=true, nullable=false)
 	@Id
@@ -15,6 +16,8 @@ public class Joueur {
 	
 	@Column(unique=true, nullable=false)
 	private String mail;
+	
+	
 	
 	@ManyToOne
 	private Equipe equipe;
@@ -27,6 +30,10 @@ public class Joueur {
 	
 	@ManyToMany
 	private List<HautFait> hautFait;
+	
+	public Joueur() {
+		super();
+	}
 		
 	public Joueur(String login, String password, String mail) {
 		this.login = login;

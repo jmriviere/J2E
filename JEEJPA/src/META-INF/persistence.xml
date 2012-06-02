@@ -3,5 +3,6 @@
 	<persistence-unit name="JEEJPA">
 		<class>Joueur</class>
 		<class>Equipe</class>
+		<class>Salon</class>
 	</persistence-unit>
 </persistence>
