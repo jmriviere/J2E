@@ -23,13 +23,13 @@
 						<h2>Site de jeux en lignes compétitifs</h2>
 					</div>		
 					<div id="templatemo_search_box">
-	                	<form action="/JEE/accueil" method="post">
+	                	<form action="/JEE/Login" method="post">
     	            		<input name="login" type="text" id="login" value="identifiant" onfocus="clearText(this)"/>
 							<input name="pass" type="password" id="pass" value="mot de passe" onfocus="clearText(this)"/>
         	            	<input type="button" name="Connexion" value="Connexion" alt="Connexion" id="button" title="Connexion" onclick="checkLogin()"/>
 						</form>
                 	</div>
-         		</div><!-- end of headder -->
+				</div><!-- end of headder -->
     			<div id="templatemo_menu_panel">
             		<div id="templatemo_menu_section">
 							<ul>
