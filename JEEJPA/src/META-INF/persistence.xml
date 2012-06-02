@@ -5,5 +5,7 @@
 		<class>Equipe</class>
 		<class>Salon</class>
 		<class>Partie</class>
+		<class>HautFait</class>
+		<class>Coup</class>
 	</persistence-unit>
 </persistence>

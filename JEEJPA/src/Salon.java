@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
@@ -26,6 +27,7 @@ public class Salon implements Serializable {
 	
 	public Salon(String name) {
 		this.name = name;
+		this.partie = new ArrayList<Partie>();
 	}
 	
 	public String getName() {

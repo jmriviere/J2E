@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
@@ -31,6 +32,7 @@ public class Partie implements Serializable {
 		this.partieId = partieId;
 		this.joueur1 = joueur1;
 		this.joueur2 = joueur2;
+		this.coup = new ArrayList<Coup>();
 	}
    
 	public Integer getPartieId() {

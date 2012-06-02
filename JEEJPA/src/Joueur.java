@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
@@ -49,9 +50,9 @@ public class Joueur implements Serializable {
 		this.login = login;
 		this.password = password;
 		this.mail = mail;
-		this.partie = new List<Partie>();
-		this.ami = new List<Joueur>();
-		this.hautFait = new List<HautFait>();
+		this.partie = new ArrayList<Partie>();
+		this.ami = new ArrayList<Joueur>();
+		this.hautFait = new ArrayList<HautFait>();
 	}
 	
 	public String getLogin() {
@@ -92,6 +93,14 @@ public class Joueur implements Serializable {
 	
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
+	}
+	
+	public String getRegion() {
+		return this.region;
+	}
+	
+	public void setRegion(String region) {
+		this.region = region;
 	}
 	
 	public String getSexe() {
