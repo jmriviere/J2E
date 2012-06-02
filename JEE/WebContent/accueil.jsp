@@ -7,7 +7,7 @@
 		<title>JEEux, accueil</title>
 		<meta name="keywords" content="JEEux, jeux en ligne, compétition de jeux en ligne, plateforme de jeux, communauté de joueurs" />
 		<meta name="description" content="JEEux, site en ligne de jeux compétitifs" />
-		<link href="../../css/templatemo_style.css" rel="stylesheet" type="text/css" />
+		<link href="css/templatemo_style.css" rel="stylesheet" type="text/css" />
 		<script language="javascript" type="text/javascript">
 			function clearText(field){
     			if (field.defaultValue == field.value) field.value = '';
