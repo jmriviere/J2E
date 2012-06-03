@@ -1,44 +1,33 @@
 import java.io.IOException;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.EntityTransaction;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  * Servlet implementation class ServJeux
  */
 public class ServJeux extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	EntityManager em;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public ServJeux() {
 		super();
-		try {
-			Class.forName("org.postgresql.Driver");
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		String url = "jdbc:postgresql://192.168.0.2:5432/jeeux";
-		String user = "postgresn7";
-		String passwd = "J2Epowa";
-		
-		try {
-			Connection conn = DriverManager.getConnection(url, user, passwd);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		// TODO Auto-generated constructor stub
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("PostgresDSjeeux");
+		em = emf.createEntityManager();
+		em.getTransaction().begin();
+		Joueur j = new Joueur("derp","derpyderp","derp@j2esucks.com");
+		em.persist(j);
+		System.out.println("EntityManager : " + emf.isOpen());
+		emf.close();
 	}
 
 	/**
@@ -47,6 +36,7 @@ public class ServJeux extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("bouh!!");
 		// TODO Auto-generated method stub
 		String act = request.getParameter("act");
 		if (act.equals("profJoueurPub")) {
