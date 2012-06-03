@@ -30,6 +30,17 @@ public class Joueur implements Serializable {
 	@Column(nullable=true)
 	private String sexe;
 	
+	// ensemble des informations pour les achievements
+	
+	@Column(nullable=false)
+	private int nbPoint;
+	
+	@Column(nullable=false)
+	private int nbVictoireTicTacToe;
+	
+	@Column(nullable=false)
+	private int nbVictoireShiFuMi;
+	
 	@ManyToOne
 	private Equipe equipe;
 	
@@ -53,6 +64,9 @@ public class Joueur implements Serializable {
 		this.partie = new ArrayList<Partie>();
 		this.ami = new ArrayList<Joueur>();
 		this.hautFait = new ArrayList<HautFait>();
+		this.nbPoint = 0;
+		this.nbVictoireTicTacToe = 0;
+		this.nbVictoireShiFuMi = 0;
 	}
 	
 	public String getLogin() {
@@ -109,6 +123,30 @@ public class Joueur implements Serializable {
 	
 	public void setSexe(String sexe) {
 		this.sexe = sexe;
+	}
+	
+	public int getNbPoint() {
+		return this.nbPoint;
+	}
+	
+	public void addPoint(int point) {
+		this.nbPoint = this.nbPoint + point;
+	}
+	
+	public int getNbVictoireTicTacToe() {
+		return this.nbVictoireTicTacToe;
+	}
+	
+	public void addVictoireTicTacToe() {
+		this.nbVictoireTicTacToe = this.nbVictoireTicTacToe + 1;
+	}
+	
+	public int getNbVictoireShiFuMi() {
+		return this.nbVictoireShiFuMi;
+	}
+	
+	public void addVictoireShiFuMi() {
+		this.nbVictoireShiFuMi = this.nbVictoireShiFuMi + 1;
 	}
 	
 	public Equipe getEquipe() {

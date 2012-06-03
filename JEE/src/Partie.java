@@ -19,6 +19,7 @@ public class Partie implements Serializable {
 	@Column(nullable=false)
 	private Joueur joueur2;
 	
+	@Column(nullable=true)
 	private Joueur winner;
 	
 	@OneToMany
@@ -52,7 +53,7 @@ public class Partie implements Serializable {
 	}
 	
 	public Joueur getJoueur2() {
-		return this.joueur1;
+		return this.joueur2;
 	}
 	
 	public void setJoueur2(Joueur joueur2) {
