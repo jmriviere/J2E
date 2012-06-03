@@ -9,6 +9,8 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/home/pierre/jboss6"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/pierre/jboss6/common/lib/jboss-servlet-api_3.0_spec.jar"/>
+
+	<classpathentry kind="lib" path="/home/marine/jboss/jboss6/common/lib/jboss-servlet-api_3.0_spec.jar"/>
+
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

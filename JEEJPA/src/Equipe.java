@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
@@ -31,10 +32,10 @@ public class Equipe implements Serializable {
 	public Equipe(String name, Joueur createur) {
 		this.name = name;
 		this.chef = createur;
-		this.membre = new List<Joueur>();
+		this.membre = new ArrayList<Joueur>();
 		this.membre.add(createur);
 		this.salon = new Salon(); // a voir avec constructeur de Salon
-		this.hautFait = new List<HautFait>();
+		this.hautFait = new ArrayList<HautFait>();
 	}
 	
 	public String getName() {
@@ -51,6 +52,14 @@ public class Equipe implements Serializable {
 	
 	public void setChef(Joueur chef) {
 		this.chef = chef;
+	}
+	
+	public Salon getSalon() {
+		return this.salon;
+	}
+	
+	public void setSalon(Salon salon) {
+		this.salon = salon;
 	}
 	
 	public List<Joueur> getMembre() {
