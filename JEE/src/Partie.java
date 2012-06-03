@@ -18,6 +18,9 @@ public class Partie implements Serializable {
 	
 	@Column(nullable=false)
 	private Joueur joueur2;
+
+	@Column(nullable=false)
+	private String jeu;
 	
 	@Column(nullable=true)
 	private Joueur winner;
@@ -29,11 +32,12 @@ public class Partie implements Serializable {
 		super();
 	}
 	
-	public Partie(int partieId, Joueur joueur1, Joueur joueur2) {
+	public Partie(int partieId, Joueur joueur1, Joueur joueur2, String jeu) {
 		this.partieId = partieId;
 		this.joueur1 = joueur1;
 		this.joueur2 = joueur2;
 		this.coup = new ArrayList<Coup>();
+		this.jeu = jeu;
 	}
    
 	public Integer getPartieId() {
@@ -58,6 +62,14 @@ public class Partie implements Serializable {
 	
 	public void setJoueur2(Joueur joueur2) {
 		this.joueur2 = joueur2;
+	}
+	
+	public String getJeu() {
+		return this.jeu;
+	}
+	
+	public void setJeu(String jeu) {
+		this.jeu = jeu;
 	}
 	
 	public Joueur getWinner() {
