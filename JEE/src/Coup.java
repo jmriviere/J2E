@@ -10,9 +10,33 @@ public class Coup implements Serializable {
 	@Column(unique=true, nullable=false)
 	@Id
 	private String name;
+	
+	@Column(nullable=false)
+	private String jeu;
 
 	public Coup() {
 		super();
+	}
+	
+	public Coup(String name, String jeu) {
+		this.name = name;
+		this.jeu = jeu;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getJeu() {
+		return this.jeu;
+	}
+	
+	public void setJeu(String jeu) {
+		this.name = jeu;
 	}
    
 }
