@@ -1,48 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>JEEux, accueil</title>
-    <meta name="keywords" content="JEEux, jeux en ligne, compÃ©tition de jeux en ligne, plateforme de jeux, communautÃ© de joueurs" />
-    <meta name="description" content="JEEux, site en ligne de jeux compÃ©titifs" />
-    <link href="css/templatemo_style.css" rel="stylesheet" type="text/css" />
-    <script language="javascript" type="text/javascript">
-      function clearText(field){
-        if (field.defaultValue == field.value) field.value = '';
-      }
-    </script>	
-  </head>
-  <body>
-    <div id="templatemo_background_section_top">
-      <div class="templatemo_container">
-        <div id="templatemo_header">
-          <div id="templatemo_logo_section">            
-            <h1>JEEux</h1>            
-            <h2>Site de jeux en lignes compÃ©titifs</h2>
-          </div>		
-          <div id="templatemo_search_box">
-            <form action="/JEE/accueil" method="post">
-              <input name="login" type="text" id="login" value="identifiant" onfocus="clearText(this)"/>
-              <input name="pass" type="password" id="pass" value="mot de passe" onfocus="clearText(this)"/>
-              <input type="hidden" name="action" value="login"/>
-              <input type="button" name="Connexion" value="" alt="Connexion" id="button" title="Connexion" onclick="checkLogin()"/>
-            </form>
-          </div>
-        </div><!-- end of headder -->
-        <div id="templatemo_menu_panel">
-          <div id="templatemo_menu_section">
-            <ul>
-              <li><a href="/JEE/acceuil"  class="current">Accueil</a></li>
-              <li><a href="#">Liste des jeux</a></li>
-              <li><a href="#">Liste des Ã©quipes</a></li>
-              <li><a href="#">Compte</a></li>                       
-            </ul> 
-          </div>
-        </div> <!-- end of menu -->
-      </div><!-- end of container-->
-    </div><!-- end of templatemo_background_section_top-->
+<jsp:include page="header.jsp" />
+
     <div id="templatemo_background_section_middle">
       <div class="templatemo_container">
         <div id="templatemo_left_section">
@@ -53,16 +10,26 @@ pageEncoding="UTF-8"%>
             <div class="templatemo_post_mid">
               <div id="register_box" class="register_form">
                 <form  action="UserServlet" autocomplete="on" method="post"> 
+                  <%
+                  	Integer error = Integer.parseInt(request.getParameter("error"));
+                  %>
                   <p> 
                   <label for="usernamesignup" class="uname" data-icon="u">Pseudo (*)</label><br/>
                   <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="pseudo" /><br/>
-                  <label for="passwordsignup" class="youpasswd" data-icon="p">Mot de passe (*)</label><br/>
+                  <label for="passwordsignup" class="youpasswd" data-icon="p">Mot de passe (*)</label>
+                  <%
+                  	if (error != null) {
+                  		if (error%2 == 1) {
+                  			out.println("<font color=\"red\"> les mots de passe ne correspondent pas. </font>");
+                  		}
+                  	}
+                  %> <br/>
                   <input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="ex. bacon123"/><br/>
                   <label for="passwordconfirmsignup" class="youpasswd" data-icon="p">Confirmez le mot de passe (*)</label><br/>
                   <input id="passwordconfirmsignup" name="passwordconfirmsignup" required="required" type="password" placeholder="ex. bacon123"/><br/>
                   <label for="emailsignup" class="youmail" data-icon="e" >email (*)</label><br/>
                   <input id="emailsignup" name="emailsignup" required="required" type="email" placeholder="mon@mail.com"/><br/>
-                  <label for="namesignup" class="uname" data-icon="e" >PrÃ©nom</label><br/>
+                  <label for="namesignup" class="uname" data-icon="e" >Prénom</label><br/>
                   <input id="namesignup" name="namesignup" type="text" placeholder="Roger"/><br/>
                   <label for="snamesignup" class="uname" data-icon="e" >Nom</label><br/>
                   <input id="snamesignup" name="snamesignup" type="text" placeholder="Dufour"/><br/>
@@ -71,7 +38,7 @@ pageEncoding="UTF-8"%>
                     <option value="--">--</option>
                     <option value="homme">homme</option>
                     <option value="femme">femme</option>
-                    <option value="br">brÃ©silien</option>
+                    <option value="br">brésilien</option>
                   </select>
                   <br/>
                   <label for="regionsignup" class="youregion" data-icon="e" >Region</label><br/>
@@ -91,7 +58,7 @@ pageEncoding="UTF-8"%>
                 </form> 
               </div>
               <div class="templatemo_post_bottom">
-                <span class="post">DÃ©jÃ  membre ? Identifiez vous en haut Ã  droite.</span><br/>
+                <span class="post">Déjà membre ? Identifiez vous en haut à droite.</span><br/>
                 <span class="post">(*) Champs obligatoires.</span>
               </div>
             </div>
@@ -106,8 +73,8 @@ pageEncoding="UTF-8"%>
               <div class="templatemo_section_box_mid"> <!-- TODO rajouter les ancres correspondantes + ortho -->
                 <a href="#morpion"><img alt="Le morpion !"  src="images/tic_tac_toe.jpg" /></a> 
                 <a href="#shifumi"><img alt="Le chifoumi !"  src="images/chifoumi.jpg" /></a>
-                <a href="#echec"><img alt="Les Ã‰checs !"  src="images/echec.jpg" /></a>
-                <a href="#"><img alt="Ã€ venir..."  src="images/a_venir.jpg" /></a>
+                <a href="#echec"><img alt="Les Échecs !"  src="images/echec.jpg" /></a>
+                <a href="#"><img alt="À venir..."  src="images/a_venir.jpg" /></a>
                 <div class="clear">&nbsp;</div>
               </div>
               <div class="clear">&nbsp;</div>
@@ -119,10 +86,10 @@ pageEncoding="UTF-8"%>
               <h1>A propos</h1>
             </div>
             <div class="templatemo_section_box_mid">
-              <p>Ce site est un projet scolaire de l'Ã©cole ENSEEIHT ayant pour
-              but de crÃ©er un site dynamique en utilisant la technologie J2E.
+              <p>Ce site est un projet scolaire de l'école ENSEEIHT ayant pour
+              but de créer un site dynamique en utilisant la technologie J2E.
               Les membre du groupe sont Guillaume Casanova, Marine Lavaux,
-              Pierre Tysebaert et RÃ©mi Palandri</p>
+              Pierre Tysebaert et Rémi Palandri</p>
             </div>
             <div class="templatemo_section_box_bottom"></div>
           </div><!-- end of section box -->
@@ -132,7 +99,7 @@ pageEncoding="UTF-8"%>
     <div id="templatemo_bottom_panel">
       <div id="templatemo_bottom_section">
         <div id="templatemo_footer_section">
-          Copyright Â© 2012 DreamTeam
+          Copyright © 2012 DreamTeam
         </div>
       </div>
     </div>

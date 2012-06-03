@@ -5,31 +5,23 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class UserManager
+ * Servlet implementation class UserServlet
  */
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	//EntityManager em;
-       
+    UserManagerItf um;
     /**
      * @see HttpServlet#HttpServlet()
      */
     public UserServlet() {
         super();
-//      EntityManagerFactory emf = Persistence.createEntityManagerFactory("PostgresDSjeeux");
-//		em = emf.createEntityManager();
-//		em.getTransaction().begin();
-//		System.out.println("EntityManager : " + emf.isOpen());
-//		emf.close();
+        this.um = new UserManager();
     }
 
 	/**
@@ -44,7 +36,10 @@ public class UserServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
+		int error = 0;
+		String nextPage = "";
 		if (action.equals("register")) {
+			String hashpass = "";
 			String username = request.getParameter("usernamesignup");
 			String pass = request.getParameter("passwordsignup");
 			String pass_confirm = request.getParameter("passwordconfirmsignup");
@@ -53,18 +48,54 @@ public class UserServlet extends HttpServlet {
 			String surname = request.getParameter("snamesignup");
 			String sexe = request.getParameter("sexsignup");
 			String region = request.getParameter("regionsignup");
-			if(pass_confirm.equals(pass)) {
+			if (pass_confirm.equals(pass)) {
 				try {
 					MessageDigest md = MessageDigest.getInstance("MD5");
 					md.update(pass.getBytes(), 0, pass.length());
-					String hashpass = new BigInteger(1, md.digest()).toString(16);
-					System.out.println(hashpass);
+					hashpass = new BigInteger(1, md.digest()).toString(16);
+					pass = null;
+					pass_confirm = null;
 				} catch (NoSuchAlgorithmException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+			} else {
+				error += 1;
+			}
+			
+			if (!um.isNameTaken(username)) {
+				//Do something
+			} else {
+				error += 2;
+			}
+			
+			if (!um.isEmailUsed(mail)) {
+				//Do something
+			} else {
+				error += 4;
+			}
+		
+			if (error == 0) {
+				Joueur j = new Joueur(username, hashpass, mail);
+				if (name != null) {
+					j.setPrenom(name);
+				}
+				if (surname != null) {
+					j.setNom(surname);
+				}
+				if (sexe != null) {
+					j.setSexe(sexe);
+				}
+				if (region != null) {
+					j.setRegion(region);
+				}
+				um.addUser(j);
+				nextPage ="";
+			} else {
+				nextPage = "CreationCompte.jsp";
 			}
 		}
+		request.setAttribute("error", new Integer(error));
+		request.getRequestDispatcher(nextPage).forward(request, response);
 	}
 
 }
