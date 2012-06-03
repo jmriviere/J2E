@@ -1,0 +1,31 @@
+<h3>Shout<span class="orange">Box</span></h3>
+<div class="box">
+  <div id="shoutbox">
+    <div id="shoutbox_notice">
+      <div id="notice" style="display: none;"><span class="notice_text">Loading... </span> <img src="http://radio.h4xed.us/assets/images/shoutbox/loading.gif" alt=""/></div>
+      <div id="error" style="display: none;"><span class="error_text">Error... </span> <img src="http://radio.h4xed.us/assets/images/shoutbox/notification_error.png" alt=""/></div>
+      <div id="warning" style="display: none;"><span class="warning_text">Warning... </span> <img src="http://radio.h4xed.us/assets/images/shoutbox/notification_warning.png" alt=""/></div>
+    </div>
+      <div id="shoutbox_form">
+        <form action="shoutbox/post" style="display: none;">
+        <div id="fields">
+                <input id="name" name="name" type="text" value="Your name" maxlength="35" />
+                <textarea id="message" name="message" cols="10" rows="3">Your message</textarea>
+            </div>
+            <div id="button">
+                <input name="post" type="submit" value="Post" />
+            </div>
+            <div id="history">
+                <a href="http://radio.h4xed.us/shoutbox/history">View complete shoutbox history</a>           </div>
+          </form>
+      </div>
+      <div id="onlinebox">
+      <ul id="online">
+        <li>No online users</li>
+      </ul>
+      </div>
+      <div id="shouts" style="display: none; ">
+
+      </div>
+  </div>
+</div>
