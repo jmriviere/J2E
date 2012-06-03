@@ -1,5 +1,0 @@
-- Plusieurs servlets envisageable, comme disait Rémi (il me semble) séparées par
-  groupe de fonctionnalités communes
-- Pour la liste des utilisateurs conenctés, @Singleton.
-- Attention pour detecter la deconection : clic sur "déco" c'est np, le mec ferme 
-  le navigateur c'est yes p
