@@ -37,6 +37,10 @@ public class UserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 		int error = 0;
+		/*
+		 * error masque d'erreur:
+		 * Log/PW incorrect | Mail taken | Username taken | PW missmatch
+		 */
 		String nextPage = "";
 		if (action.equals("register")) {
 			String hashpass = "";
@@ -53,6 +57,7 @@ public class UserServlet extends HttpServlet {
 					MessageDigest md = MessageDigest.getInstance("MD5");
 					md.update(pass.getBytes(), 0, pass.length());
 					hashpass = new BigInteger(1, md.digest()).toString(16);
+					System.out.println(hashpass);
 					pass = null;
 					pass_confirm = null;
 				} catch (NoSuchAlgorithmException e) {
@@ -93,10 +98,10 @@ public class UserServlet extends HttpServlet {
 				//um.addUser(j);
 				nextPage ="";
 			} else {
+				request.setAttribute("error", new Integer(error));
 				nextPage = "CreationCompte.jsp";
 			}
 		}
-		request.setAttribute("error", new Integer(error));
 		request.getRequestDispatcher(nextPage).forward(request, response);
 	}
 
