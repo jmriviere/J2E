@@ -26,6 +26,7 @@ pageEncoding="UTF-8"%>
             <form action="/JEE/accueil" method="post">
               <input name="login" type="text" id="login" value="identifiant" onfocus="clearText(this)"/>
               <input name="pass" type="password" id="pass" value="mot de passe" onfocus="clearText(this)"/>
+              <input type="hidden" name="action" value="login"/>
               <input type="button" name="Connexion" value="" alt="Connexion" id="button" title="Connexion" onclick="checkLogin()"/>
             </form>
           </div>
@@ -51,7 +52,7 @@ pageEncoding="UTF-8"%>
             </div>
             <div class="templatemo_post_mid">
               <div id="register_box" class="register_form">
-                <form  action="/Register" autocomplete="on" method="post"> 
+                <form  action="UserManager" autocomplete="on" method="post"> 
                   <p> 
                   <label for="usernamesignup" class="uname" data-icon="u">Pseudo</label><br/>
                   <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="pseudo" /><br/>
@@ -70,7 +71,7 @@ pageEncoding="UTF-8"%>
                     <option value="--">--</option>
                     <option value="homme">homme</option>
                     <option value="femme">femme</option>
-                    <option value="inconnu">inconnu</option>
+                    <option value="br">brésilien</option>
                   </select>
                   <br/>
                   <label for="regionsignup" class="youregion" data-icon="e" >Region</label><br/>
@@ -82,6 +83,7 @@ pageEncoding="UTF-8"%>
                     <option value="Europe">Europe</option>
                   </select>
                   <br/>
+                  <input type="hidden" name="action" value="register"/>
                   </p>
                   <p class="signin button"> 
                   <input type="submit" value="Inscription"/> 
