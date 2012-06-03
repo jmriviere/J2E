@@ -1,0 +1,16 @@
+<datasources> 
+  <local-tx-datasource> 
+ 
+    <jndi-name>PostgresDSjeeux</jndi-name> 
+ 
+    <connection-url>jdbc:postgresql://192.168.0.2:5432/jeeux</connection-url> 
+    <driver-class>org.postgresql.Driver</driver-class> 
+ 
+    <user-name>postgresn7</user-name> 
+    <password>J2Epowa</password> 
+ 
+    <connection-property name="autoReconnect">true</connection-property>
+ 
+  </local-tx-datasource>  
+</datasources> 
+
