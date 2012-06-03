@@ -52,15 +52,15 @@ pageEncoding="UTF-8"%>
             </div>
             <div class="templatemo_post_mid">
               <div id="register_box" class="register_form">
-                <form  action="UserManager" autocomplete="on" method="post"> 
+                <form  action="UserServlet" autocomplete="on" method="post"> 
                   <p> 
-                  <label for="usernamesignup" class="uname" data-icon="u">Pseudo</label><br/>
+                  <label for="usernamesignup" class="uname" data-icon="u">Pseudo (*)</label><br/>
                   <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="pseudo" /><br/>
-                  <label for="passwordsignup" class="youpasswd" data-icon="p">Mot de passe</label><br/>
+                  <label for="passwordsignup" class="youpasswd" data-icon="p">Mot de passe (*)</label><br/>
                   <input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="ex. bacon123"/><br/>
-                  <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Confirmez le mot de passe</label><br/>
-                  <input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="ex. bacon123"/><br/>
-                  <label for="emailsignup" class="youmail" data-icon="e" >email</label><br/>
+                  <label for="passwordconfirmsignup" class="youpasswd" data-icon="p">Confirmez le mot de passe (*)</label><br/>
+                  <input id="passwordconfirmsignup" name="passwordconfirmsignup" required="required" type="password" placeholder="ex. bacon123"/><br/>
+                  <label for="emailsignup" class="youmail" data-icon="e" >email (*)</label><br/>
                   <input id="emailsignup" name="emailsignup" required="required" type="email" placeholder="mon@mail.com"/><br/>
                   <label for="namesignup" class="uname" data-icon="e" >Prénom</label><br/>
                   <input id="namesignup" name="namesignup" type="text" placeholder="Roger"/><br/>
@@ -91,7 +91,8 @@ pageEncoding="UTF-8"%>
                 </form> 
               </div>
               <div class="templatemo_post_bottom">
-                <span class="post">Déjà membre ? Identifiez vous en haut à droite.</span>
+                <span class="post">Déjà membre ? Identifiez vous en haut à droite.</span><br/>
+                <span class="post">(*) Champs obligatoires.</span>
               </div>
             </div>
           </div>
