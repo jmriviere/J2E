@@ -34,7 +34,7 @@ public class Equipe implements Serializable {
 		this.chef = createur;
 		this.membre = new ArrayList<Joueur>();
 		this.membre.add(createur);
-		this.salon = new Salon(); // a voir avec constructeur de Salon
+		this.salon = new Salon(name);
 		this.hautFait = new ArrayList<HautFait>();
 	}
 	
