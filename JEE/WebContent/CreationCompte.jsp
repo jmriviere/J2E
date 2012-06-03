@@ -12,7 +12,7 @@ pageEncoding="UTF-8"%>
       function clearText(field){
         if (field.defaultValue == field.value) field.value = '';
       }
-</script>	
+    </script>	
   </head>
   <body>
     <div id="templatemo_background_section_top">
@@ -90,9 +90,9 @@ pageEncoding="UTF-8"%>
                   </p>
                 </form> 
               </div>
-            </div>
-            <div class="templatemo_post_bottom">
-              <span class="post">Déjà membre ? Identifiez vous en haut à droite.</span>
+              <div class="templatemo_post_bottom">
+                <span class="post">Déjà membre ? Identifiez vous en haut à droite.</span>
+              </div>
             </div>
           </div>
         </div><!-- end of left section-->
