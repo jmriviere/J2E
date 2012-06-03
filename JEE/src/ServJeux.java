@@ -7,26 +7,25 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ejb.Stateless;
 
 /**
  * Servlet implementation class ServJeux
  */
 public class ServJeux extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	EntityManager em;
+	private EntityManager em;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
+	
 	public ServJeux() {
+		
 		super();
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("PostgresDSjeeux");
-		em = emf.createEntityManager();
 		em.getTransaction().begin();
 		Joueur j = new Joueur("derp","derpyderp","derp@j2esucks.com");
 		em.persist(j);
-		System.out.println("EntityManager : " + emf.isOpen());
-		emf.close();
 	}
 
 	/**
