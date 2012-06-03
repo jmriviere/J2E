@@ -1,12 +1,11 @@
-	<%
+<%
 	String nom = (String) request.getAttribute("nom");
 	String pseudo = (String) request.getAttribute("pseudo");
 	String sexe = (String) request.getAttribute("sexe");
 	String equipe = (String) request.getAttribute("equipe");
 	String[] jeux = (String[]) request.getAttribute("jeux");
 	Boolean mine = true;//(Boolean) request.getAttribute("mine");
-	%>
-
+%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
