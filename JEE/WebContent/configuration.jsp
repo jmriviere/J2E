@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,7 +10,7 @@
     		if (field.defaultValue == field.value) field.value = '';
 		}
 	</script>
-	<title>Mon Profil</title>
+	<title>Configuration</title>
 </head>
 <body>
 
@@ -22,12 +22,13 @@
 	String[] jeux = (String[]) request.getAttribute("jeux");
 	Boolean mine = true;//(Boolean) request.getAttribute("mine");
 	%>
+	
 	<div id="templatemo_background_section_top">
     	<div class="templatemo_container">
         	<div id="templatemo_header">
         		<div id="templatemo_logo_section">
         			<h1>JEEux</h1>            
-					<h2>Mon Profil</h2>
+					<h2>Configuration</h2>
         		</div>
         		<div id="templatemo_recherche_box">
 	                <form action="ServJeux" method="post">
@@ -40,11 +41,16 @@
        		<div id="templatemo_menu_panel">
             	<div id="templatemo_menu_section">
 					<ul>
-						<li><a href="accueil.jsp">Accueil</a></li>
-		                <li><a href="ProfilJoueurPrive.jsp" class="current">Profil</a></li>
+						<li><a href="acceuil.jsp">Acceuil</a></li>
+		                <% if (mine) {
+		                	%><li><a href="ProfilJoueurPrive.jsp">Profil</a></li><% 
+						} else {
+							%><li><a href="ProfilJoueur.jsp">Profil</a></li><%
+						}
+		                %>
         		        <li><a href="hautsFaits.jsp">Hauts faits</a></li>
 		                <li><a href="replaysRecents.jsp">Replays récents</a></li>
-		                <li><a href="configuration.jsp">Configuration</a></li>                    
+		                <li><a href="configuration.jsp" class="current">Configuration</a></li>                   
 		            </ul> 
 				</div>
 			</div> <!-- end of menu -->
@@ -53,46 +59,6 @@
     <div id="templatemo_background_section_middle">
     	<div class="templatemo_container">
     		<div id="templatemo_left_section">
-    			<div class="templatemo_section_box">
-                	<div class="templatemo_section_box_top">
-                    	<h1>Informations du joueur</h1>
-                    </div>
-                    <div class="templatemo_section_box_mid">
-                    	<ul>
-                    		<li> Nom et prénom : <% if (equipe==null) {
-									out.print(" - ");
-								} else {
-									out.print(nom);
-								}%></li> 
-							<li> Pseudo : <%out.print(pseudo);%></li>
-							<li> Sexe : <% if (equipe==null) {
-									out.print(" - ");
-								} else {
-									out.print(sexe);
-								}%></li>
-							<li> Equipe : <% if (equipe==null) {
-									out.print("Sans equipe");
-								} else {
-									out.print(equipe);
-								}%></li>
-							<li> Jeux joués : <% if (equipe==null) {
-									out.print(" - ");
-								} else {
-									out.print(jeux);
-								}%></li>
-						</ul>
-                    </div>
-                </div><!-- end of section box -->
-                <div class="templatemo_section_box">
-                	<div class="templatemo_section_box_mid">
-                		<form action="Servjeux" >
-							<input type="hidden" name="act" value="profJoueurPub">
-							<input type="hidden" name="joueurCible" value=<%=pseudo%>>
-							<input type="button" name="page" value="" alt="Rajouter en amis" id="button"><br />
-							<input type="button" name="page" value="" alt="Inviter à discuter" id="button"><br />
-						</form>
-					</div>
-                </div><!-- end of section box -->
             </div><!-- end of left section-->
             <div id="templatemo_right_section">
             </div><!-- end of right Section -->
