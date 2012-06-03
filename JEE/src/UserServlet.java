@@ -15,13 +15,13 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    UserManagerItf um;
+    //UserManagerItf um;
     /**
      * @see HttpServlet#HttpServlet()
      */
     public UserServlet() {
         super();
-        this.um = new UserManager();
+        //this.um = new UserManager();
     }
 
 	/**
@@ -62,6 +62,7 @@ public class UserServlet extends HttpServlet {
 				error += 1;
 			}
 			
+            /*
 			if (!um.isNameTaken(username)) {
 				//Do something
 			} else {
@@ -73,7 +74,8 @@ public class UserServlet extends HttpServlet {
 			} else {
 				error += 4;
 			}
-		
+		    */
+
 			if (error == 0) {
 				Joueur j = new Joueur(username, hashpass, mail);
 				if (name != null) {
@@ -88,7 +90,7 @@ public class UserServlet extends HttpServlet {
 				if (region != null) {
 					j.setRegion(region);
 				}
-				um.addUser(j);
+				//um.addUser(j);
 				nextPage ="";
 			} else {
 				nextPage = "CreationCompte.jsp";

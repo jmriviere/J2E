@@ -1,3 +1,4 @@
+/*
 import java.util.List;
 
 import javax.ejb.Local;
@@ -54,3 +55,4 @@ public class UserManager implements UserManagerItf {
 	
 
 }
+*/
