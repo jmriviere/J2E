@@ -29,7 +29,6 @@ public class Partie implements Serializable {
 	private List<Coup> coup;	
 	
 	public Partie() {
-		super();
 	}
 	
 	public Partie(int partieId, Joueur joueur1, Joueur joueur2, String jeu) {
@@ -84,8 +83,12 @@ public class Partie implements Serializable {
 		return this.coup;
 	}
 	
-	public void addCout(Coup coup) {
+	public void addCoup(Coup coup) {
 		this.coup.add(coup);
+	}
+	
+	public void setCoup(List<Coup> coup) {
+		this.coup.addAll(coup);
 	}
 	
 	@Override

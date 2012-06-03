@@ -23,7 +23,6 @@ public class HautFait implements Serializable {
 	private int nbVictoireShiFuMi;
 	
 	public HautFait() {
-		super();
 	}
    
 	public HautFait(String name, String description, int nbPoint, int nbVictoireTicTacToe, int nbVictoireShiFuMi) {
@@ -54,7 +53,7 @@ public class HautFait implements Serializable {
 		return this.nbPoint;
 	}
 	
-	public void setPoint(int point) {
+	public void setNbPoint(int point) {
 		this.nbPoint = point;
 	}
 	
@@ -62,7 +61,7 @@ public class HautFait implements Serializable {
 		return this.nbVictoireTicTacToe;
 	}
 	
-	public void setVictoireTicTacToe(int nbVictoireTicTacToe) {
+	public void setNbVictoireTicTacToe(int nbVictoireTicTacToe) {
 		this.nbVictoireTicTacToe = nbVictoireTicTacToe;
 	}
 	
@@ -70,7 +69,7 @@ public class HautFait implements Serializable {
 		return this.nbVictoireShiFuMi;
 	}
 	
-	public void setVictoireShiFuMi(int nbVictoireShiFuMi) {
+	public void setNbVictoireShiFuMi(int nbVictoireShiFuMi) {
 		this.nbVictoireShiFuMi = nbVictoireShiFuMi;
 	}
 	

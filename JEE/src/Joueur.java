@@ -54,7 +54,6 @@ public class Joueur implements Serializable {
 	private List<HautFait> hautFait;
 	
 	public Joueur() {
-		super();
 	}
 		
 	public Joueur(String login, String password, String mail) {
@@ -129,24 +128,36 @@ public class Joueur implements Serializable {
 		return this.nbPoint;
 	}
 	
-	public void addPoint(int point) {
+	public void addNbPoint(int point) {
 		this.nbPoint = this.nbPoint + point;
+	}
+	
+	public void setNbPoint(int nbPoint) {
+		this.nbPoint = nbPoint;
 	}
 	
 	public int getNbVictoireTicTacToe() {
 		return this.nbVictoireTicTacToe;
 	}
 	
-	public void addVictoireTicTacToe() {
+	public void addNbVictoireTicTacToe() {
 		this.nbVictoireTicTacToe = this.nbVictoireTicTacToe + 1;
+	}
+	
+	public void setNbVictoireTicTacToe(int nbVictoireTicTacToe) {
+		this.nbVictoireTicTacToe = nbVictoireTicTacToe;
 	}
 	
 	public int getNbVictoireShiFuMi() {
 		return this.nbVictoireShiFuMi;
 	}
 	
-	public void addVictoireShiFuMi() {
+	public void addNbVictoireShiFuMi() {
 		this.nbVictoireShiFuMi = this.nbVictoireShiFuMi + 1;
+	}
+	
+	public void setNbVictoireShiFuMi(int nbVictoireShiFuMi) {
+		this.nbVictoireShiFuMi = nbVictoireShiFuMi;
 	}
 	
 	public Equipe getEquipe() {
@@ -165,6 +176,10 @@ public class Joueur implements Serializable {
 		this.partie.add(partie);
 	}
 	
+	public void setPartie(List<Partie> partie) {
+		this.partie.addAll(partie);
+	}
+	
 	public List<Joueur> getAmi() {
 		return this.ami;
 	}
@@ -173,12 +188,20 @@ public class Joueur implements Serializable {
 		this.ami.add(ami);
 	}
 	
+	public void setAmi(List<Joueur> ami) {
+		this.ami.addAll(ami);
+	}
+	
 	public List<HautFait> getHautFait() {
 		return this.hautFait;
 	}
 	
 	public void addHautFait(HautFait hautFait) {
 		this.hautFait.add(hautFait);
+	}
+	
+	public void setHautFait(List<HautFait> hautFait) {
+		this.hautFait.addAll(hautFait);
 	}
 
 	@Override

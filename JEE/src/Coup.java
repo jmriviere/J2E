@@ -15,7 +15,6 @@ public class Coup implements Serializable {
 	private String jeu;
 
 	public Coup() {
-		super();
 	}
 	
 	public Coup(String name, String jeu) {

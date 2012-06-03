@@ -22,7 +22,6 @@ public class Salon implements Serializable {
 	private List<Partie> partie;	
 
 	public Salon() {
-		super();
 	}
 	
 	public Salon(String name) {
@@ -62,6 +61,10 @@ public class Salon implements Serializable {
 		this.partie.add(partie);
 	}
 
+	public void setPartie(List<Partie> partie) {
+		this.partie.addAll(partie);
+	}
+	
 	@Override
 	public String toString() {
 		return this.name;
