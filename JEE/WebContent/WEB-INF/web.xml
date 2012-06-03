@@ -24,4 +24,14 @@
     <servlet-name>Login</servlet-name>
     <url-pattern>/Login</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description>Gestion des utilisateurs (Login et Inscription)</description>
+    <display-name>UserManager</display-name>
+    <servlet-name>UserManager</servlet-name>
+    <servlet-class>UserManager</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserManager</servlet-name>
+    <url-pattern>/UserManager</url-pattern>
+  </servlet-mapping>
 </web-app>

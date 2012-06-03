@@ -26,6 +26,7 @@ pageEncoding="UTF-8"%>
             <form action="/JEE/accueil" method="post">
               <input name="login" type="text" id="login" value="identifiant" onfocus="clearText(this)"/>
               <input name="pass" type="password" id="pass" value="mot de passe" onfocus="clearText(this)"/>
+              <input type="hidden" name="action" value="login"/>
               <input type="button" name="Connexion" value="" alt="Connexion" id="button" title="Connexion" onclick="checkLogin()"/>
             </form>
           </div>
@@ -82,6 +83,7 @@ pageEncoding="UTF-8"%>
                     <option value="Europe">Europe</option>
                   </select>
                   <br/>
+                  <input type="hidden" name="action" value="register"/>
                   </p>
                   <p class="signin button"> 
                   <input type="submit" value="Inscription"/> 
