@@ -1,5 +1,14 @@
 <jsp:include page="header.jsp" />
 
+<%
+	String nom = (String) request.getAttribute("nom");
+	String pseudo = (String) request.getAttribute("pseudo");
+	String sexe = (String) request.getAttribute("sexe");
+	String equipe = (String) request.getAttribute("equipe");
+	String[] jeux = (String[]) request.getAttribute("jeux");
+	Boolean mine = true;//(Boolean) request.getAttribute("mine");
+%>
+
     <div id="templatemo_background_section_middle">
     	<div class="templatemo_container">
     		<div id="templatemo_left_section">
