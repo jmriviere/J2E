@@ -1,35 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>JEEux</title>
-		<meta name="keywords" content="JEEux, jeux en ligne, compétition de jeux en ligne, plateforme de jeux, communauté de joueurs" />
-		<meta name="description" content="JEEux, site en ligne de jeux compétitifs" />
-		<link href="css/templatemo_style.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-	<div id="templatemo_background_section_top">
-		<div class="templatemo_container">
-			<div id="templatemo_header">
-				<div id="templatemo_logo_section">            
-					<h1>JEEux</h1>            
-					<h2>Site de jeux en lignes compétitifs</h2>
-				</div>
-			</div><!-- end of headder -->
-			<div id="templatemo_menu_panel">
-				<div id="templatemo_menu_section">
-					<ul>
-						<li><a href="index.html"  class="current">Accueil</a></li>
-						<li><a href="liste_jeux.html">Liste des jeux</a></li>
-						<li><a href="#">Liste des équipes</a></li>
-						<li><a href="#">Compte</a></li>                       
-					</ul> 
-				</div>
-			</div> <!-- end of menu -->
-		</div><!-- end of container-->
-	</div><!-- end of templatemo_background_section_top-->
+<jsp:include page="header.jsp" />
+
 	<div id="templatemo_background_section_middle">
 		<div class="templatemo_container">
 			<div id="templatemo_left_section">
@@ -84,10 +54,10 @@
 						    <h1>A propos</h1>
 					    </div>
 					  <div class="templatemo_section_box_mid">
-              <p>Ce site est un projet scolaire de l'école ENSEEIHT ayant pour
-              but de créer un site dynamique en utilisant la technologie J2E.
+              <p>Ce site est un projet scolaire de l'�cole ENSEEIHT ayant pour
+              but de cr�er un site dynamique en utilisant la technologie J2E.
               Les membre du groupe sont Guillaume Casanova, Marine Lavaux,
-              Pierre Tysebaert et Rémi Palandri</p>
+              Pierre Tysebaert et R�mi Palandri</p>
 					  </div>
 					  <div class="templatemo_section_box_bottom"></div>
 				    </div><!-- end of section box -->
@@ -97,7 +67,7 @@
 	    <div id="templatemo_bottom_panel">
 		    <div id="templatemo_bottom_section">
 			    <div id="templatemo_footer_section">
-				    Copyright © 2012 DreamTeam
+				    Copyright � 2012 DreamTeam
 			    </div>
 		    </div>
 	    </div>
