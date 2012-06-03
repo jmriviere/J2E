@@ -15,13 +15,13 @@
     <url-pattern>/ServJeux</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
-    <display-name>Login</display-name>
-    <servlet-name>Login</servlet-name>
-    <servlet-class>Login</servlet-class>
+    <description>Gestion des utilisateurs (Login et Inscription)</description>
+    <display-name>UserServlet</display-name>
+    <servlet-name>UserServlet</servlet-name>
+    <servlet-class>UserServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Login</servlet-name>
-    <url-pattern>/Login</url-pattern>
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>/UserServlet</url-pattern>
   </servlet-mapping>
 </web-app>

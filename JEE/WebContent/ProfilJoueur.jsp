@@ -20,6 +20,7 @@
 	String sexe = (String) request.getAttribute("sexe");
 	String equipe = (String) request.getAttribute("equipe");
 	String[] jeux = (String[]) request.getAttribute("jeux");
+	Boolean mine = false;//(Boolean) request.getAttribute("mine");
 	%>
 	<div id="templatemo_background_section_top">
     	<div class="templatemo_container">
@@ -39,10 +40,10 @@
        		<div id="templatemo_menu_panel">
             	<div id="templatemo_menu_section">
 					<ul>
-		                <li><a href="ProfilJoueur.jsp"  class="current">Profil</a></li>
-        		        <li><a href="hautFaits.jsp">Hauts faits</a></li>
-		                <li><a href="replaysRecents.jsp">Replays récents</a></li>
-		                <li><a href="equipes.jsp">Equipes</a></li>                       
+						<li><a href="accueil.jsp">Accueil</a></li>
+		                <li><a href="ProfilJoueur.jsp" class="current">Profil</a></li>
+        		        <li><a href="hautsFaits.jsp">Hauts faits</a></li>
+		                <li><a href="replaysRecents.jsp">Replays récents</a></li>                       
 		            </ul> 
 				</div>
 			</div> <!-- end of menu -->

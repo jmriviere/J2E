@@ -12,7 +12,6 @@ public class Equipe implements Serializable {
 	@Id
 	private String name;
 	
-	@Column(nullable=false)
 	@OneToOne
 	private Joueur chef;
 	
