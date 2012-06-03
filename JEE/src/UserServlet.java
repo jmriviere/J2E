@@ -73,7 +73,7 @@ public class UserServlet extends HttpServlet {
 			} else {
 				error += 4;
 			}
-			
+		
 			if (error == 0) {
 				Joueur j = new Joueur(username, hashpass, mail);
 				if (name != null) {

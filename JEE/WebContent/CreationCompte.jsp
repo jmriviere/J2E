@@ -53,10 +53,20 @@ pageEncoding="UTF-8"%>
             <div class="templatemo_post_mid">
               <div id="register_box" class="register_form">
                 <form  action="UserServlet" autocomplete="on" method="post"> 
+                  <%
+                  	Integer error = Integer.parseInt(request.getParameter("error"));
+                  %>
                   <p> 
                   <label for="usernamesignup" class="uname" data-icon="u">Pseudo (*)</label><br/>
                   <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="pseudo" /><br/>
-                  <label for="passwordsignup" class="youpasswd" data-icon="p">Mot de passe (*)</label><br/>
+                  <label for="passwordsignup" class="youpasswd" data-icon="p">Mot de passe (*)</label>
+                  <%
+                  	if (error != null) {
+                  		if (error%2 == 1) {
+                  			out.println("<font color=\"red\"> les mots de passe ne correspondent pas. </font>");
+                  		}
+                  	}
+                  %> <br/>
                   <input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="ex. bacon123"/><br/>
                   <label for="passwordconfirmsignup" class="youpasswd" data-icon="p">Confirmez le mot de passe (*)</label><br/>
                   <input id="passwordconfirmsignup" name="passwordconfirmsignup" required="required" type="password" placeholder="ex. bacon123"/><br/>
