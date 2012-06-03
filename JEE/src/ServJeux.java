@@ -1,30 +1,30 @@
 import java.io.IOException;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ejb.Stateless;
 
 /**
  * Servlet implementation class ServJeux
  */
 public class ServJeux extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private EntityManager em;
-
+	private UserManagerItf usermanager;
 	/**
+	 * @throws NamingException 
 	 * @see HttpServlet#HttpServlet()
 	 */
 	
-	public ServJeux() {
-		
+	public ServJeux() throws NamingException {
 		super();
-		em.getTransaction().begin();
+		InitialContext ic = new InitialContext();
+		usermanager= (UserManagerItf) ic.lookup("UserManager1/local");
 		Joueur j = new Joueur("derp","derpyderp","derp@j2esucks.com");
-		em.persist(j);
+		usermanager.addUser(j);
+		System.out.println("joueur add (oupas)");
 	}
 
 	/**

@@ -3,10 +3,10 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-
-@Stateless(name="UserManager")
+@Stateless(name="UserManager1")
 @Local(UserManagerItf.class)
 public class UserManager implements UserManagerItf {
+	
 	@PersistenceContext
 	private EntityManager em;
 	
