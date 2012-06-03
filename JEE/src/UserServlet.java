@@ -15,13 +15,13 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    UserManagerItf um;
+    //UserManagerItf um;
     /**
      * @see HttpServlet#HttpServlet()
      */
     public UserServlet() {
         super();
-        this.um = new UserManager();
+        //this.um = new UserManager();
     }
 
 	/**
@@ -37,6 +37,10 @@ public class UserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 		int error = 0;
+		/*
+		 * error masque d'erreur:
+		 * Log/PW incorrect | Mail taken | Username taken | PW missmatch
+		 */
 		String nextPage = "";
 		if (action.equals("register")) {
 			String hashpass = "";
@@ -53,6 +57,7 @@ public class UserServlet extends HttpServlet {
 					MessageDigest md = MessageDigest.getInstance("MD5");
 					md.update(pass.getBytes(), 0, pass.length());
 					hashpass = new BigInteger(1, md.digest()).toString(16);
+					System.out.println(hashpass);
 					pass = null;
 					pass_confirm = null;
 				} catch (NoSuchAlgorithmException e) {
@@ -62,6 +67,7 @@ public class UserServlet extends HttpServlet {
 				error += 1;
 			}
 			
+            /*
 			if (!um.isNameTaken(username)) {
 				//Do something
 			} else {
@@ -73,7 +79,8 @@ public class UserServlet extends HttpServlet {
 			} else {
 				error += 4;
 			}
-		
+		    */
+
 			if (error == 0) {
 				Joueur j = new Joueur(username, hashpass, mail);
 				if (name != null) {
@@ -88,13 +95,13 @@ public class UserServlet extends HttpServlet {
 				if (region != null) {
 					j.setRegion(region);
 				}
-				um.addUser(j);
+				//um.addUser(j);
 				nextPage ="";
 			} else {
+				request.setAttribute("error", new Integer(error));
 				nextPage = "CreationCompte.jsp";
 			}
 		}
-		request.setAttribute("error", new Integer(error));
 		request.getRequestDispatcher(nextPage).forward(request, response);
 	}
 

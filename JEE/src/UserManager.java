@@ -1,3 +1,4 @@
+/*
 import java.util.List;
 
 import javax.ejb.Local;
@@ -6,10 +7,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-
-@Stateless(name="UserManager")
+@Stateless(name="UserManager1")
 @Local(UserManagerItf.class)
 public class UserManager implements UserManagerItf {
+	
 	@PersistenceContext
 	private EntityManager em;
 	
@@ -54,3 +55,4 @@ public class UserManager implements UserManagerItf {
 	
 
 }
+*/
