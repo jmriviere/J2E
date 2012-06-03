@@ -18,6 +18,7 @@ public class Login extends HttpServlet {
      */
     public Login() {
         // TODO Auto-generated constructor stub
+    	System.out.println("trolol")
     }
 
 	/**
