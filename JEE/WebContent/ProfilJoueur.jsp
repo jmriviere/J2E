@@ -39,17 +39,33 @@
 								} else {
 									out.print(jeux);
 								}%></li>
+							<li> <a href="hautsFaits.jsp">Hauts Faits</a></li>
+							<li> <a href="replaysRecents.jsp">Replays</a></li>
 						</ul>
                     </div>
                 </div><!-- end of section box -->
                 <div class="templatemo_section_box">
                 	<div class="templatemo_section_box_mid">
+                		<%
+                		if (mine) {
+						%>
                 		<form action="Servjeux" >
 							<input type="hidden" name="act" value="profJoueurPub">
 							<input type="hidden" name="joueurCible" value=<%=pseudo%>>
 							<input type="button" name="page" value="" alt="Rajouter en amis" id="button"><br />
 							<input type="button" name="page" value="" alt="Inviter à discuter" id="button"><br />
 						</form>
+						<%
+                		} else {
+						%>
+						<form action="Servjeux" >
+							<input type="hidden" name="act" value="profJoueurPub">
+							<input type="hidden" name="joueurCible" value=<%=pseudo%>>
+							<input type="button" name="page" value="" alt="Mes amis" id="button"><br />
+						</form>
+						<%
+                		}
+						%>
 					</div>
                 </div><!-- end of section box -->
             </div><!-- end of left section-->

@@ -176,22 +176,6 @@ a:hover { color: #FFFFFF; }
 	padding-left: 5px;
 }
 
-#button{
-	background: url(../images/login_button.jpg); 
-	border: none;
-	cursor: pointer;
-	font-size: 12px;
-	font-weight: bold;
-	height: 25px;
-	margin-left: 10px;
-	padding: 0 5px;
-	text-align: center;
-	vertical-align: bottom;
-	white-space: pre;
-	width: 80px;
-	color: #fff;
-}
-
 /* End Of Recherche Box*/
 /* Menu Section */
 

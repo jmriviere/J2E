@@ -1,11 +1,5 @@
 <%
-	String nom = (String) request.getAttribute("nom");
-	String pseudo = (String) request.getAttribute("pseudo");
-	String sexe = (String) request.getAttribute("sexe");
-	String equipe = (String) request.getAttribute("equipe");
-	String[] jeux = (String[]) request.getAttribute("jeux");
-	Boolean mine = false; //(Boolean) request.getAttribute("mine");
-	Boolean logged = false; // (Boolean) request.getAttribute("logged")
+	Boolean logged = true; // (Boolean) request.getAttribute("logged")
 %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
@@ -38,7 +32,7 @@ pageEncoding="UTF-8"%>
      				<% } else { %>
      					<div id="logged_box">
             				Connecté<br/>
-    						Votre compte 
+    						Votre compte<br/>
     						<!-- <a href="UserServlet?login=(java)truc.getAttribute("UserName")(/java)">(java)truc.getAttribute("UserName")(/java)</a> <br /> -->
     						<a href="/JEE/Logout"> Logout </a>
           				</div>
@@ -47,15 +41,12 @@ pageEncoding="UTF-8"%>
         <div id="templatemo_menu_panel">
           <div id="templatemo_menu_section">
             <ul>
-              <li><a href="/JEE/accueil"  class="current">Accueil</a></li>
-              <li><a href="#">Liste des jeux</a></li>
-              <li><a href="#">Liste des équipes</a></li>
-              <% if (mine) {
-		                	%><li><a href="ProfilJoueurPrive.jsp">Profil</a></li><% 
-						} else {
-							%><li><a href="ProfilJoueur.jsp">Profil</a></li><%
-						}
-		                %>                  
+              <li><a href="accueil.jsp"  class="current">Accueil</a></li>
+              <li><a href="listJeux.jsp">Liste des jeux</a></li>
+              <li><a href="listEquipe.jsp">Liste des équipes</a></li>
+              <%if (logged) {%>
+		      	<li><a href="ProfilJoueur.jsp">Profil</a></li>
+		      <% }%>                  
             </ul> 
           </div>
         </div> <!-- end of menu -->
