@@ -43,7 +43,7 @@ pageEncoding="UTF-8"%>
             <ul>
               <li><a href="accueil.jsp"  class="current">Accueil</a></li>
               <li><a href="listJeux.jsp">Liste des jeux</a></li>
-              <li><a href="listEquipe.jsp">Liste des équipes</a></li>
+              <li><a href="listEquipes.jsp">Liste des équipes</a></li>
               <%if (logged) {%>
 		      	<li><a href="ProfilJoueur.jsp">Profil</a></li>
 		      <% }%>                  
