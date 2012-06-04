@@ -21,8 +21,8 @@ pageEncoding="UTF-8"%>
             			<h2>Site de jeux en lignes compétitifs</h2>
        			 	</div>
 					<% if(!logged) { %>
-          				<div id="logged_box">
-            				<form action="/JEE/accueil" method="post">
+          				<div id="templatemo_search_box">
+            				<form action="accueil" method="post">
              					<input name="login" type="text" id="login" placeholder="identifiant"/>
               					<input name="pass" type="password" id="pass" placeholder="***********"/>
               					<input type="hidden" name="action" value="login"/>
@@ -30,11 +30,11 @@ pageEncoding="UTF-8"%>
             				</form>
           				</div>
      				<% } else { %>
-     					<div id="logged_box">
+     					<div id="templatemo_search_box">
             				Connecté<br/>
     						Votre compte<br/>
     						<!-- <a href="UserServlet?login=(java)truc.getAttribute("UserName")(/java)">(java)truc.getAttribute("UserName")(/java)</a> <br /> -->
-    						<a href="/JEE/Logout"> Logout </a>
+    						<a href="Logout"> Logout </a>
           				</div>
     				<% } %> 
         </div><!-- end of headder -->
