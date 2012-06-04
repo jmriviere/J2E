@@ -39,6 +39,5 @@ pageEncoding="UTF-8"%>
           				</div>
     				<% } %> 
         </div><!-- end of headder -->
-        
-	
+ 
 			                

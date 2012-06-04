@@ -5,12 +5,12 @@
 	Boolean logged = true; // (Boolean) request.getAttribute("logged")
 %>
 
-		<div id="templatemo_menu_panel">
+       <div id="templatemo_menu_panel">
           <div id="templatemo_menu_section">
             <ul>
-              <li><a href="accueil.jsp" class = "accueil"> Accueil </a></li>
-              <li><a href="listJeux.jsp"> Liste des jeux </a></li>
-              <li><a href="listEquipe.jsp"> Liste des équipes </a></li>
+              <li><a href="accueil.jsp" class = "current"> Accueil</a></li>
+              <li><a href="listJeux.jsp" > Liste des jeux </a></li>
+              <li><a href="listEquipe.jsp" > Liste des équipe </a></li>
               <%if (logged) {%>
 		      	<li><a href="ProfilJoueur.jsp">Profil</a></li>
 		      <% }%>                  
@@ -19,6 +19,8 @@
         </div> <!-- end of menu -->
       </div><!-- end of container-->
     </div><!-- end of templatemo_background_section_top-->
+	
+
     <div id="templatemo_background_section_middle">
       <div class="templatemo_container">
         <div id="templatemo_left_section">
