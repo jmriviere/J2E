@@ -24,9 +24,7 @@ public class ServJeux extends HttpServlet {
 		super();
 		InitialContext ic = new InitialContext();
 		usermanager= (UserManagerItf) ic.lookup("UserManager1/local");
-		Joueur j = new Joueur("derp","derpyderp","derp@j2esucks.com");
-		usermanager.addUser(j);
-		System.out.println("joueur add (oupas)");
+
 	}
 
 	/**

@@ -5,6 +5,8 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,13 +17,15 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    //UserManagerItf um;
+    UserManagerItf um;
     /**
+     * @throws NamingException 
      * @see HttpServlet#HttpServlet()
      */
-    public UserServlet() {
+    public UserServlet() throws NamingException {
         super();
-        //this.um = new UserManager();
+        InitialContext ic = new InitialContext();
+        um = (UserManagerItf) ic.lookup("UserManager1/local");
     }
 
 	/**
@@ -95,7 +99,7 @@ public class UserServlet extends HttpServlet {
 				if (region != null) {
 					j.setRegion(region);
 				}
-				//um.addUser(j);
+				um.addUser(j);
 				nextPage ="";
 			} else {
 				request.setAttribute("error", new Integer(error));
