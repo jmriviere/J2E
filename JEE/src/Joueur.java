@@ -131,13 +131,13 @@ public class Joueur implements Serializable {
 	public void setPartie(List<Partie> partie) {
 		this.partie = partie;
 	}
-		
-	public Equipe getEquipe() {
-		return equipe;
-	}
 	
 	public void addPartie(Partie partie){
 		this.partie.add(partie);
+	}
+		
+	public Equipe getEquipe() {
+		return equipe;
 	}
 
 	public void setEquipe(Equipe equipe) {

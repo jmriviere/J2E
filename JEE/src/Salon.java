@@ -51,7 +51,7 @@ public class Salon implements Serializable {
 	}
 
 	public void setPartie(List<Partie> partie) {
-		this.partie.addAll(partie);
+		this.partie = partie;
 	}
 	
 	@Override

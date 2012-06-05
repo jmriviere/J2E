@@ -88,7 +88,7 @@ public class Partie implements Serializable {
 	}
 	
 	public void setCoup(List<Coup> coup) {
-		this.coup.addAll(coup);
+		this.coup = coup;
 	}
 	
 	@Override
