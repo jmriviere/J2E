@@ -54,8 +54,8 @@ public class UserServlet extends HttpServlet {
 			String mail = request.getParameter("emailsignup");
 			String name = request.getParameter("namesignup");
 			String surname = request.getParameter("snamesignup");
-			String sexe = request.getParameter("sexsignup");
-			String region = request.getParameter("regionsignup");
+			String sexe = request.getParameter("sexe");
+			String region = request.getParameter("region");
 			if (pass_confirm.equals(pass)) {
 				try {
 					MessageDigest md = MessageDigest.getInstance("MD5");
@@ -71,7 +71,7 @@ public class UserServlet extends HttpServlet {
 				error += 1;
 			}
 			
-            /*
+            
 			if (!um.isNameTaken(username)) {
 				//Do something
 			} else {
@@ -83,7 +83,7 @@ public class UserServlet extends HttpServlet {
 			} else {
 				error += 4;
 			}
-		    */
+		    
 
 			if (error == 0) {
 				Joueur j = new Joueur(username, hashpass, mail);

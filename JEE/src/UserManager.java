@@ -3,7 +3,6 @@ import java.util.List;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -18,10 +17,10 @@ public class UserManager implements UserManagerItf {
 	public boolean addUser(Joueur j) {
 		Joueur jexist = em.find(Joueur.class, j.getLogin());
 		if(jexist==null) {
-		    em.flush();
 			em.persist(j);
 			return true;
 		} else {
+			System.out.println("Le joueur existe déjà dans la bdd");
 			return false;
 		}
 	}
@@ -52,6 +51,4 @@ public class UserManager implements UserManagerItf {
 		return mailTaken;
 	}
 	
-	
-
 }
