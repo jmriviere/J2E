@@ -1,4 +1,3 @@
-/*
 import java.util.List;
 
 import javax.ejb.Local;
@@ -21,9 +20,9 @@ public class UserManager implements UserManagerItf {
 			em.persist(j);
 			return true;
 		} else {
+			System.out.println("Le joueur existe déjà dans la bdd");
 			return false;
 		}
-		
 	}
 
 	@Override
@@ -52,7 +51,4 @@ public class UserManager implements UserManagerItf {
 		return mailTaken;
 	}
 	
-	
-
 }
-*/

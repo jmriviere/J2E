@@ -1,6 +1,8 @@
 <%
+	// pour les tests
 	Boolean logged = true; // (Boolean) request.getAttribute("logged")
 %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -21,8 +23,8 @@ pageEncoding="UTF-8"%>
             			<h2>Site de jeux en lignes compétitifs</h2>
        			 	</div>
 					<% if(!logged) { %>
-          				<div id="logged_box">
-            				<form action="/JEE/accueil" method="post">
+          				<div id="not_logged">
+            				<form action="LoginServlet" method="post">
              					<input name="login" type="text" id="login" placeholder="identifiant"/>
               					<input name="pass" type="password" id="pass" placeholder="***********"/>
               					<input type="hidden" name="action" value="login"/>
@@ -30,29 +32,12 @@ pageEncoding="UTF-8"%>
             				</form>
           				</div>
      				<% } else { %>
-     					<div id="logged_box">
-            				Connecté<br/>
-    						Votre compte<br/>
+     					<div id="logged">
+    						Votre compte : <br/>
     						<!-- <a href="UserServlet?login=(java)truc.getAttribute("UserName")(/java)">(java)truc.getAttribute("UserName")(/java)</a> <br /> -->
-    						<a href="/JEE/Logout"> Logout </a>
+    						<a href="Logout"> Logout </a>
           				</div>
     				<% } %> 
         </div><!-- end of headder -->
-        <div id="templatemo_menu_panel">
-          <div id="templatemo_menu_section">
-            <ul>
-              <li><a href="accueil.jsp"  class="current">Accueil</a></li>
-              <li><a href="listJeux.jsp">Liste des jeux</a></li>
-              <li><a href="listEquipe.jsp">Liste des équipes</a></li>
-              <%if (logged) {%>
-		      	<li><a href="ProfilJoueur.jsp">Profil</a></li>
-		      <% }%>                  
-            </ul> 
-          </div>
-        </div> <!-- end of menu -->
-      </div><!-- end of container-->
-    </div><!-- end of templatemo_background_section_top-->
-	</body>
-</html>
-	
+
 			                

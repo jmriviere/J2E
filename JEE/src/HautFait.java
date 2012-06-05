@@ -26,11 +26,11 @@ public class HautFait implements Serializable {
 	}
    
 	public HautFait(String name, String description, int nbPoint, int nbVictoireTicTacToe, int nbVictoireShiFuMi) {
-		this.name = name;
-		this.description = description;
-		this.nbVictoireShiFuMi = nbVictoireShiFuMi;
-		this.nbPoint = nbPoint;
-		this.nbVictoireTicTacToe = nbVictoireTicTacToe;
+		this.setName(name);
+		this.setDescription(description);
+		this.setNbVictoireShiFuMi(nbVictoireShiFuMi);
+		this.setNbPoint(nbPoint);
+		this.setNbVictoireTicTacToe(nbVictoireTicTacToe);
 	}
 	
 	public String getName() {

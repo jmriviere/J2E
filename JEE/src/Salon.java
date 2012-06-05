@@ -15,9 +15,6 @@ public class Salon implements Serializable {
 	@Column(unique=true, nullable=true)
 	private Equipe equipe;	
 	
-	@Column(unique=true, nullable=true)
-	private String region;
-	
 	@OneToMany
 	private List<Partie> partie;	
 
@@ -25,8 +22,8 @@ public class Salon implements Serializable {
 	}
 	
 	public Salon(String name) {
-		this.name = name;
-		this.partie = new ArrayList<Partie>();
+		this.setName(name);
+		this.setPartie(new ArrayList<Partie>());
 	}
 	
 	public String getName() {
@@ -43,14 +40,6 @@ public class Salon implements Serializable {
 	
 	public void setEquipe(Equipe equipe) {
 		this.equipe = equipe;
-	}
-	
-	public String getRegion() {
-		return this.region;
-	}
-	
-	public void setRegion(String region) {
-		this.region = region;
 	}
 
 	public List<Partie> getPartie() {

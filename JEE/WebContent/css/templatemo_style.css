@@ -103,7 +103,17 @@ a:hover { color: #FFFFFF; }
 /* End Of Logo Area*/
 /* Search Box*/
 
-#templatemo_search_box{
+#logged{
+	width: 338px;
+	font-size:13px;
+	color:#999999;
+	height: 52px;
+	float: right;
+	margin-top: 90px;
+	margin-right: 20px;
+}
+
+#not_logged{
 	width: 338px;
 	height: 52px;
 	float: right;

@@ -11,10 +11,11 @@
     <class>Coup</class>
     <properties>
 
-      <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/> 
+    <!-- <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>  -->  
       <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
       <property name="hibernate.show_sql" value="true" />
-      <property name="transaction.factory_class" value="org.hibernate.transaction.JDBCTransactionFactory" />
+      <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>
+    <!-- <property name="transaction.factory_class" value="org.hibernate.transaction.JDBCTransactionFactory" /> --> 
           
     </properties>
   </persistence-unit>

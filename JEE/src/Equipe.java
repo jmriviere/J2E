@@ -28,12 +28,12 @@ public class Equipe implements Serializable {
 	}
 	
 	public Equipe(String name, Joueur createur) {
-		this.name = name;
-		this.chef = createur;
-		this.membre = new ArrayList<Joueur>();
-		this.membre.add(createur);
-		this.salon = new Salon(name);
-		this.hautFait = new ArrayList<HautFait>();
+		this.setName(name);
+		this.setChef(createur);
+		this.setMembre(new ArrayList<Joueur>());
+		this.addMembre(createur);
+		this.setSalon(new Salon(name));
+		this.setHautFait(new ArrayList<HautFait>());
 	}
 	
 	public String getName() {
