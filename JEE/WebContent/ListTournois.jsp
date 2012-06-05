@@ -7,8 +7,8 @@
             			<ul>
               				<li><a href="Accueil.jsp" > Accueil</a></li> 
 		      				<li><a href="ListSalons.jsp" > Salon </a></li>
-		      				<li><a href="ListReplays.jsp" class = "current" > Replays </a></li>
-		      				<li><a href="ListTournois.jsp" > Tournois </a></li>   
+		      				<li><a href="ListReplays.jsp" > Replays </a></li>
+		      				<li><a href="ListTournois.jsp" class = "current" > Tournois </a></li>   
 		      				<li><a href="ListEquipes.jsp" > Liste des équipe </a></li>         
             			</ul> 
           			</div>
