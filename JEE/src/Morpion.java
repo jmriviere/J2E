@@ -4,9 +4,20 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.applet.Applet;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+
+import org.hornetq.utils.Base64.OutputStream;
 
 public class Morpion extends Applet implements ActionListener {
-    Button cases[];
+    /**
+	 * Je sais pas à quoi ça sert mais eclipse me disait de le faire
+	 */
+	private static final long serialVersionUID = 7735483244906630011L;
+	Button cases[];
     Button boutonNouvellePartie;
     Label score;
     int casesLibresRestantes = 9;
@@ -67,6 +78,7 @@ public class Morpion extends Applet implements ActionListener {
             casesLibresRestantes = 9;
             score.setText("A vous de jouer !");
             boutonNouvellePartie.setEnabled(false);
+            sendMove(1);
             return;
         }
 
@@ -76,6 +88,7 @@ public class Morpion extends Applet implements ActionListener {
         for (int i = 0; i < 9; i++) {
             if (leBouton == cases[i]) {
                 cases[i].setLabel("X");
+                sendMove(i);
                 gagnant = chercherUnGagnant();
                 if(!"".equals(gagnant)) {
                     terminerLaPartie();
@@ -190,4 +203,46 @@ public class Morpion extends Applet implements ActionListener {
             cases[i].setEnabled(false);
         }
     }
+    
+    /**
+	 * Connection à la servlet.
+	 */
+	private URLConnection getServletConnection()
+		throws MalformedURLException, IOException {
+
+		URL urlServlet = new URL(getCodeBase(), "/MorpionServlet");
+		score.setText(urlServlet.toString());
+		URLConnection con = urlServlet.openConnection();
+
+		con.setDoInput(true);
+		con.setDoOutput(true);
+		con.setUseCaches(false);
+		con.setRequestProperty(
+			"Content-Type",
+			"application/x-java-serialized-object");
+
+		return con;
+	}
+
+	/**
+	 * Envoi le coup joué à la servlet.
+	 */
+	private void sendMove(int i) {
+		try {
+			String coup = Integer.toString(i);
+
+			// send data to the servlet
+			URLConnection con = getServletConnection();
+			OutputStream outstream = (OutputStream) con.getOutputStream();
+			ObjectOutputStream oos = new ObjectOutputStream(outstream);
+			oos.writeObject(coup);
+			oos.flush();
+			oos.close();
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+    
+    
 }

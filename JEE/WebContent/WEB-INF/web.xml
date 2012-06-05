@@ -24,4 +24,14 @@
     <servlet-name>UserServlet</servlet-name>
     <url-pattern>/UserServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MorpionServlet</display-name>
+    <servlet-name>MorpionServlet</servlet-name>
+    <servlet-class>MorpionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MorpionServlet</servlet-name>
+    <url-pattern>/MorpionServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
