@@ -5,9 +5,9 @@
        <div id="templatemo_menu_panel">
           <div id="templatemo_menu_section">
             <ul>
-              <li><a href="accueil.jsp" > Accueil</a></li>
-              <li><a href="listJeux.jsp" > Liste des jeux </a></li>   
-		      <li><a href="listEquipe.jsp" > Liste des équipe </a></li>        
+              <li><a href="Accueil.jsp" > Accueil</a></li>
+              <li><a href="ListJeux.jsp" > Liste des jeux </a></li>   
+		      <li><a href="ListEquipes.jsp" > Liste des équipe </a></li>        
             </ul> 
           </div>
         </div> <!-- end of menu -->

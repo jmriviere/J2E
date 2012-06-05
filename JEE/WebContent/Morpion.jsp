@@ -4,10 +4,10 @@
           <div id="templatemo_menu_section">
             <ul>
               <li><a href="Accueil.jsp" > Accueil</a></li> 
-		      <li><a href="ListSalon.jsp" > Salon </a></li>
-		      <li><a href="ReplaysRecents.jsp" > Replays </a></li>
+		      <li><a href="ListSalons.jsp" > Salon </a></li>
+		      <li><a href="ListReplays.jsp" > Replays </a></li>
 		      <li><a href="ListTournois.jsp" > Tournois </a></li>   
-		      <li><a href="ListEquipe.jsp" > Liste des équipe </a></li>         
+		      <li><a href="ListEquipes.jsp" > Liste des équipe </a></li>         
             </ul> 
           </div>
         </div> <!-- end of menu -->
