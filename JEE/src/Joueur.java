@@ -1,4 +1,6 @@
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -39,17 +41,17 @@ public class Joueur implements Serializable {
 	@Column(nullable=false)
 	private int nbVictoireShiFuMi;
 	
-	// @ManyToOne
-	// private Equipe equipe;
+	@ManyToOne
+	private Equipe equipe;
 	
-	// @ManyToMany
-	// private List<Partie> partie;
+	@ManyToMany
+	private List<Partie> partie;
 	
-	// @ManyToMany
-	// private List<Joueur> ami;
+	@ManyToMany
+	private List<Joueur> ami;
 	
-	// @ManyToMany
-	// private List<HautFait> hautFait;
+	@ManyToMany
+	private List<HautFait> hautFait;
 	
 	public Joueur() {
 	}
@@ -59,6 +61,9 @@ public class Joueur implements Serializable {
 		this.setPassword(password);
 		this.setMail(mail);
 		this.setNbPoint(0);
+		this.setPartie(new ArrayList<Partie>());
+		this.setAmi(new ArrayList<Joueur>());
+		this.setHautFait(new ArrayList<HautFait>());
 		this.setNbVictoireTicTacToe(0);
 		this.setNbVictoireShiFuMi(0);
 	}
@@ -119,6 +124,49 @@ public class Joueur implements Serializable {
 		this.sexe = sexe;
 	}
 	
+	public List<Partie> getPartie() {
+		return this.partie;
+	}
+	
+	public void setPartie(List<Partie> partie) {
+		this.partie = partie;
+	}
+		
+	public Equipe getEquipe() {
+		return equipe;
+	}
+	
+	public void addPartie(Partie partie){
+		this.partie.add(partie);
+	}
+
+	public void setEquipe(Equipe equipe) {
+		this.equipe = equipe;
+	}
+
+	public List<Joueur> getAmi() {
+		return ami;
+	}
+
+	public void setAmi(List<Joueur> ami) {
+		this.ami = ami;
+	}
+
+	public void addAmi(Joueur ami){
+		this.ami.add(ami);
+	}	
+	public List<HautFait> getHautFait() {
+		return hautFait;
+	}
+
+	public void setHautFait(List<HautFait> hautFait) {
+		this.hautFait = hautFait;
+	}
+	
+	public void addHautFait(HautFait hautFait) {
+		this.hautFait.add(hautFait);
+	}
+
 	public int getNbPoint() {
 		return this.nbPoint;
 	}
