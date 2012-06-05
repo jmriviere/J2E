@@ -1,4 +1,4 @@
-<jsp:include page="header.jsp" />
+<jsp:include page="Header.jsp" />
 
 <%
 	// pour les tests

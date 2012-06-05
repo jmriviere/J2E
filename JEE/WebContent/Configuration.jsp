@@ -1,6 +1,6 @@
-<jsp:include page="header.jsp" />
+<jsp:include page="Header.jsp" />
 
-<!-- page accessible uniquement accessible si connecté apres gestion de qui est co pour dire si il a ou pas les HF -->
+<!-- page accessible uniquement accessible si connecté apres gestion de qui -->
 
        <div id="templatemo_menu_panel">
           <div id="templatemo_menu_section">

@@ -1,4 +1,4 @@
-<jsp:include page="header.jsp" />
+<jsp:include page="Header.jsp" />
 
        <div id="templatemo_menu_panel">
           <div id="templatemo_menu_section">
