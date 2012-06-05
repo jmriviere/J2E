@@ -1,6 +1,4 @@
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -41,31 +39,28 @@ public class Joueur implements Serializable {
 	@Column(nullable=false)
 	private int nbVictoireShiFuMi;
 	
-	@ManyToOne
-	private Equipe equipe;
+	// @ManyToOne
+	// private Equipe equipe;
 	
-	@ManyToMany
-	private List<Partie> partie;
+	// @ManyToMany
+	// private List<Partie> partie;
 	
-	@ManyToMany
-	private List<Joueur> ami;
+	// @ManyToMany
+	// private List<Joueur> ami;
 	
-	@ManyToMany
-	private List<HautFait> hautFait;
+	// @ManyToMany
+	// private List<HautFait> hautFait;
 	
 	public Joueur() {
 	}
 		
 	public Joueur(String login, String password, String mail) {
-		this.login = login;
-		this.password = password;
-		this.mail = mail;
-		this.partie = new ArrayList<Partie>();
-		this.ami = new ArrayList<Joueur>();
-		this.hautFait = new ArrayList<HautFait>();
-		this.nbPoint = 0;
-		this.nbVictoireTicTacToe = 0;
-		this.nbVictoireShiFuMi = 0;
+		this.setLogin(login);
+		this.setPassword(password);
+		this.setMail(mail);
+		this.setNbPoint(0);
+		this.setNbVictoireTicTacToe(0);
+		this.setNbVictoireShiFuMi(0);
 	}
 	
 	public String getLogin() {
@@ -158,50 +153,6 @@ public class Joueur implements Serializable {
 	
 	public void setNbVictoireShiFuMi(int nbVictoireShiFuMi) {
 		this.nbVictoireShiFuMi = nbVictoireShiFuMi;
-	}
-	
-	public Equipe getEquipe() {
-		return this.equipe;
-	}
-
-	public void setEquipe(Equipe equipe) {
-		this.equipe = equipe;	
-	}
-
-	public List<Partie> getPartie() {
-		return this.partie;
-	}
-	
-	public void addPartie(Partie partie) {
-		this.partie.add(partie);
-	}
-	
-	public void setPartie(List<Partie> partie) {
-		this.partie.addAll(partie);
-	}
-	
-	public List<Joueur> getAmi() {
-		return this.ami;
-	}
-	
-	public void addAmi(Joueur ami) {
-		this.ami.add(ami);
-	}
-	
-	public void setAmi(List<Joueur> ami) {
-		this.ami.addAll(ami);
-	}
-	
-	public List<HautFait> getHautFait() {
-		return this.hautFait;
-	}
-	
-	public void addHautFait(HautFait hautFait) {
-		this.hautFait.add(hautFait);
-	}
-	
-	public void setHautFait(List<HautFait> hautFait) {
-		this.hautFait.addAll(hautFait);
 	}
 
 	@Override

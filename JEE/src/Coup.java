@@ -35,7 +35,7 @@ public class Coup implements Serializable {
 	}
 	
 	public void setJeu(String jeu) {
-		this.name = jeu;
+		this.jeu = jeu;
 	}
    
 }
