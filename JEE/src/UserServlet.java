@@ -71,8 +71,7 @@ public class UserServlet extends HttpServlet {
 				error += 1;
 			}
 			
-            
-			if (!um.isNameTaken(username)) {
+            if (!um.isNameTaken(username)) {
 				//Do something
 			} else {
 				error += 2;

@@ -18,8 +18,8 @@ public class Coup implements Serializable {
 	}
 	
 	public Coup(String name, String jeu) {
-		this.name = name;
-		this.jeu = jeu;
+		this.setName(name);
+		this.setJeu(jeu);
 	}
 	
 	public String getName() {
