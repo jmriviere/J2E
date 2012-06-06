@@ -1,7 +1,5 @@
 package entities;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -14,16 +12,16 @@ public class Partie implements Serializable {
 	@Id
 	private Integer partieId;
 	
-	@Column(nullable=false)
+	@ManyToOne
 	private Joueur joueur1;	
 	
-	@Column(nullable=false)
+	@ManyToOne
 	private Joueur joueur2;
 
 	@Column(nullable=false)
 	private String jeu;
 	
-	@Column(nullable=true)
+	@ManyToOne
 	private Joueur winner;
 	
 	//@OneToMany

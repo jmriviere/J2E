@@ -13,7 +13,7 @@ public class Salon implements Serializable {
 	@Id
 	private String name;
 	
-	@Column(unique=true, nullable=true)
+	@OneToOne
 	private Equipe equipe;	
 	
 	//@OneToMany

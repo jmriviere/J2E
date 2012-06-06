@@ -13,11 +13,11 @@ public class Equipe implements Serializable {
 	@Id
 	private String name;
 	
-	@OneToOne
+	@ManyToOne
 	private Joueur chef;
 	
-	//@OneToMany
-	//private List<Joueur> membre;
+	@OneToMany(mappedBy="equipe")
+	private List<Joueur> membre;
 	
 	@OneToOne
 	private Salon salon;
@@ -31,8 +31,8 @@ public class Equipe implements Serializable {
 	public Equipe(String name, Joueur createur) {
 		this.setName(name);
 		this.setChef(createur);
-		//this.setMembre(new ArrayList<Joueur>());
-		//this.addMembre(createur);
+		this.setMembre(new ArrayList<Joueur>());
+		this.addMembre(createur);
 		//this.setSalon(new Salon(name));
 		//this.setHautFait(new ArrayList<HautFait>());
 	}
@@ -61,7 +61,7 @@ public class Equipe implements Serializable {
 		this.salon = salon;
 	}
 	
-	/*public List<Joueur> getMembre() {
+	public List<Joueur> getMembre() {
 		return this.membre;
 	}
 	
@@ -73,6 +73,7 @@ public class Equipe implements Serializable {
 		this.membre.add(membre);
 	}
 	
+	/*
 	public List<HautFait> getHautFait() {
 		return this.hautFait;
 	}

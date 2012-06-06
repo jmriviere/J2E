@@ -42,8 +42,8 @@ public class Joueur implements Serializable {
 	@Column(nullable=false)
 	private int nbVictoireShiFuMi;
 	
-	//@ManyToOne
-	//private Equipe equipe;
+	@ManyToOne
+	private Equipe equipe;
 	
 	//@ManyToMany
 	//private List<Partie> partie;
@@ -62,6 +62,7 @@ public class Joueur implements Serializable {
 		this.setPassword(password);
 		this.setMail(mail);
 		this.setNbPoint(0);
+		this.setEquipe(null);
 //		this.setPartie(new ArrayList<Partie>());
 //		this.setAmi(new ArrayList<Joueur>());
 //		this.setHautFait(new ArrayList<HautFait>());
@@ -135,7 +136,7 @@ public class Joueur implements Serializable {
 	
 	public void addPartie(Partie partie){
 		this.partie.add(partie);
-	}
+	} */
 		
 	public Equipe getEquipe() {
 		return equipe;
@@ -144,7 +145,8 @@ public class Joueur implements Serializable {
 	public void setEquipe(Equipe equipe) {
 		this.equipe = equipe;
 	}
-
+    
+	/*
 	public List<Joueur> getAmi() {
 		return ami;
 	}
