@@ -105,6 +105,16 @@ public class UserServlet extends HttpServlet {
                 request.setAttribute("error", new Integer(error));
                 nextPage = "CreationCompte.jsp";
             }
+        } else if(action.equals("profil")) {
+        	String asked_login = request.getParameter("login");
+        	Joueur j_act = (Joueur)request.getSession().getAttribute("JoueurActuel");
+        	if(j_act!=null) {
+        		nextPage = "ProfilJoueur.jsp";        
+        		request.setAttribute("asked_player", um.getJoueur(asked_login));
+        	} else {
+        		nextPage = "Accueil.jsp";
+        		request.getSession().setAttribute("ErrorMessage", "On ne peut consulter les pages de membres sans être inscrit.");
+        	}
         }
         request.getRequestDispatcher(nextPage).forward(request, response);
     }
