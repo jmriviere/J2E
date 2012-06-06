@@ -66,7 +66,7 @@ public class Equipe implements Serializable {
 	}
 	
 	public void setMembre(List<Joueur> membre) {
-		this.membre.addAll(membre);
+		this.membre = membre;
 	}
 	
 	public void addMembre(Joueur membre) {
@@ -78,7 +78,7 @@ public class Equipe implements Serializable {
 	}
 	
 	public void setHautFait(List<HautFait> hautFait) {
-		this.hautFait.addAll(hautFait);
+		this.hautFait = hautFait;
 	}
 	
 	public void addHautFait(HautFait hautFait) {

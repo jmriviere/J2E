@@ -33,11 +33,11 @@ public class Partie implements Serializable {
 	}
 	
 	public Partie(int partieId, Joueur joueur1, Joueur joueur2, String jeu) {
-		this.partieId = partieId;
-		this.joueur1 = joueur1;
-		this.joueur2 = joueur2;
-		this.coup = new ArrayList<Coup>();
-		this.jeu = jeu;
+		this.setPartieId(partieId);
+		this.setJoueur1(joueur1);
+		this.setJoueur2(joueur2);
+		this.setCoup(new ArrayList<Coup>());
+		this.setJeu(jeu);
 	}
    
 	public Integer getPartieId() {
@@ -89,7 +89,7 @@ public class Partie implements Serializable {
 	}
 	
 	public void setCoup(List<Coup> coup) {
-		this.coup.addAll(coup);
+		this.coup = coup;
 	}
 	
 	@Override

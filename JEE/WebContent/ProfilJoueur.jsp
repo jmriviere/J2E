@@ -1,15 +1,15 @@
-<jsp:include page="header.jsp" />
+<jsp:include page="Header.jsp" />
 
 <!-- page accessible uniquement accessible si connecté apres gestion de profil prive et public -->
 
        <div id="templatemo_menu_panel">
           <div id="templatemo_menu_section">
             <ul>
-              <li><a href="accueil.jsp" > Accueil</a></li> 
-		      <li><a href="listSalon.jsp" > Salon </a></li>
-		      <li><a href="replaysRecents.jsp" > Replays </a></li>
-		      <li><a href="listTournois.jsp" > Tournois </a></li>   
-		      <li><a href="listEquipe.jsp" > Liste des équipe </a></li>         
+              <li><a href="Accueil.jsp" > Accueil</a></li> 
+		      <li><a href="ListSalons.jsp" > Salon </a></li>
+		      <li><a href="ListReplays.jsp" > Replays </a></li>
+		      <li><a href="ListTournois.jsp" > Tournois </a></li>   
+		      <li><a href="ListEquipes.jsp" > Liste des équipe </a></li>         
             </ul> 
           </div>
         </div> <!-- end of menu -->
@@ -58,10 +58,7 @@
 							<li> <a href="hautsFaits.jsp">Hauts Faits</a></li>
 							<li> <a href="replaysRecents.jsp">Replays</a></li>
 						</ul>
-                    </div>
-                </div><!-- end of section box -->
-                <div class="templatemo_section_box">
-                	<div class="templatemo_section_box_mid">
+ 						</br>
                 		<%
                 		if (mine) {
 						%>
@@ -85,16 +82,15 @@
 					</div>
                 </div><!-- end of section box -->
             </div><!-- end of left section-->
-            <div id="templatemo_right_section">
-            </div><!-- end of right Section -->
-    	</div><!-- end of container-->
-    </div><!-- end of background middle-->
-	<div id="templatemo_bottom_panel">
-    	<div id="templatemo_bottom_section">
-	 		<div id="templatemo_footer_section">
-        		Copyright © 2012 DreamTeam
+            <div id="templatemo_right_section"> </div><!-- end of right Section -->
+    		</div><!-- end of container-->
+    	</div><!-- end of background middle-->
+		<div id="templatemo_bottom_panel">
+    		<div id="templatemo_bottom_section">
+	 			<div id="templatemo_footer_section">
+        			Copyright © 2012 DreamTeam
+        		</div>
         	</div>
-        </div>
-    </div>
-</body>
+    	</div>
+	</body>
 </html>

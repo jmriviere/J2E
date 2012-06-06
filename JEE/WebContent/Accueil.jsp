@@ -1,4 +1,4 @@
-<jsp:include page="header.jsp" />
+<jsp:include page="Header.jsp" />
 
 <%
 	// pour les tests
@@ -8,13 +8,13 @@
        <div id="templatemo_menu_panel">
           <div id="templatemo_menu_section">
             <ul>
-              <li><a href="accueil.jsp" class = "current"> Accueil</a></li>
+              <li><a href="Accueil.jsp" class = "current"> Accueil</a></li>
 				<%if (!logged) {%>
-					<li><a href="listJeux.jsp" > Liste des jeux </a></li>
+					<li><a href="ListJeux.jsp" > Liste des jeux </a></li>
               	<% } else { %> 
-		      		<li><a href="listSalon.jsp" > Salon </a></li>
-		      		<li><a href="replaysRecents.jsp" > Replays </a></li>
-		      		<li><a href="listTournois.jsp" > Tournois </a></li>
+		      		<li><a href="ListSalons.jsp" > Salon </a></li>
+		      		<li><a href="ListReplays.jsp" > Replays </a></li>
+		      		<li><a href="ListTournois.jsp" > Tournois </a></li>
 		        <% }%>     
 		        	<li><a href="listEquipe.jsp" > Liste des équipes </a></li>         
             </ul> 
