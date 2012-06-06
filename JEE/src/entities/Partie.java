@@ -26,8 +26,8 @@ public class Partie implements Serializable {
 	@Column(nullable=true)
 	private Joueur winner;
 	
-	@OneToMany
-	private List<Coup> coup;	
+	//@OneToMany
+	//private List<Coup> coup;	
 	
 	public Partie() {
 	}
@@ -36,7 +36,7 @@ public class Partie implements Serializable {
 		this.setPartieId(partieId);
 		this.setJoueur1(joueur1);
 		this.setJoueur2(joueur2);
-		this.setCoup(new ArrayList<Coup>());
+		//this.setCoup(new ArrayList<Coup>());
 		this.setJeu(jeu);
 	}
    
@@ -80,7 +80,7 @@ public class Partie implements Serializable {
 		this.winner = winner;
 	}
 	
-	public List<Coup> getCoup() {
+	/*public List<Coup> getCoup() {
 		return this.coup;
 	}
 	
@@ -90,7 +90,7 @@ public class Partie implements Serializable {
 	
 	public void setCoup(List<Coup> coup) {
 		this.coup = coup;
-	}
+	}*/
 	
 	@Override
 	public String toString() {

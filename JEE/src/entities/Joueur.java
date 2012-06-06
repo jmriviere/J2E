@@ -42,17 +42,17 @@ public class Joueur implements Serializable {
 	@Column(nullable=false)
 	private int nbVictoireShiFuMi;
 	
-	@ManyToOne
-	private Equipe equipe;
+	//@ManyToOne
+	//private Equipe equipe;
 	
-	@ManyToMany
-	private List<Partie> partie;
+	//@ManyToMany
+	//private List<Partie> partie;
 	
-	@ManyToMany
-	private List<Joueur> ami;
+	//@ManyToMany
+	//private List<Joueur> ami;
 	
-	@ManyToMany
-	private List<HautFait> hautFait;
+	//@ManyToMany
+	//private List<HautFait> hautFait;
 	
 	public Joueur() {
 	}
@@ -62,9 +62,9 @@ public class Joueur implements Serializable {
 		this.setPassword(password);
 		this.setMail(mail);
 		this.setNbPoint(0);
-		this.setPartie(new ArrayList<Partie>());
-		this.setAmi(new ArrayList<Joueur>());
-		this.setHautFait(new ArrayList<HautFait>());
+//		this.setPartie(new ArrayList<Partie>());
+//		this.setAmi(new ArrayList<Joueur>());
+//		this.setHautFait(new ArrayList<HautFait>());
 		this.setNbVictoireTicTacToe(0);
 		this.setNbVictoireShiFuMi(0);
 	}
@@ -125,7 +125,7 @@ public class Joueur implements Serializable {
 		this.sexe = sexe;
 	}
 	
-	public List<Partie> getPartie() {
+	/*public List<Partie> getPartie() {
 		return this.partie;
 	}
 	
@@ -167,7 +167,7 @@ public class Joueur implements Serializable {
 	public void addHautFait(HautFait hautFait) {
 		this.hautFait.add(hautFait);
 	}
-
+*/
 	public int getNbPoint() {
 		return this.nbPoint;
 	}

@@ -72,7 +72,7 @@ public class LoginServlet extends HttpServlet {
 		} else if(action.equals("logout")) {
 			request.getSession().removeAttribute("JoueurActuel");
 		}
-		request.getRequestDispatcher("accueil.jsp").forward(request, response);
+		request.getRequestDispatcher("Accueil.jsp").forward(request, response);
 		// TODO Auto-generated method stub
 	}
 
