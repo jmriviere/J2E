@@ -1,5 +1,6 @@
 
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
@@ -16,13 +17,14 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class MorpionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    private String coupCourant;
+    
     /**
      * @see HttpServlet#HttpServlet()
      */
     public MorpionServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        this.coupCourant = "-1";
     }
 
 	/**
@@ -38,23 +40,56 @@ public class MorpionServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		try {
-			response.setContentType("application/x-java-serialized-object");
+		System.out.println(this.coupCourant);
+		String coup = request.getParameter("coup");
+		//if (coup.equals("jeu")) {
+			try {
+				response.setContentType("application/x-java-serialized-object");
 			
-			InputStream ins = request.getInputStream();
-			ObjectInputStream inputFromApplet = new ObjectInputStream(ins);
-			String coupJoue = (String)inputFromApplet.readObject();
-			
-			System.out.println(coupJoue);
-			
-			OutputStream outs = response.getOutputStream();
-			ObjectOutputStream oos = new ObjectOutputStream(outs);
-			oos.writeObject(coupJoue);
-			oos.flush();
-			oos.close();
-		} catch (Exception e) {
-			e.printStackTrace();
+				String msg = "fail";
+				while (msg.equals("fail")) {
+					try {
+						InputStream ins = request.getInputStream();
+						ObjectInputStream inputFromApplet = new ObjectInputStream(
+								ins);
+						msg = (String) inputFromApplet.readObject();
+					} catch (EOFException eofe) {
+						//e.printStackTrace();
+						msg = "fail";
+						System.out.println(msg);
+					}
+				}
+				System.out.println(msg);
+				OutputStream outs = response.getOutputStream();
+				ObjectOutputStream oos = new ObjectOutputStream(outs);
+				
+				if (msg.equals("attente")) {
+					oos.writeObject(this.coupCourant);
+					oos.flush();
+					oos.close();
+				} else {
+					this.coupCourant = msg;
+					System.out.println("coup joue: " + this.coupCourant);
+					oos.writeObject("hack");
+					oos.flush();
+					oos.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		/*} else if (coup.equals("attente")) {
+			try {
+				response.setContentType("application/x-java-serialized-object");
+				OutputStream outs = response.getOutputStream();
+				ObjectOutputStream oos = new ObjectOutputStream(outs);
+				oos.writeObject(this.coupCourant);
+				oos.flush();
+				oos.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		*/
 	}
 
 }
