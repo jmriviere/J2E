@@ -16,7 +16,7 @@
 		      		<li><a href="replaysRecents.jsp" > Replays </a></li>
 		      		<li><a href="listTournois.jsp" > Tournois </a></li>
 		        <% }%>     
-		        	<li><a href="listEquipe.jsp" > Liste des équipe </a></li>         
+		        	<li><a href="listEquipe.jsp" > Liste des équipes </a></li>         
             </ul> 
           </div>
         </div> <!-- end of menu -->

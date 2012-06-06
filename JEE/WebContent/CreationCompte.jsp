@@ -26,8 +26,7 @@
               <div id="register_box" class="register_form">
                 <form  action="UserServlet" autocomplete="on" method="post"> 
                   <%
-                  	Object oerror = request.getAttribute("error");
-                  	Integer error = (Integer)oerror;
+                  	Integer error = (Integer)request.getAttribute("error");
                   %>
                   <p> 
                   <label for="usernamesignup" class="uname" data-icon="u">Pseudo (*)</label><br/>

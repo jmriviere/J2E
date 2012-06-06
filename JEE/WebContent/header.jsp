@@ -1,10 +1,13 @@
-<%
-	// pour les tests
-	Boolean logged = true; // (Boolean) request.getAttribute("logged")
-%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ page import="entities.Joueur"%>
+<%
+	Joueur j_act = (Joueur)request.getSession().getAttribute("JoueurActuel");
+    String error_message = (String)request.getSession().getAttribute("ErrorMessage");
+    if(error_message!=null) {
+   		request.getSession().removeAttribute("ErrorMessage");
+    }
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -22,22 +25,33 @@ pageEncoding="UTF-8"%>
             			<h1>JEEux</h1>            
             			<h2>Site de jeux en lignes compétitifs</h2>
        			 	</div>
-					<% if(!logged) { %>
+					<% if(j_act==null) { %>
           				<div id="not_logged">
             				<form action="LoginServlet" method="post">
              					<input name="login" type="text" id="login" placeholder="identifiant"/>
               					<input name="pass" type="password" id="pass" placeholder="***********"/>
               					<input type="hidden" name="action" value="login"/>
-              					<input type="button" name="Connexion" value="" alt="Connexion" id="button" title="Connexion"/>
+              					<input type="submit" name="Connexion" value="" alt="Connexion" id="button" title="Connexion"/>
             				</form>
-          				</div>
+            			</div>
+          				
      				<% } else { %>
-     					<div id="logged">
+     					<div id="Logged as ">
     						Votre compte : <br/>
-    						<!-- <a href="UserServlet?login=(java)truc.getAttribute("UserName")(/java)">(java)truc.getAttribute("UserName")(/java)</a> <br /> -->
-    						<a href="Logout"> Logout </a>
-          				</div>
+    						<a href="UserServlet?login=<%= j_act.getLogin() %>"><%= j_act.getLogin()%></a> <br/>  
+    						<form action="LoginServlet" method="post">
+              					<input type="hidden" name="action" value="logout"/>
+              					<input type="submit" name="Logout" value="" alt="Logout" id="button" title="Déconnexion"/>
+            				</form> 						
+    					</div>
+    						
     				<% } %> 
+  
+    				<% if(error_message!=null) { %>
+    					<div id="Error">
+    						<%= error_message%><br/>
+    					</div>
+    				<% } %>
         </div><!-- end of headder -->
 
 			                

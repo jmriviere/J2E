@@ -6,6 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import entities.Joueur;
+
 @Stateless(name="UserManager1")
 @Local(UserManagerItf.class)
 public class UserManager implements UserManagerItf {
@@ -23,6 +25,10 @@ public class UserManager implements UserManagerItf {
 			System.out.println("Le joueur existe déjà dans la bdd");
 			return false;
 		}
+	}
+	
+	public Joueur getJoueur(String login) {
+		return em.find(Joueur.class, login);
 	}
 
 	@Override

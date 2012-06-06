@@ -3,12 +3,12 @@
   <persistence-unit name="PostgresDSjeeux" transaction-type="JTA">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <jta-data-source>java:/PostgresDSjeeux</jta-data-source>
-    <class>Equipe</class>
-    <class>Joueur</class>
-    <class>Salon</class>
-    <class>Partie</class>
-    <class>HautFait</class>
-    <class>Coup</class>
+    <class>entities.Equipe</class>
+    <class>entities.Joueur</class>
+    <class>entities.Salon</class>
+    <class>entities.Partie</class>
+    <class>entities.HautFait</class>
+    <class>entities.Coup</class>
     <properties>
 
     <!-- <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>  -->  
