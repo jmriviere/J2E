@@ -37,11 +37,10 @@ pageEncoding="UTF-8"%>
           				
      				<% } else { %>
      					<div id="logged">
-    						Votre compte : <a href="UserServlet?login=<%= j_act.getLogin() %>"><%= j_act.getLogin()%></a> <br/>  
     						<form action="LoginServlet" method="post">
-    							<br/>
+    							<a href="UserServlet?login=<%= j_act.getLogin() %>" id="lien_compte"><%= j_act.getLogin()%></a>  
               					<input type="hidden" name="action" value="logout"/>
-              					<input type="submit" name="Logout" value="" alt="Logout" id="button" title="Déconnexion"/>
+              					<input type="submit" name="Logout" value="" alt="Logout" id="button" title="Deconnexion"/>
             				</form> 						
     					</div>
     						
