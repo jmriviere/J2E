@@ -2,6 +2,8 @@ package entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -22,8 +24,8 @@ public class Equipe implements Serializable {
 	@OneToOne
 	private Salon salon;
 	
-	//@ManyToMany
-	//private List<HautFait> hautFait;
+	@ManyToMany
+	private List<HautFait> hautFait;
 		
 	public Equipe() {
 	}
@@ -33,8 +35,8 @@ public class Equipe implements Serializable {
 		this.setChef(createur);
 		this.setMembre(new ArrayList<Joueur>());
 		this.addMembre(createur);
-		//this.setSalon(new Salon(name));
-		//this.setHautFait(new ArrayList<HautFait>());
+		this.setSalon(new Salon(name));
+		this.setHautFait(new ArrayList<HautFait>());
 	}
 	
 	public String getName() {
@@ -73,7 +75,6 @@ public class Equipe implements Serializable {
 		this.membre.add(membre);
 	}
 	
-	/*
 	public List<HautFait> getHautFait() {
 		return this.hautFait;
 	}
@@ -85,7 +86,7 @@ public class Equipe implements Serializable {
 	public void addHautFait(HautFait hautFait) {
 		this.hautFait.add(hautFait);
 	}
-	*/
+	
 	@Override
 	public String toString() {
 		return this.name;
