@@ -5,22 +5,24 @@ import java.awt.*;
 import java.awt.event.*;
 import java.applet.Applet;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
-import org.hornetq.utils.Base64.OutputStream;
-
 public class Morpion extends Applet implements ActionListener {
     /**
-	 * Je sais pas à quoi ça sert mais eclipse me disait de le faire
-	 */
-	private static final long serialVersionUID = 7735483244906630011L;
-	Button cases[];
-    Button boutonNouvellePartie;
-    Label score;
-    int casesLibresRestantes = 9;
+     * Je sais pas à quoi ça sert mais eclipse me disait de le faire
+     */
+    private static final long serialVersionUID = 7735483244906630011L;
+    private Button cases[];
+    private Button boutonEnvoiCoup;
+    private Label score;
+    private int casesLibresRestantes = 9;
+    private int coup = -1;
 
     /**
      * La méthode init est comme un constructeur pour l'applet
@@ -33,12 +35,12 @@ public class Morpion extends Applet implements ActionListener {
         // Passe la police de l'applet en style gras et taille 20
         Font policeApplet = new Font("Monospaced", Font.BOLD, 20);
         this.setFont(policeApplet);
-        // Crée le bouton Nouvelle partie et enregistre le récepteur d'actions auprès de lui
-        boutonNouvellePartie = new Button("Nouvelle partie");
-        boutonNouvellePartie.addActionListener(this);
+        // Crée le bouton d'envoi du coup.
+        this.boutonEnvoiCoup = new Button("Envoyer le coup.");
+        this.boutonEnvoiCoup.addActionListener(this);
         // Crée deux panneaux et un label et les agence en utilisant le border layout
         Panel panneauSupérieur = new Panel();
-        panneauSupérieur.add(boutonNouvellePartie);
+        panneauSupérieur.add(boutonEnvoiCoup);
         this.add(panneauSupérieur, "North");
 
         Panel panneauCentral = new Panel();
@@ -67,41 +69,34 @@ public class Morpion extends Applet implements ActionListener {
      */
     public void actionPerformed(ActionEvent événement) 
     {
-        Button leBouton = (Button) événement.getSource();
-        // S'agit-il du bouton Nouvelle partie ?
-        if (leBouton == boutonNouvellePartie) {
-            for(int i = 0; i < 9; i++) {
-                cases[i].setEnabled(true);
-                cases[i].setLabel("");
-                cases[i].setBackground(Color.darkGray);
-            }
-            casesLibresRestantes = 9;
-            score.setText("A vous de jouer !");
-            boutonNouvellePartie.setEnabled(false);
-            sendMove(1);
-            return;
-        }
-
         String gagnant = "";
+        Button leBouton = (Button) événement.getSource();
+    
+        if (leBouton == boutonEnvoiCoup) {
+            if (this.coup != -1) {
+                cases[this.coup].setLabel("X");
+                sendMove(this.coup);
+                this.coup = -1;
+                gagnant = chercherUnGagnant();
+                if(!"".equals(gagnant)) {
+                    terminerLaPartie();
+                } 
+            }
+            int i = getMove();
+            cases[i].setLabel("O");
+            gagnant = chercherUnGagnant();
+            if(!"".equals(gagnant)) {
+                terminerLaPartie();
+            }
+        }
 
         // S'agit-il de l'une des cases ?
         for (int i = 0; i < 9; i++) {
             if (leBouton == cases[i]) {
-                cases[i].setLabel("X");
-                sendMove(i);
-                gagnant = chercherUnGagnant();
-                if(!"".equals(gagnant)) {
-                    terminerLaPartie();
-                } else {
-                    //coupOrdinateur();
-                    gagnant = chercherUnGagnant();
-                    if (!"".equals(gagnant)) {
-                        terminerLaPartie();
-                    }
-                }
-                break;
+                this.coup = i;
             }
         } 
+
         if (gagnant.equals("X")) {
             score.setText("Vous avez gagné !");
         } else if (gagnant.equals("O")) {
@@ -119,7 +114,7 @@ public class Morpion extends Applet implements ActionListener {
      * @return "X", "O", "T" (terminé, partie nulle) ou "" (pas
      * fini)
      */
-     String chercherUnGagnant() {
+    String chercherUnGagnant() {
         String leGagnant = "";
         casesLibresRestantes--;
 
@@ -183,7 +178,7 @@ public class Morpion extends Applet implements ActionListener {
         }
         return leGagnant;
     }
-    
+
     /**
      * Cette méthode affiche la ligne gagnante en surbrillance.
      * @param gagnante1 première case à montrer.
@@ -198,51 +193,84 @@ public class Morpion extends Applet implements ActionListener {
 
     // Désactive les cases et active le bouton Nouvelle partie
     void terminerLaPartie() {
-        boutonNouvellePartie.setEnabled(true);
         for (int i = 0; i < 9; i++) {
             cases[i].setEnabled(false);
         }
     }
+
+    /**
+     * Connection à la servlet.
+     */
+    private URLConnection getServletConnection(String params)
+        throws MalformedURLException, IOException {
+
+        URL urlServlet = new URL("http://localhost:8080/JEE/MorpionServlet" + "?" + params);
+        URLConnection con = urlServlet.openConnection();
+        con.setDoInput(true);
+        con.setDoOutput(true);
+        con.setUseCaches(false);
+        con.setRequestProperty(
+                "Content-Type",
+                "application/x-java-serialized-object");
+
+        return con;
+    }
+
+    /**
+     * Envoi le coup joué à la servlet.
+     */
+    private void sendMove(int i) {
+        try {
+            String coup = Integer.toString(i);
+            // send data to the servlet
+            URLConnection con = getServletConnection("coup=jeu");
+            OutputStream outstream = (OutputStream) con.getOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(outstream);
+            oos.writeObject(coup);
+            oos.flush();
+            oos.close();
+
+            InputStream instr = con.getInputStream();
+            ObjectInputStream inputFromServlet = new ObjectInputStream(instr);
+            String result = (String) inputFromServlet.readObject();
+            inputFromServlet.close();
+            instr.close();
+
+            score.setText(result);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
     
     /**
-	 * Connection à la servlet.
-	 */
-	private URLConnection getServletConnection()
-		throws MalformedURLException, IOException {
+     * Recupère un coup joué.
+     */
 
-		URL urlServlet = new URL(getCodeBase(), "/MorpionServlet");
-		score.setText(urlServlet.toString());
-		URLConnection con = urlServlet.openConnection();
+    private int getMove() {
+    	int res = -1;
+        System.out.println("trolol");
+    	try {
+            // send data to the servlet
+            URLConnection con = getServletConnection("coup=attente");
+            OutputStream outstream = (OutputStream) con.getOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(outstream);
+            oos.writeObject(new String("attente"));
+            oos.flush();
+            oos.close();
 
-		con.setDoInput(true);
-		con.setDoOutput(true);
-		con.setUseCaches(false);
-		con.setRequestProperty(
-			"Content-Type",
-			"application/x-java-serialized-object");
+            InputStream instr = con.getInputStream();
+            ObjectInputStream inputFromServlet = new ObjectInputStream(instr);
+            String coupJoue = (String) inputFromServlet.readObject();
+            inputFromServlet.close();
+            instr.close();
 
-		return con;
-	}
+            this.score.setText(coupJoue);
+            res = Integer.parseInt(coupJoue);
 
-	/**
-	 * Envoi le coup joué à la servlet.
-	 */
-	private void sendMove(int i) {
-		try {
-			String coup = Integer.toString(i);
-
-			// send data to the servlet
-			URLConnection con = getServletConnection();
-			OutputStream outstream = (OutputStream) con.getOutputStream();
-			ObjectOutputStream oos = new ObjectOutputStream(outstream);
-			oos.writeObject(coup);
-			oos.flush();
-			oos.close();
-			
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-	}
-    
-    
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    	return res;
+    }
 }

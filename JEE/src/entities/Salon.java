@@ -13,18 +13,18 @@ public class Salon implements Serializable {
 	@Id
 	private String name;
 	
-	@Column(unique=true, nullable=true)
+	@OneToOne
 	private Equipe equipe;	
 	
-	//@OneToMany
-	//private List<Partie> partie;	
+	@OneToMany
+	private List<Partie> partie;	
 
 	public Salon() {
 	}
 	
 	public Salon(String name) {
 		this.setName(name);
-	//	this.setPartie(new ArrayList<Partie>());
+		this.setPartie(new ArrayList<Partie>());
 	}
 	
 	public String getName() {
@@ -43,7 +43,7 @@ public class Salon implements Serializable {
 		this.equipe = equipe;
 	}
 
-	/*public List<Partie> getPartie() {
+	public List<Partie> getPartie() {
 		return this.partie;
 	}
 	
@@ -53,7 +53,7 @@ public class Salon implements Serializable {
 
 	public void setPartie(List<Partie> partie) {
 		this.partie = partie;
-	}*/
+	}
 	
 	@Override
 	public String toString() {

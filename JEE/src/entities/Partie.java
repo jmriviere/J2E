@@ -2,6 +2,7 @@ package entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,29 +15,27 @@ public class Partie implements Serializable {
 	@Id
 	private Integer partieId;
 	
-	@Column(nullable=false)
-	private Joueur joueur1;	
-	
-	@Column(nullable=false)
-	private Joueur joueur2;
+	@ManyToMany(mappedBy="partie")
+	private List<Joueur> joueurs;	
 
 	@Column(nullable=false)
 	private String jeu;
 	
-	@Column(nullable=true)
+	@ManyToOne
 	private Joueur winner;
 	
-	//@OneToMany
-	//private List<Coup> coup;	
+	@OneToMany
+	private List<Coup> coup;	
 	
 	public Partie() {
 	}
 	
 	public Partie(int partieId, Joueur joueur1, Joueur joueur2, String jeu) {
 		this.setPartieId(partieId);
-		this.setJoueur1(joueur1);
-		this.setJoueur2(joueur2);
-		//this.setCoup(new ArrayList<Coup>());
+		this.setListeJoueur(new ArrayList<Joueur>());
+		this.addJoueur(joueur1);
+		this.addJoueur(joueur2);
+		this.setCoup(new ArrayList<Coup>());
 		this.setJeu(jeu);
 	}
    
@@ -48,20 +47,12 @@ public class Partie implements Serializable {
 		this.partieId = partieId;
 	}
 	
-	public Joueur getJoueur1() {
-		return this.joueur1;
+	public void setListeJoueur(List<Joueur> j) {
+		this.joueurs=j;
 	}
 	
-	public void setJoueur1(Joueur joueur1) {
-		this.joueur1 = joueur1;
-	}
-	
-	public Joueur getJoueur2() {
-		return this.joueur2;
-	}
-	
-	public void setJoueur2(Joueur joueur2) {
-		this.joueur2 = joueur2;
+	public void addJoueur(Joueur j) {
+		this.joueurs.add(j);
 	}
 	
 	public String getJeu() {
@@ -80,7 +71,7 @@ public class Partie implements Serializable {
 		this.winner = winner;
 	}
 	
-	/*public List<Coup> getCoup() {
+	public List<Coup> getCoup() {
 		return this.coup;
 	}
 	
@@ -90,7 +81,7 @@ public class Partie implements Serializable {
 	
 	public void setCoup(List<Coup> coup) {
 		this.coup = coup;
-	}*/
+	}
 	
 	@Override
 	public String toString() {

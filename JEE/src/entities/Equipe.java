@@ -2,6 +2,8 @@ package entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,17 +15,17 @@ public class Equipe implements Serializable {
 	@Id
 	private String name;
 	
-	@OneToOne
+	@ManyToOne
 	private Joueur chef;
 	
-	//@OneToMany
-	//private List<Joueur> membre;
+	@OneToMany(mappedBy="equipe")
+	private List<Joueur> membre;
 	
 	@OneToOne
 	private Salon salon;
 	
-	//@ManyToMany
-	//private List<HautFait> hautFait;
+	@ManyToMany
+	private List<HautFait> hautFait;
 		
 	public Equipe() {
 	}
@@ -31,10 +33,10 @@ public class Equipe implements Serializable {
 	public Equipe(String name, Joueur createur) {
 		this.setName(name);
 		this.setChef(createur);
-		//this.setMembre(new ArrayList<Joueur>());
-		//this.addMembre(createur);
-		//this.setSalon(new Salon(name));
-		//this.setHautFait(new ArrayList<HautFait>());
+		this.setMembre(new ArrayList<Joueur>());
+		this.addMembre(createur);
+		this.setSalon(new Salon(name));
+		this.setHautFait(new ArrayList<HautFait>());
 	}
 	
 	public String getName() {
@@ -61,7 +63,7 @@ public class Equipe implements Serializable {
 		this.salon = salon;
 	}
 	
-	/*public List<Joueur> getMembre() {
+	public List<Joueur> getMembre() {
 		return this.membre;
 	}
 	
@@ -84,7 +86,7 @@ public class Equipe implements Serializable {
 	public void addHautFait(HautFait hautFait) {
 		this.hautFait.add(hautFait);
 	}
-	*/
+	
 	@Override
 	public String toString() {
 		return this.name;
