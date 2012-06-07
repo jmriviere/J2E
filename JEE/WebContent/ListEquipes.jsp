@@ -1,9 +1,4 @@
 <jsp:include page="Header.jsp" />
-
-<%
-	// pour les tests
-	Boolean logged = true; // (Boolean) request.getAttribute("logged")
-%>
  
     	<div id="templatemo_background_section_middle">
     		<div class="templatemo_container">

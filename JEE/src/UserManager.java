@@ -51,6 +51,11 @@ public class UserManager implements UserManagerItf {
 		}
 		return nameTaken;
 	}
+	
+	public List<String> allPlayers() {
+		Query qu = em.createQuery("SELECT j.login FROM Joueur j");
+		return (List<String>) qu.getResultList();
+	}
 
 	@Override
 	public boolean isEmailUsed(String mail) {

@@ -1,3 +1,5 @@
+import java.util.List;
+
 import javax.ejb.Local;
 
 import entities.Joueur;
@@ -10,4 +12,5 @@ public interface UserManagerItf {
 	boolean isEmailUsed(String mail);
 	Joueur getJoueur(String login);
 	void addAmi(Joueur j_logged, Joueur j_act);
+	public List<String> allPlayers();
 }

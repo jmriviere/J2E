@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>JEE</display-name>
   <welcome-file-list>
-   <welcome-file>Accueil.jsp</welcome-file>
+    <welcome-file>Accueil.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
     <description>Gestion des utilisateurs (Login et Inscription)</description>
@@ -33,5 +33,15 @@
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>NavigationServlet</display-name>
+    <servlet-name>NavigationServlet</servlet-name>
+    <servlet-class>NavigationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NavigationServlet</servlet-name>
+    <url-pattern>/NavigationServlet</url-pattern>
   </servlet-mapping>
 </web-app>

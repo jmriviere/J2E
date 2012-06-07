@@ -30,12 +30,10 @@
 				<% if(j_act==null) { %>
 				<div id="not_logged">
 					<form action="LoginServlet" method="post">
-						<input name="login" type="text" id="login"
-							placeholder="identifiant" /> <input name="pass" type="password"
-							id="pass" placeholder="***********" /> <input type="hidden"
-							name="action" value="login" /> <input type="submit"
-							name="Connexion" value="" alt="Connexion" id="button"
-							title="Connexion" />
+						<input name="login" type="text" id="login" placeholder="identifiant" /> 
+						<input name="pass" type="password" id="pass" placeholder="***********" /> 
+						<input type="hidden" name="action" value="login" /> 
+						<input type="submit" name="Connexion" value="" alt="Connexion" id="button" title="Connexion" />
 					</form>
 				</div>
 
@@ -68,7 +66,8 @@
 						<li><a href="ListSalons.jsp"> Salon </a></li>
 						<li><a href="ListReplays.jsp"> Replays </a></li>
 						<li><a href="ListTournois.jsp"> Tournois </a></li>
-						<li><a href="ListEquipes.jsp"> Liste des équipe </a></li>
+						<li><a href="ListEquipes.jsp"> Liste des équipes </a></li>
+						<li><a href="NavigationServlet?action=listeJoueurs"> Liste des joueurs </a></li>
 					</ul>
 				</div>
 			</div>

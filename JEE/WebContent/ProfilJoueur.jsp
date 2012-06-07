@@ -30,7 +30,7 @@
 						<li>Pseudo : <%=j_asked.getLogin()%></li>
 						<li>Sexe : <%= ((j_asked.getSexe()==null) ? " - " : j_asked.getSexe()) %></li>
 						<%
-						   if(amis) {
+						   if(amis || act_profile) {
 					     %>
 						 <li>E-mail : <%= j_asked.getMail()%></li>
 						 <% } %>
