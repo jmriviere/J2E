@@ -44,4 +44,14 @@
     <servlet-name>NavigationServlet</servlet-name>
     <url-pattern>/NavigationServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EquipeServlet</display-name>
+    <servlet-name>EquipeServlet</servlet-name>
+    <servlet-class>EquipeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EquipeServlet</servlet-name>
+    <url-pattern>/EquipeServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

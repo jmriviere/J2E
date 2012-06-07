@@ -1,7 +1,10 @@
 package entities;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -45,14 +48,17 @@ public class Joueur implements Serializable {
 	@ManyToOne
 	private Equipe equipe;
 	
+	@ManyToOne
+	private Equipe candidature;
+	
 	@ManyToMany
-	private List<Partie> partie;
+	private Set<Partie> partie;
 	
 	@ManyToMany(fetch=FetchType.EAGER)
-	private List<Joueur> amis;
+	private Set<Joueur> amis;
 	
 	@ManyToMany
-	private List<HautFait> hautFait;
+	private Set<HautFait> hautFait;
 	
 	public Joueur() {
 	}
@@ -63,9 +69,10 @@ public class Joueur implements Serializable {
 		this.setMail(mail);
 		this.setNbPoint(0);
 		this.setEquipe(null);
-		this.setPartie(new ArrayList<Partie>());
-		this.setAmi(new ArrayList<Joueur>());
-		this.setHautFait(new ArrayList<HautFait>());
+		this.setCandidature(null);
+		this.setPartie(new HashSet<Partie>());
+		this.setAmi(new HashSet<Joueur>());
+		this.setHautFait(new HashSet<HautFait>());
 		this.setNbVictoireTicTacToe(0);
 		this.setNbVictoireShiFuMi(0);
 	}
@@ -126,12 +133,12 @@ public class Joueur implements Serializable {
 		this.sexe = sexe;
 	}
 	
-	public List<Partie> getPartie() {
+	public Set<Partie> getPartie() {
 		return this.partie;
 	}
 	
-	public void setPartie(List<Partie> partie) {
-		this.partie = partie;
+	public void setPartie(HashSet<Partie> hashSet) {
+		this.partie = hashSet;
 	}
 	
 	public void addPartie(Partie partie){
@@ -145,12 +152,16 @@ public class Joueur implements Serializable {
 	public void setEquipe(Equipe equipe) {
 		this.equipe = equipe;
 	}
+	
+	public boolean hasEquipe() {
+		return !(equipe==null);
+	}
     
-	public List<Joueur> getAmis() {
+	public Set<Joueur> getAmis() {
 		return amis;
 	}
 
-	public void setAmi(List<Joueur> ami) {
+	public void setAmi(Set<Joueur> ami) {
 		this.amis = ami;
 	}
 	
@@ -174,11 +185,11 @@ public class Joueur implements Serializable {
 		}
 	}	
 	
-	public List<HautFait> getHautFait() {
+	public Set<HautFait> getHautFait() {
 		return hautFait;
 	}
 
-	public void setHautFait(List<HautFait> hautFait) {
+	public void setHautFait(Set<HautFait> hautFait) {
 		this.hautFait = hautFait;
 	}
 	
@@ -233,6 +244,18 @@ public class Joueur implements Serializable {
 			return false;
 		}
 		return this.getLogin().equals(((Joueur) other).getLogin());
+	}
+
+	public void setCandidature(Equipe e) {		
+			candidature=e;
+	}
+	
+	public boolean hasCandidature() {
+		return !(candidature==null);
+	}
+	
+	public Equipe getCandidature() {
+		return candidature;
 	}
 }
 

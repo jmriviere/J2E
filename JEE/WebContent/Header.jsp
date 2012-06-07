@@ -66,7 +66,7 @@
 						<li><a href="ListSalons.jsp"> Salon </a></li>
 						<li><a href="ListReplays.jsp"> Replays </a></li>
 						<li><a href="ListTournois.jsp"> Tournois </a></li>
-						<li><a href="ListEquipes.jsp"> Liste des équipes </a></li>
+						<li><a href="NavigationServlet?action=listeEquipes"> Liste des équipes </a></li>
 						<li><a href="NavigationServlet?action=listeJoueurs"> Liste des joueurs </a></li>
 					</ul>
 				</div>

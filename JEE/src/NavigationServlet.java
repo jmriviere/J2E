@@ -1,54 +1,76 @@
-
-
-import java.io.IOException;
-import java.util.List;
-
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-/**
- * Servlet implementation class NavigationServlet
- */
-public class NavigationServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	UserManagerItf um;
-       
-    /**
-     * @throws NamingException 
-     * @see HttpServlet#HttpServlet()
-     */
-    public NavigationServlet() throws NamingException {
-        super();
-        InitialContext ic = new InitialContext();
-        um = (UserManagerItf) ic.lookup("UserManager1/local");
-    }
-
+	import java.io.IOException;
+	import java.util.List;
+	
+	import javax.naming.InitialContext;
+	import javax.naming.NamingException;
+	import javax.servlet.ServletException;
+	import javax.servlet.http.HttpServlet;
+	import javax.servlet.http.HttpServletRequest;
+	import javax.servlet.http.HttpServletResponse;
+	
+	import entities.Equipe;
+	
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Servlet implementation class NavigationServlet
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doPost(request,response);
+	public class NavigationServlet extends HttpServlet {
+		private static final long serialVersionUID = 1L;
+		UserManagerItf userManager;
+		EquipeManagerItf equipeManager;
+	       
+	    /**
+	     * @throws NamingException 
+	     * @see HttpServlet#HttpServlet()
+	     */
+	    public NavigationServlet() throws NamingException {
+	        super();
+	        InitialContext ic = new InitialContext();
+	        userManager = (UserManagerItf) ic.lookup("UserManager1/local");
+	        equipeManager = (EquipeManagerItf) ic.lookup("EquipeManager/local");
+	    }
+	
+		/**
+		 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+		 */
+		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			// TODO Auto-generated method stub
+			doPost(request,response);
+		}
+	
+		/**
+		 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+		 */
+		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			// TODO Auto-generated method stub
+			String action = request.getParameter("action");
+	
+	        String nextPage = "";
+	        if (action.equals("listeJoueurs")) {
+	        	List<String> allJoueurs = userManager.allPlayers();
+	        	request.setAttribute("ListeJoueurs", allJoueurs);
+	        	nextPage="ListJoueurs.jsp";
+	        } else if(action.equals("profilEquipe")) {
+	        	String ename = request.getParameter("ename");
+	        	Equipe e = equipeManager.getEquipe(ename);
+	        	if(e!=null) {
+	        		nextPage="ProfilEquipe.jsp";
+	        		request.setAttribute("EquipeActuelle", e);
+	        	} else {
+	        		nextPage="Accueil.jsp";
+	        		request.getSession().setAttribute("ErrorMessage", "L'équipe de nom "+ename+" n'existe pas.");
+	        	}
+	        	 	
+	        } else if(action.equals("listeEquipes")) {
+	        	List<Equipe> listeEquipes = equipeManager.allEquipes();
+	        	request.setAttribute("ListeEquipes",listeEquipes);
+	        	nextPage="ListEquipes.jsp";
+	        } else if(action.equals("creerEquipe")) {
+	        	nextPage="CreationEquipe.jsp";
+	        } else if(action.equals("registerEquipe")) {
+	        	
+	        	nextPage="Accueil.jsp";
+	        }
+	        request.getRequestDispatcher(nextPage).forward(request, response);
+		}
+	
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String action = request.getParameter("action");
-
-        String nextPage = "";
-        if (action.equals("listeJoueurs")) {
-        	List<String> allJoueurs = um.allPlayers();
-        	request.setAttribute("ListeJoueurs", allJoueurs);
-        	nextPage="ListJoueurs.jsp";
-        }
-        request.getRequestDispatcher(nextPage).forward(request, response);
-	}
-
-}
