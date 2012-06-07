@@ -3,6 +3,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
+import javax.persistence.FetchType;
 
 @Entity
 public class Joueur implements Serializable {
@@ -48,8 +49,8 @@ public class Joueur implements Serializable {
 	@ManyToMany
 	private List<Partie> partie;
 	
-	@ManyToMany
-	private List<Joueur> ami;
+	@ManyToMany(fetch=FetchType.EAGER)
+	private List<Joueur> amis;
 	
 	@ManyToMany
 	private List<HautFait> hautFait;
@@ -147,16 +148,25 @@ public class Joueur implements Serializable {
 	}
     
 	public List<Joueur> getAmi() {
-		return ami;
+		return amis;
 	}
 
 	public void setAmi(List<Joueur> ami) {
-		this.ami = ami;
+		this.amis = ami;
 	}
 
 	public void addAmi(Joueur ami){
-		this.ami.add(ami);
+		boolean present=false;
+		for(Joueur j : amis) {
+			if(j.getLogin().equals(ami.getLogin())) {
+				present=true;
+			}
+		}
+		if(!present) {
+			this.amis.add(ami);
+		}
 	}	
+	
 	public List<HautFait> getHautFait() {
 		return hautFait;
 	}

@@ -42,8 +42,6 @@ public class UserServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
         String action = request.getParameter("action");
         int error = 0;
         /*
@@ -84,7 +82,6 @@ public class UserServlet extends HttpServlet {
                 error += 4;
             }
 
-
             if (error == 0) {
                 Joueur j = new Joueur(username, hashpass, mail);
                 if (name != null) {
@@ -115,6 +112,18 @@ public class UserServlet extends HttpServlet {
         		nextPage = "Accueil.jsp";
         		request.getSession().setAttribute("ErrorMessage", "On ne peut consulter les pages de membres sans être inscrit.");
         	}
+        	
+        } else if(action.equals("RajoutAmi")) {
+        	Joueur j_act = (Joueur)request.getSession().getAttribute("JoueurActuel");
+        	String asked_login = request.getParameter("joueurCible");
+        	Joueur j_asked = um.getJoueur(asked_login);
+        	if(j_asked==null) {
+        		request.getSession().setAttribute("ErrorMessage", "L'utilisateur de login "+asked_login+" n'existe pas.");
+        	} else {
+        		um.addAmi(j_act,j_asked);
+        	}
+        } else if(action.equals("BeginDiscussion")) {
+        	System.out.println("Commencer la discussion");
         }
         request.getRequestDispatcher(nextPage).forward(request, response);
     }

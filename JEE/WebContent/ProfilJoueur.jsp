@@ -53,11 +53,15 @@
 					<%
                 		if (!j_asked.getLogin().equals(j_logged.getLogin())) {
 						%>
-					<form action="Servjeux" >
-							<input type="hidden" name="act" value="profJoueurPub">
+					<form action="UserServlet" >
+							<input type="hidden" name="action" value="RajoutAmi">
 							<input type="hidden" name="joueurCible" value=<%=j_asked.getLogin()%>>
-							<input type="button" name="page" value="" alt="Rajouter en amis" id="button"/><br />
-							<input type="button" name="page" value="" alt="Inviter à discuter" id="button"/><br />
+							<button type="submit" formmethod="post">Rajouter en ami</button>
+					</form>
+					<form action="UserServlet" >
+							<input type="hidden" name="action" value="BeginDiscussion">
+							<input type="hidden" name="joueurCible" value=<%=j_asked.getLogin()%>>
+							<button type="submit" formmethod="post" >Inviter à discuter</button>
 					</form>
 					<%
                 		} else {

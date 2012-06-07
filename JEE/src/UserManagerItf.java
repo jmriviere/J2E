@@ -9,4 +9,5 @@ public interface UserManagerItf {
 	boolean isNameTaken(String nick);
 	boolean isEmailUsed(String mail);
 	Joueur getJoueur(String login);
+	void addAmi(Joueur j_logged, Joueur j_act);
 }

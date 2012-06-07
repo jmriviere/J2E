@@ -5,16 +5,6 @@
    <welcome-file>Accueil.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-    <description></description>
-    <display-name>ServJeux</display-name>
-    <servlet-name>ServJeux</servlet-name>
-    <servlet-class>ServJeux</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ServJeux</servlet-name>
-    <url-pattern>/ServJeux</url-pattern>
-  </servlet-mapping>
-  <servlet>
     <description>Gestion des utilisateurs (Login et Inscription)</description>
     <display-name>UserServlet</display-name>
     <servlet-name>UserServlet</servlet-name>

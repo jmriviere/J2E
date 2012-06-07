@@ -27,6 +27,14 @@ public class UserManager implements UserManagerItf {
 		}
 	}
 	
+	public void addAmi(Joueur j_logged,Joueur j_asked) {
+		j_logged.addAmi(j_asked);
+		j_asked.addAmi(j_logged);
+		System.out.println("Amis : "+j_asked.getLogin()+" "+j_logged.getLogin());
+		em.merge(j_logged);
+		em.merge(j_asked);
+	}
+	
 	public Joueur getJoueur(String login) {
 		return em.find(Joueur.class, login);
 	}
