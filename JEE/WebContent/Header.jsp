@@ -28,22 +28,21 @@ pageEncoding="UTF-8"%>
 					<% if(j_act==null) { %>
           				<div id="not_logged">
             				<form action="LoginServlet" method="post">
-             					<input name="login" type="text" id="login" placeholder="identifiant"/>
+             					<input name="login" type="text" id="login" placeholder="identifiant"/> 
               					<input name="pass" type="password" id="pass" placeholder="***********"/>
               					<input type="hidden" name="action" value="login"/>
-              					<input type="submit" name="Connexion" value="" alt="Connexion" id="button" title="Connexion"/>
+              					<input type="submit" name="Connexion" value="" alt="Connexion" id="button" title="Connexion"/>              					
             				</form>
             			</div>
           				
      				<% } else { %>
      					<div id="logged">
     						<form action="LoginServlet" method="post">
-    							<a href="UserServlet?login=<%= j_act.getLogin() %>" id="lien_compte"><%= j_act.getLogin()%></a>  
+    							<a href="UserServlet?login=<%= j_act.getLogin() %>" id="lien_compte"><%= j_act.getLogin()%></a>
               					<input type="hidden" name="action" value="logout"/>
-              					<input type="submit" name="Logout" value="" alt="Logout" id="button" title="Deconnexion"/>
+              					<input type="submit" name="Logout" value="" alt="Logout" id="button_logout" title="Deconnexion"/>
             				</form> 						
-    					</div>
-    						
+    					</div>    						
     				<% } %> 
   
     				<% if(error_message!=null) { %>
