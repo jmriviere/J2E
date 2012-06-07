@@ -7,25 +7,12 @@
 <%
 	Joueur j_logged = (Joueur)request.getSession().getAttribute("JoueurActuel");
     Joueur j_asked = (Joueur)request.getAttribute("asked_player");
+    if(j_asked==null) {
+    	j_asked=j_logged;
+    }
     boolean amis = j_logged.hasAmi(j_asked);
-    boolean act_profile = (j_asked.getLogin().equals(j_logged.getLogin()));
+    boolean act_profile = (j_asked.getLogin().equals(j_logged.getLogin()));    
 %>
-
-<div id="templatemo_menu_panel">
-	<div id="templatemo_menu_section">
-		<ul>
-			<li><a href="Accueil.jsp"> Accueil</a></li>
-			<li><a href="ListSalons.jsp"> Salon </a></li>
-			<li><a href="ListReplays.jsp"> Replays </a></li>
-			<li><a href="ListTournois.jsp"> Tournois </a></li>
-			<li><a href="ListEquipes.jsp"> Liste des équipe </a></li>
-		</ul>
-	</div>
-</div>
-<!-- end of menu -->
-<div></div>
-<!-- end of container-->
-<div></div>
 <!-- end of templatemo_background_section_top-->
 
 <div id="templatemo_background_section_middle">

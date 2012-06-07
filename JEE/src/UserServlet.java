@@ -122,6 +122,7 @@ public class UserServlet extends HttpServlet {
         	} else {
         		um.addAmi(j_act,j_asked);
         	}
+        	nextPage="ProfilJoueur.jsp";
         } else if(action.equals("BeginDiscussion")) {
         	System.out.println("Commencer la discussion");
         }
