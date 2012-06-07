@@ -3,7 +3,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
-import javax.persistence.FetchType;
 
 @Entity
 public class Joueur implements Serializable {
@@ -147,21 +146,29 @@ public class Joueur implements Serializable {
 		this.equipe = equipe;
 	}
     
-	public List<Joueur> getAmi() {
+	public List<Joueur> getAmis() {
 		return amis;
 	}
 
 	public void setAmi(List<Joueur> ami) {
 		this.amis = ami;
 	}
+	
+	public boolean hasAmi(Joueur j_asked) {
+		if(j_asked!=null) {
+			for (Joueur j : amis) {
+				if(j.getLogin().equals(j_asked.getLogin())) {
+					return true;
+				}
+			}
+			return false;
+		} else {
+			return false;
+		}
+	}
 
 	public void addAmi(Joueur ami){
-		boolean present=false;
-		for(Joueur j : amis) {
-			if(j.getLogin().equals(ami.getLogin())) {
-				present=true;
-			}
-		}
+		boolean present=this.hasAmi(ami);
 		if(!present) {
 			this.amis.add(ami);
 		}

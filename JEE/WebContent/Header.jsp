@@ -47,8 +47,7 @@ pageEncoding="UTF-8"%>
     				<% } %> 
   
     				<% if(error_message!=null) { %>
-    					<div id="Error">
-    						<%= error_message%><br/>
+    					<div id="Error"><font color="red"><%= error_message %></font><br/>
     					</div>
     				<% } %>
         </div><!-- end of headder -->
