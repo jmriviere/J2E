@@ -110,9 +110,14 @@ a:link { text-decoration: none ; }
 	font-size:16px;
 	color:#999999;
 	float: right;
-	margin-top: 105px;
-	margin-right: 20px;
+	/* margin-top: 105px;
+	margin-right: 20px; */
 	/* background:url(../images/templatemo_search_box_bg.jpg) no-repeat;*/
+	width: 338px;
+	height: 52px;
+	float: right;
+	margin-top: 90px;
+	margin-right: 20px;
 }
 
 
@@ -121,7 +126,7 @@ a:link { text-decoration: none ; }
 	height: 18px;
 	margin-top: 15px;
 	margin-left: 15px;
-	color: ##FF6600;
+	color: #FF6600;
 	padding-top: 5px;
 	padding-left: 5px;
 }
@@ -135,7 +140,7 @@ a:link { text-decoration: none ; }
 	font-weight: bold;
 	height: 25px;
 	margin-left: 160px;
-	padding: 0 5px;
+	padding: 5px;
 	text-align: center;
 	vertical-align: bottom;
 	white-space: pre;
