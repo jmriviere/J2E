@@ -8,7 +8,7 @@
     <description>Gestion des utilisateurs (Login et Inscription)</description>
     <display-name>UserServlet</display-name>
     <servlet-name>UserServlet</servlet-name>
-    <servlet-class>UserServlet</servlet-class>
+    <servlet-class>servlets.UserServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UserServlet</servlet-name>
@@ -18,7 +18,7 @@
     <description></description>
     <display-name>MorpionServlet</display-name>
     <servlet-name>MorpionServlet</servlet-name>
-    <servlet-class>MorpionServlet</servlet-class>
+    <servlet-class>servlets.MorpionServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>MorpionServlet</servlet-name>
@@ -28,7 +28,7 @@
     <description></description>
     <display-name>LoginServlet</display-name>
     <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>LoginServlet</servlet-class>
+    <servlet-class>servlets.LoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
@@ -38,7 +38,7 @@
     <description></description>
     <display-name>NavigationServlet</display-name>
     <servlet-name>NavigationServlet</servlet-name>
-    <servlet-class>NavigationServlet</servlet-class>
+    <servlet-class>servlets.NavigationServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>NavigationServlet</servlet-name>
@@ -48,7 +48,7 @@
     <description></description>
     <display-name>EquipeServlet</display-name>
     <servlet-name>EquipeServlet</servlet-name>
-    <servlet-class>EquipeServlet</servlet-class>
+    <servlet-class>servlets.EquipeServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>EquipeServlet</servlet-name>

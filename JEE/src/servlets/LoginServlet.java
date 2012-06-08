@@ -1,3 +1,4 @@
+package servlets;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ejb.UserManagerItf;
 import entities.Joueur;
 
 /**

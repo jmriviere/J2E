@@ -1,3 +1,4 @@
+package ejb;
 import java.util.List;
 
 import entities.Equipe;

@@ -1,3 +1,4 @@
+package servlets;
 
 import java.io.IOException;
 
@@ -8,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ejb.EquipeManagerItf;
+import ejb.UserManager;
+import ejb.UserManagerItf;
 import entities.Equipe;
 import entities.Joueur;
 
