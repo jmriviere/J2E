@@ -1,9 +1,15 @@
 package entities;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import javax.persistence.*;
-import javax.persistence.FetchType;
+
+import entities.Equipe;
+import entities.HautFait;
+import entities.Partie;
 
 @Entity
 public class Joueur implements Serializable {
@@ -46,14 +52,23 @@ public class Joueur implements Serializable {
 	@ManyToOne
 	private Equipe equipe;
 	
+	@ManyToOne
+	private Equipe candidature;
+	
 	@ManyToMany
-	private List<Partie> partie;
+	private Set<Partie> partie;
 	
 	@ManyToMany(fetch=FetchType.EAGER)
-	private List<Joueur> amis;
+	private Set<Joueur> amis;
+	
+	@ManyToMany(fetch=FetchType.EAGER)
+	private Set<Joueur> incoming_candidatures_ami;
+	
+	@ManyToMany(fetch=FetchType.EAGER, mappedBy="incoming_candidatures_ami")
+	private Set<Joueur> candidatures_ami;
 	
 	@ManyToMany
-	private List<HautFait> hautFait;
+	private Set<HautFait> hautFait;
 	
 	public Joueur() {
 	}
@@ -64,9 +79,10 @@ public class Joueur implements Serializable {
 		this.setMail(mail);
 		this.setNbPoint(0);
 		this.setEquipe(null);
-		this.setPartie(new ArrayList<Partie>());
-		this.setAmi(new ArrayList<Joueur>());
-		this.setHautFait(new ArrayList<HautFait>());
+		this.setCandidature(null);
+		this.setPartie(new HashSet<Partie>());
+		this.setAmi(new HashSet<Joueur>());
+		this.setHautFait(new HashSet<HautFait>());
 		this.setNbVictoireTicTacToe(0);
 		this.setNbVictoireShiFuMi(0);
 	}
@@ -127,12 +143,12 @@ public class Joueur implements Serializable {
 		this.sexe = sexe;
 	}
 	
-	public List<Partie> getPartie() {
+	public Set<Partie> getPartie() {
 		return this.partie;
 	}
 	
-	public void setPartie(List<Partie> partie) {
-		this.partie = partie;
+	public void setPartie(HashSet<Partie> hashSet) {
+		this.partie = hashSet;
 	}
 	
 	public void addPartie(Partie partie){
@@ -146,32 +162,44 @@ public class Joueur implements Serializable {
 	public void setEquipe(Equipe equipe) {
 		this.equipe = equipe;
 	}
+	
+	public boolean hasEquipe() {
+		return !(equipe==null);
+	}
     
-	public List<Joueur> getAmi() {
+	public Set<Joueur> getAmis() {
 		return amis;
 	}
 
-	public void setAmi(List<Joueur> ami) {
+	public void setAmi(Set<Joueur> ami) {
 		this.amis = ami;
+	}
+	
+	public boolean hasAmi(Joueur j_asked) {
+		if(j_asked!=null) {
+			for (Joueur j : amis) {
+				if(j.getLogin().equals(j_asked.getLogin())) {
+					return true;
+				}
+			}
+			return false;
+		} else {
+			return false;
+		}
 	}
 
 	public void addAmi(Joueur ami){
-		boolean present=false;
-		for(Joueur j : amis) {
-			if(j.getLogin().equals(ami.getLogin())) {
-				present=true;
-			}
-		}
+		boolean present=this.hasAmi(ami);
 		if(!present) {
 			this.amis.add(ami);
 		}
 	}	
 	
-	public List<HautFait> getHautFait() {
+	public Set<HautFait> getHautFait() {
 		return hautFait;
 	}
 
-	public void setHautFait(List<HautFait> hautFait) {
+	public void setHautFait(Set<HautFait> hautFait) {
 		this.hautFait = hautFait;
 	}
 	
@@ -226,6 +254,50 @@ public class Joueur implements Serializable {
 			return false;
 		}
 		return this.getLogin().equals(((Joueur) other).getLogin());
+	}
+
+	public void setCandidature(Equipe e) {		
+			candidature=e;
+	}
+	
+	public boolean hasCandidature() {
+		return !(candidature==null);
+	}
+	
+	public Equipe getCandidature() {
+		return candidature;
+	}
+	
+	public Set<Joueur> getIncomingCandidaturesAmi() {
+		return this.incoming_candidatures_ami;
+	}
+	
+	public void setIncomingCandidaturesAmi(Set<Joueur> ica) {
+		this.incoming_candidatures_ami = ica;
+	}
+	
+	public void addIncomingCandidatureAmi(Joueur j) {
+		incoming_candidatures_ami.add(j);
+	}
+	
+	public void removeIncomingCandidatureAmi(Joueur j) {
+		incoming_candidatures_ami.remove(j);
+	}
+	
+	public Set<Joueur> getCandidaturesAmi() {
+		return this.candidatures_ami;
+	}
+	
+	public void setCandidaturesAmi(Set<Joueur> ica) {
+		this.candidatures_ami = ica;
+	}
+	
+	public void addCandidatureAmi(Joueur j) {
+		candidatures_ami.add(j);
+	}
+	
+	public void removeCandidatureAmi(Joueur j) {
+		candidatures_ami.remove(j);
 	}
 }
 

@@ -61,7 +61,7 @@ a:link { text-decoration: none ; }
 
 .templatemo_container {
 
-	width: 960px;
+	width: 1200px;
 
 	margin: auto;
 
@@ -229,7 +229,7 @@ a:link { text-decoration: none ; }
 }
 
 #templatemo_menu_panel #templatemo_menu_section{
-	width: 930px;
+	width: 1200px;
 	height: 49px;	
 	margin:0 auto;
 	padding: 0 0 0 30px;
@@ -238,7 +238,7 @@ a:link { text-decoration: none ; }
 
 #templatemo_menu_section ul {
 	float: left;
-	width: 930px;
+	width: 1200px;
 	margin: 0;
 	padding-top: 4px;
 	list-style: none;
@@ -318,6 +318,7 @@ a:link { text-decoration: none ; }
 .templatemo_post_mid {
 	
 	width: 551px;
+	color:#FFFFFF;
 	background: url(../images/templatemo_post_middle.jpg) repeat-y;
 
 }

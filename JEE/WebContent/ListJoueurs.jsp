@@ -3,9 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
-<%@ page import="entities.Equipe" %>
 <%
-	List<Equipe> listeEquipes = (List<Equipe>)request.getAttribute("ListeEquipes");
+	List<String> listeJoueurs = (List<String>)request.getAttribute("ListeJoueurs");
 %>
 
 <div id="templatemo_background_section_middle">
@@ -13,20 +12,14 @@
 		<div id="templatemo_left_section">
 			<div class="templatemo_post">
 				<div class="templatemo_post_top">
-					<h1>Liste de toutes les équipes de JEEux</h1>
+					<h1>Liste de tous les joueurs de JEEux</h1>
 				</div>
 				<div class="templatemo_post_mid">
 					<ul>
 					<%
-					for(Equipe e : listeEquipes) {
-						String ename = e.getName();
-						String slogan = e.getSlogan();
+					for(String nick : listeJoueurs) {
 					%>	
-              	      <li>
-              	      <a href="EquipeServlet?action=profilEquipe&ename=<%= ename %>" id="lien_compte">
-              	      <%= ename %> <%= ((slogan==null) ? "" : (" : "+slogan)) %>
-              	      </a>
-              	      </li>     						
+              	      <li><a href="UserServlet?action=profil&login=<%= nick %>" id="lien_compte"><%= nick %></a></li>     						
 					<%
 					}
 					%>

@@ -3,74 +3,104 @@
 <!-- page accessible uniquement accessible si connecté apres gestion de profil prive et public -->
 
 <%@ page import="entities.Joueur"%>
+<%@ page import="entities.Equipe"%>
+<%@ page import="java.util.Set"%>
 <%
 	Joueur j_logged = (Joueur)request.getSession().getAttribute("JoueurActuel");
     Joueur j_asked = (Joueur)request.getAttribute("asked_player");
+    if(j_asked==null) {
+    	j_asked=j_logged;
+    }
+    boolean amis = j_logged.hasAmi(j_asked);
+    boolean act_profile = (j_asked.getLogin().equals(j_logged.getLogin()));    
 %>
-
-<div id="templatemo_menu_panel">
-	<div id="templatemo_menu_section">
-		<ul>
-			<li><a href="Accueil.jsp"> Accueil</a></li>
-			<li><a href="ListSalons.jsp"> Salon </a></li>
-			<li><a href="ListReplays.jsp"> Replays </a></li>
-			<li><a href="ListTournois.jsp"> Tournois </a></li>
-			<li><a href="ListEquipes.jsp"> Liste des équipe </a></li>
-		</ul>
-	</div>
-</div>
-<!-- end of menu -->
-<div></div>
-<!-- end of container-->
-<div></div>
 <!-- end of templatemo_background_section_top-->
 
 <div id="templatemo_background_section_middle">
 	<div class="templatemo_container">
 		<div id="templatemo_left_section">
-			<div class="templatemo_section_box">
-				<div class="templatemo_section_box_top">
-					<h1>Informations du joueur</h1>
+			<div class="templatemo_post">
+				<div class="templatemo_post_top">
+					<h1>
+						Informations du joueur
+						<%= j_asked.getLogin() %>
+						<%= (amis ? "(Ami)" : "") %></h1>
 				</div>
-				<div class="templatemo_section_box_mid">
+				<div class="templatemo_post_mid">
 					<ul>
 						<li>Nom et prénom : <%= ((j_asked.getPrenom()==null) ? " - " : j_asked.getPrenom()) %>
-						 				    <%= ((j_asked.getNom()==null) ? " - " : j_asked.getNom()) %>					
+							<%= ((j_asked.getNom()==null) ? " - " : j_asked.getNom()) %>
 						</li>
 						<li>Pseudo : <%=j_asked.getLogin()%></li>
 						<li>Sexe : <%= ((j_asked.getSexe()==null) ? " - " : j_asked.getSexe()) %></li>
+						<%
+						   if(amis || act_profile) {
+					     %>
+						<li>E-mail : <%= j_asked.getMail()%></li>
+						<% } %>
 						<li>Equipe : <% if (j_asked.getEquipe()==null) {
 									out.print("Sans equipe");
 								} else {
-									%>
-									<a href="ProfilEquipe.jsp?equipe=<%=j_asked.getEquipe().getName()%>">Equipe <%=j_asked.getEquipe().getName()%></a>
-									<%
+									%> 
+									<a href="EquipeServlet?action=profilEquipe&ename=<%= j_asked.getEquipe().getName() %>"	id="lien_profilequipe"><%= j_asked.getEquipe().getName()%></a>
+									 <%
 								}%></li>
 						<li><a href="hautsFaits.jsp">Hauts Faits</a></li>
 						<li><a href="replaysRecents.jsp">Replays</a></li>
+
 					</ul>
 					<br></br>
 					<%
-                		if (!j_asked.getLogin().equals(j_logged.getLogin())) {
+                		if (!act_profile) {
+                			if(!amis ) {
 						%>
-					<form action="UserServlet" >
-							<input type="hidden" name="action" value="RajoutAmi">
-							<input type="hidden" name="joueurCible" value=<%=j_asked.getLogin()%>>
-							<button type="submit" formmethod="post">Rajouter en ami</button>
+					<form action="UserServlet">
+						<input type="hidden" name="action" value="RajoutAmi"> <input
+							type="hidden" name="joueurCible" value="<%=j_asked.getLogin()%>">
+						<button type="submit" formmethod="post">Rajouter en ami</button>
 					</form>
-					<form action="UserServlet" >
-							<input type="hidden" name="action" value="BeginDiscussion">
-							<input type="hidden" name="joueurCible" value=<%=j_asked.getLogin()%>>
-							<button type="submit" formmethod="post" >Inviter à discuter</button>
+					<% } %>
+					<form action="UserServlet">
+						<input type="hidden" name="action" value="BeginDiscussion">
+						<input type="hidden" name="joueurCible"
+							value="<%=j_asked.getLogin()%>">
+						<button type="submit" formmethod="post">Inviter à
+							discuter</button>
 					</form>
 					<%
                 		} else {
-						%>
-						<form action="Servjeux" >
-							<input type="hidden" name="act" value="profJoueurPub"/>
-							<input type="hidden" name="joueurCible" value=<%=j_asked.getLogin()%>/>
-							<input type="button" name="page" value="" alt="Mes amis" id="button"/><br />
-						</form>
+                			if(j_logged.hasCandidature()) {
+                				Equipe e = j_logged.getCandidature();
+                				String ename = e.getName();
+                				%>
+					<form action="UserServlet">
+						<input type="hidden" name="action" value="SupprCandidature">
+						Candidature actuelle : <a href="EquipeServlet?action=profilEquipe&ename=<%= ename %>"	id="lien_profilequipe"><%= ename%></a>
+						<button type="submit" formmethod="post">Annuler la candidature</button>
+					</form>
+					<%
+                			} else if(j_logged.hasEquipe()) {
+                				Equipe e = j_logged.getEquipe();
+                				String ename = e.getName();
+						        %>
+					<form action="UserServlet">
+						<input type="hidden" name="action" value="SupprEquipe">
+				        <input type="hidden" name="ename"  value="<%=ename%>">	
+						Equipe actuelle : <a href="EquipeServlet?action=profilEquipe&ename=<%= ename %>"	id="lien_profilequipe"><%= ename%></a>
+						<button type="submit" formmethod="post">
+						<%= ( (j_logged.getEquipe().getChef().getLogin().equals(j_logged.getLogin()))? "Dissoudre l'équipe" : " l'équipe")%>
+						</button>
+					</form>
+					<%
+                			} %>
+					<form action="UserServlet">
+						<input type="hidden" name="action" value="RajoutAmi">
+						Ajout d'ami : <br /> 
+					    <input id="joueurCible"
+							name="joueurCible" required="required" type="text"
+							placeholder="pseudo" />
+						<button type="submit" formmethod="post">Rajouter en ami</button>
+					</form>
 					<%
                 		}
 						%>
@@ -79,8 +109,30 @@
 			<!-- end of section box -->
 		</div>
 		<!-- end of left section-->
-		<div id="templatemo_right_section"></div>
+		<% if(act_profile) { %>
+		<div id="templatemo_right_section">
+			<div class="templatemo_section_box">
+				<div class="templatemo_section_box_top">
+					<h1>Amis</h1>
+				</div>
+				<div class="templatemo_section_box_mid">
+					<ul>
+						<% Set<Joueur> list_amis = j_logged.getAmis();
+                 for (Joueur j : list_amis) {%>
+						<li><a
+							href="UserServlet?action=profil&amp;login=<%= j.getLogin() %>"
+							id="lien_compte"><%= j.getLogin()%></a></li>
+						<% } %>
+
+					</ul>
+				</div>
+				<div class="templatemo_section_box_bottom"></div>
+			</div>
+			<!-- end of section box -->
+
+		</div>
 		<!-- end of right Section -->
+		<% } %>
 	</div>
 	<!-- end of container-->
 </div>

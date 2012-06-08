@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import entities.Equipe;
 import entities.Joueur;
 
 @Stateless(name="UserManager1")
@@ -30,9 +31,19 @@ public class UserManager implements UserManagerItf {
 	public void addAmi(Joueur j_logged,Joueur j_asked) {
 		j_logged.addAmi(j_asked);
 		j_asked.addAmi(j_logged);
-		System.out.println("Amis : "+j_asked.getLogin()+" "+j_logged.getLogin());
 		em.merge(j_logged);
 		em.merge(j_asked);
+	}
+	
+	public void setEquipe(Joueur j_logged,Equipe e) {
+		j_logged.setEquipe(e);
+		em.merge(j_logged);
+	}
+	
+	public void setCandidature(Joueur j_logged,Equipe e) {
+		j_logged.setCandidature(e);
+		em.merge(j_logged);
+		em.flush();
 	}
 	
 	public Joueur getJoueur(String login) {
@@ -51,6 +62,11 @@ public class UserManager implements UserManagerItf {
 		}
 		return nameTaken;
 	}
+	
+	public List<String> allPlayers() {
+		Query qu = em.createQuery("SELECT j.login FROM Joueur j");
+		return (List<String>) qu.getResultList();
+	}
 
 	@Override
 	public boolean isEmailUsed(String mail) {
@@ -63,6 +79,16 @@ public class UserManager implements UserManagerItf {
 			}
 		}
 		return mailTaken;
+	}
+	
+	public void addIncomingCandidatAmi(Joueur j_act,Joueur j_candidat) {
+		j_act.addIncomingCandidatureAmi(j_candidat);
+		em.merge(j_act);
+	}
+	
+	public void removeIncomingCandidatAmi(Joueur j_act,Joueur j_candidat) {
+		j_act.removeIncomingCandidatureAmi(j_candidat);
+		em.merge(j_act);
 	}
 	
 }
