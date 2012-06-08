@@ -124,7 +124,7 @@ public class UserServlet extends HttpServlet {
         	if(j_asked==null) {
         		request.getSession().setAttribute("ErrorMessage", "L'utilisateur de login "+asked_login+" n'existe pas.");
         	} else {
-        		um.addAmi(j_act,j_asked);
+        		um.addIncomingCandidatAmi(j_asked, j_act);
         	}
         	nextPage="ProfilJoueur.jsp";
         } else if(action.equals("BeginDiscussion")) {

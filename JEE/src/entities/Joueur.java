@@ -7,6 +7,10 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import entities.Equipe;
+import entities.HautFait;
+import entities.Partie;
+
 @Entity
 public class Joueur implements Serializable {
 	
@@ -56,6 +60,12 @@ public class Joueur implements Serializable {
 	
 	@ManyToMany(fetch=FetchType.EAGER)
 	private Set<Joueur> amis;
+	
+	@ManyToMany(fetch=FetchType.EAGER)
+	private Set<Joueur> incoming_candidatures_ami;
+	
+	@ManyToMany(fetch=FetchType.EAGER, mappedBy="incoming_candidatures_ami")
+	private Set<Joueur> candidatures_ami;
 	
 	@ManyToMany
 	private Set<HautFait> hautFait;
@@ -256,6 +266,38 @@ public class Joueur implements Serializable {
 	
 	public Equipe getCandidature() {
 		return candidature;
+	}
+	
+	public Set<Joueur> getIncomingCandidaturesAmi() {
+		return this.incoming_candidatures_ami;
+	}
+	
+	public void setIncomingCandidaturesAmi(Set<Joueur> ica) {
+		this.incoming_candidatures_ami = ica;
+	}
+	
+	public void addIncomingCandidatureAmi(Joueur j) {
+		incoming_candidatures_ami.add(j);
+	}
+	
+	public void removeIncomingCandidatureAmi(Joueur j) {
+		incoming_candidatures_ami.remove(j);
+	}
+	
+	public Set<Joueur> getCandidaturesAmi() {
+		return this.candidatures_ami;
+	}
+	
+	public void setCandidaturesAmi(Set<Joueur> ica) {
+		this.candidatures_ami = ica;
+	}
+	
+	public void addCandidatureAmi(Joueur j) {
+		candidatures_ami.add(j);
+	}
+	
+	public void removeCandidatureAmi(Joueur j) {
+		candidatures_ami.remove(j);
 	}
 }
 

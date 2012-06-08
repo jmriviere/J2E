@@ -16,4 +16,6 @@ public interface UserManagerItf {
 	public void setEquipe(Joueur j_logged,Equipe e);
 	public void setCandidature(Joueur j_logged,Equipe e);
 	public List<String> allPlayers();
+	public void addIncomingCandidatAmi(Joueur j_act,Joueur j_candidat);
+	public void removeIncomingCandidatAmi(Joueur j_act,Joueur j_candidat);
 }

@@ -31,7 +31,6 @@ public class UserManager implements UserManagerItf {
 	public void addAmi(Joueur j_logged,Joueur j_asked) {
 		j_logged.addAmi(j_asked);
 		j_asked.addAmi(j_logged);
-		System.out.println("Amis : "+j_asked.getLogin()+" "+j_logged.getLogin());
 		em.merge(j_logged);
 		em.merge(j_asked);
 	}
@@ -80,6 +79,16 @@ public class UserManager implements UserManagerItf {
 			}
 		}
 		return mailTaken;
+	}
+	
+	public void addIncomingCandidatAmi(Joueur j_act,Joueur j_candidat) {
+		j_act.addIncomingCandidatureAmi(j_candidat);
+		em.merge(j_act);
+	}
+	
+	public void removeIncomingCandidatAmi(Joueur j_act,Joueur j_candidat) {
+		j_act.removeIncomingCandidatureAmi(j_candidat);
+		em.merge(j_act);
 	}
 	
 }
