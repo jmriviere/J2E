@@ -56,19 +56,27 @@
 					<font color="red"><%= error_message %></font><br />
 				</div>
 				<% } %>
-
 			</div>
 			<!-- end of headder -->
 			<div id="templatemo_menu_panel">
 				<div id="templatemo_menu_section">
+				<% if(j_act==null) { %>
 					<ul>
-						<li><a href="Accueil.jsp"> Accueil</a></li>
-						<li><a href="ListSalons.jsp"> Salon </a></li>
-						<li><a href="ListReplays.jsp"> Replays </a></li>
-						<li><a href="ListTournois.jsp"> Tournois </a></li>
+               			<li><a href="Accueil.jsp" > Accueil</a></li>
+						<li><a href="ListJeux.jsp" > Liste des jeux </a></li>
+						<li><a href="NavigationServlet?action=listeEquipes" class = "current" > Liste des équipe </a></li>
+             		</ul>
+             	<% } else { %>
+					<ul>
+              			<li><a href="Accueil.jsp" > Accueil</a></li>
+              			<li><a href="ListJeux.jsp" > Liste des jeux </a></li>
+						<li><a href="ListSalons.jsp" > Salon </a></li>
+						<li><a href="ListReplays.jsp" > Replays </a></li>
+						<li><a href="ListTournois.jsp" > Tournois </a></li>
 						<li><a href="NavigationServlet?action=listeEquipes"> Liste des équipes </a></li>
-						<li><a href="NavigationServlet?action=listeJoueurs"> Liste des joueurs </a></li>
-					</ul>
+						<li><a href="NavigationServlet?action=listeJoueurs"> Liste des joueurs </a></li>						
+            		</ul>
+				<% } %>
 				</div>
 			</div>
 			<!-- end of menu -->
