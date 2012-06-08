@@ -27,6 +27,17 @@ public class EquipeManager implements EquipeManagerItf{
 		return equipes;
 	}
 	
+	public void eraseEquipe(Equipe e) {
+		Equipe ne = getEquipe(e.getName());
+		em.remove(ne);
+		em.flush();
+	}
+	
+	public void setEquipeChef(Equipe e,Joueur j) {
+		e.setChef(j);
+		em.merge(e);
+	}
+	
 	public void addCandidature(Equipe e,Joueur j) {
 		e.addCandidat(j);
 		j.setCandidature(e);

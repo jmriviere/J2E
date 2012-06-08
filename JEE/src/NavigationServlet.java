@@ -49,27 +49,13 @@
 	        	List<String> allJoueurs = userManager.allPlayers();
 	        	request.setAttribute("ListeJoueurs", allJoueurs);
 	        	nextPage="ListJoueurs.jsp";
-	        } else if(action.equals("profilEquipe")) {
-	        	String ename = request.getParameter("ename");
-	        	Equipe e = equipeManager.getEquipe(ename);
-	        	if(e!=null) {
-	        		nextPage="ProfilEquipe.jsp";
-	        		request.setAttribute("EquipeActuelle", e);
-	        	} else {
-	        		nextPage="Accueil.jsp";
-	        		request.getSession().setAttribute("ErrorMessage", "L'équipe de nom "+ename+" n'existe pas.");
-	        	}
-	        	 	
 	        } else if(action.equals("listeEquipes")) {
 	        	List<Equipe> listeEquipes = equipeManager.allEquipes();
 	        	request.setAttribute("ListeEquipes",listeEquipes);
 	        	nextPage="ListEquipes.jsp";
 	        } else if(action.equals("creerEquipe")) {
 	        	nextPage="CreationEquipe.jsp";
-	        } else if(action.equals("registerEquipe")) {
-	        	
-	        	nextPage="Accueil.jsp";
-	        }
+	        } 
 	        request.getRequestDispatcher(nextPage).forward(request, response);
 		}
 	

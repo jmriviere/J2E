@@ -135,5 +135,9 @@ public class Equipe implements Serializable {
 		}
 	}
 	
+	public Set<Joueur> getCandidats() {
+		return candidats;
+	}
+	
 }
 

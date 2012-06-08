@@ -41,9 +41,9 @@
 						<li>Equipe : <% if (j_asked.getEquipe()==null) {
 									out.print("Sans equipe");
 								} else {
-									%> <a
-							href="ProfilEquipe.jsp?equipe=<%=j_asked.getEquipe().getName()%>">Equipe
-								<%=j_asked.getEquipe().getName()%></a> <%
+									%> 
+									<a href="EquipeServlet?action=profilEquipe&ename=<%= j_asked.getEquipe().getName() %>"	id="lien_profilequipe"><%= j_asked.getEquipe().getName()%></a>
+									 <%
 								}%></li>
 						<li><a href="hautsFaits.jsp">Hauts Faits</a></li>
 						<li><a href="replaysRecents.jsp">Replays</a></li>
@@ -75,7 +75,7 @@
                 				%>
 					<form action="UserServlet">
 						<input type="hidden" name="action" value="SupprCandidature">
-						Candidature actuelle : <a href="NavigationServlet?action=profilEquipe&ename=<%= ename %>"	id="lien_profilequipe"><%= ename%></a>
+						Candidature actuelle : <a href="EquipeServlet?action=profilEquipe&ename=<%= ename %>"	id="lien_profilequipe"><%= ename%></a>
 						<button type="submit" formmethod="post">Annuler la candidature</button>
 					</form>
 					<%
@@ -85,15 +85,18 @@
 						        %>
 					<form action="UserServlet">
 						<input type="hidden" name="action" value="SupprEquipe">
-						Equipe actuelle : <a href="NavigationServlet?action=profilEquipe&ename=<%= ename %>"	id="lien_profilequipe"><%= ename%></a>
-						<button type="submit" formmethod="post">Quitter l'equipe</button>
+				        <input type="hidden" name="ename"  value="<%=ename%>">	
+						Equipe actuelle : <a href="EquipeServlet?action=profilEquipe&ename=<%= ename %>"	id="lien_profilequipe"><%= ename%></a>
+						<button type="submit" formmethod="post">
+						<%= ( (j_logged.getEquipe().getChef().getLogin().equals(j_logged.getLogin()))? "Dissoudre l'équipe" : " l'équipe")%>
+						</button>
 					</form>
 					<%
                 			} %>
 					<form action="UserServlet">
 						<input type="hidden" name="action" value="RajoutAmi">
-						Ajout d'ami : <br /> <label for="joueurCible" class="uname"
-							data-icon="u">Pseudo (*)</label><br /> <input id="joueurCible"
+						Ajout d'ami : <br /> 
+					    <input id="joueurCible"
 							name="joueurCible" required="required" type="text"
 							placeholder="pseudo" />
 						<button type="submit" formmethod="post">Rajouter en ami</button>

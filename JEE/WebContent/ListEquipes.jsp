@@ -23,7 +23,7 @@
 						String slogan = e.getSlogan();
 					%>	
               	      <li>
-              	      <a href="NavigationServlet?action=profilEquipe&ename=<%= ename %>" id="lien_compte">
+              	      <a href="EquipeServlet?action=profilEquipe&ename=<%= ename %>" id="lien_compte">
               	      <%= ename %> <%= ((slogan==null) ? "" : (" : "+slogan)) %>
               	      </a>
               	      </li>     						
