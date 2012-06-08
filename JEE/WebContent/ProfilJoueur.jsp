@@ -117,18 +117,53 @@
 				</div>
 				<div class="templatemo_section_box_mid">
 					<ul>
-						<% Set<Joueur> list_amis = j_logged.getAmis();
-                 for (Joueur j : list_amis) {%>
+						<% Set<Joueur> list_amis = j_logged.getAmis().keySet();
+                 for (Joueur j : list_amis) {
+                 	if(j_logged.getAmiType(j).equals("A")) { %>
 						<li><a
 							href="UserServlet?action=profil&amp;login=<%= j.getLogin() %>"
 							id="lien_compte"><%= j.getLogin()%></a></li>
-						<% } %>
+						<% } 
+						 } %>
 
 					</ul>
 				</div>
 				<div class="templatemo_section_box_bottom"></div>
 			</div>
 			<!-- end of section box -->
+
+			<div class="templatemo_section_box">
+				<div class="templatemo_section_box_top">
+					<h1>Demande d'amis</h1>
+				</div>
+				<div class="templatemo_section_box_mid">
+					<ul>
+						<% Set<Joueur> list_candidats_amis = j_logged.getAmis().keySet();
+                 		for (Joueur j : list_candidats_amis) {
+                 		  if(j_logged.getAmiType(j).equals("IC")) { %>
+						<li><a
+							href="UserServlet?action=profil&amp;login=<%= j.getLogin() %>"
+							id="lien_compte"><%= j.getLogin()%></a>
+							
+						<form action="UserServlet">									
+							<input type="hidden" name="action" value="AccCandidatureAmi">	
+							<input type="hidden" name="player" value="<%=j.getLogin()%>">							
+							<button type="submit" formmethod="post">Accepter</button>
+						</form>	
+						<form action="UserServlet">									
+							<input type="hidden" name="action" value="SupprCandidatureAmi">	
+							<input type="hidden" name="player" value="<%=j.getLogin()%>">							
+							<button type="submit" formmethod="post">Refuser</button>
+						</form>							
+							
+						</li>
+						<% } 
+						} %>
+
+					</ul>
+				</div>
+				<div class="templatemo_section_box_bottom"></div>
+			</div>
 
 		</div>
 		<!-- end of right Section -->

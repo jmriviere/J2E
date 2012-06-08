@@ -1,11 +1,16 @@
 package entities;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import entities.Equipe;
 import entities.HautFait;
@@ -58,14 +63,12 @@ public class Joueur implements Serializable {
 	@ManyToMany
 	private Set<Partie> partie;
 	
-	@ManyToMany(fetch=FetchType.EAGER)
-	private Set<Joueur> amis;
-	
-	@ManyToMany(fetch=FetchType.EAGER)
-	private Set<Joueur> incoming_candidatures_ami;
-	
-	@ManyToMany(fetch=FetchType.EAGER, mappedBy="incoming_candidatures_ami")
-	private Set<Joueur> candidatures_ami;
+	@Fetch(FetchMode.JOIN)
+	@ElementCollection
+    @MapKeyColumn(name="nomAmi")
+    @Column(name="value")
+    //@CollectionTable(name="example_attributes", joinColumns=@JoinColumn(name="example_id"))
+	private Map<Joueur,String> amis;
 	
 	@ManyToMany
 	private Set<HautFait> hautFait;
@@ -81,7 +84,7 @@ public class Joueur implements Serializable {
 		this.setEquipe(null);
 		this.setCandidature(null);
 		this.setPartie(new HashSet<Partie>());
-		this.setAmi(new HashSet<Joueur>());
+		this.setAmis(new HashMap<Joueur,String>());
 		this.setHautFait(new HashSet<HautFait>());
 		this.setNbVictoireTicTacToe(0);
 		this.setNbVictoireShiFuMi(0);
@@ -167,18 +170,22 @@ public class Joueur implements Serializable {
 		return !(equipe==null);
 	}
     
-	public Set<Joueur> getAmis() {
+	public Map<Joueur,String> getAmis() {
 		return amis;
 	}
 
-	public void setAmi(Set<Joueur> ami) {
-		this.amis = ami;
+	public void setAmis(HashMap<Joueur,String> hashMap) {
+		this.amis = hashMap;
+	}
+	
+	public void removeAmi(Joueur j) {
+		this.amis.remove(j);
 	}
 	
 	public boolean hasAmi(Joueur j_asked) {
 		if(j_asked!=null) {
-			for (Joueur j : amis) {
-				if(j.getLogin().equals(j_asked.getLogin())) {
+			for (Joueur j : amis.keySet()) {
+				if(j.equals(j_asked)) {
 					return true;
 				}
 			}
@@ -187,12 +194,13 @@ public class Joueur implements Serializable {
 			return false;
 		}
 	}
+	
+	public String getAmiType(Joueur ami) {
+		return amis.get(ami);
+	}
 
-	public void addAmi(Joueur ami){
-		boolean present=this.hasAmi(ami);
-		if(!present) {
-			this.amis.add(ami);
-		}
+	public void addAmi(Joueur ami,String type){
+		this.amis.put(ami,type);
 	}	
 	
 	public Set<HautFait> getHautFait() {
@@ -267,37 +275,6 @@ public class Joueur implements Serializable {
 	public Equipe getCandidature() {
 		return candidature;
 	}
-	
-	public Set<Joueur> getIncomingCandidaturesAmi() {
-		return this.incoming_candidatures_ami;
-	}
-	
-	public void setIncomingCandidaturesAmi(Set<Joueur> ica) {
-		this.incoming_candidatures_ami = ica;
-	}
-	
-	public void addIncomingCandidatureAmi(Joueur j) {
-		incoming_candidatures_ami.add(j);
-	}
-	
-	public void removeIncomingCandidatureAmi(Joueur j) {
-		incoming_candidatures_ami.remove(j);
-	}
-	
-	public Set<Joueur> getCandidaturesAmi() {
-		return this.candidatures_ami;
-	}
-	
-	public void setCandidaturesAmi(Set<Joueur> ica) {
-		this.candidatures_ami = ica;
-	}
-	
-	public void addCandidatureAmi(Joueur j) {
-		candidatures_ami.add(j);
-	}
-	
-	public void removeCandidatureAmi(Joueur j) {
-		candidatures_ami.remove(j);
-	}
+
 }
 

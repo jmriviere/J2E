@@ -117,14 +117,13 @@ public class UserServlet extends HttpServlet {
         		request.getSession().setAttribute("ErrorMessage", "On ne peut consulter les pages de membres sans être inscrit.");
         	}
         	
-        } else if(action.equals("RajoutAmi")) {
-        	
+        } else if(action.equals("RajoutAmi")) { 	
         	String asked_login = request.getParameter("joueurCible");
         	Joueur j_asked = um.getJoueur(asked_login);
         	if(j_asked==null) {
         		request.getSession().setAttribute("ErrorMessage", "L'utilisateur de login "+asked_login+" n'existe pas.");
         	} else {
-        		um.addIncomingCandidatAmi(j_asked, j_act);
+        		um.addAmi(j_act, j_asked , 1);
         	}
         	nextPage="ProfilJoueur.jsp";
         } else if(action.equals("BeginDiscussion")) {
@@ -157,18 +156,14 @@ public class UserServlet extends HttpServlet {
 	        			um.setCandidature(j, null);
 	        		}
 	        		equipeManager.eraseEquipe(e);
-	        		request.getSession().setAttribute("JoueurActuel", um.getJoueur(j_act.getLogin()));
 	        		nextPage="Accueil.jsp";
 	        		
-	        	} else {
-	        		
+	        	} else {	        		
 	        		um.setEquipe(j_act,null);
 	        		nextPage = "ProfilJoueur.jsp";        
 	        		request.setAttribute("asked_player", j_act.getLogin());
 	        	}
-	        	
-	        	
-        		
+	        		
         	} else {
         		Joueur j_needed = um.getJoueur(needed_player);
         		Equipe e = j_needed.getEquipe();
@@ -184,7 +179,20 @@ public class UserServlet extends HttpServlet {
         		um.setCandidature(j,null);
         		um.setEquipe(j, e);
         	}
+        } else if(action.equals("AccCandidatureAmi")) {
+        	String needed_player = request.getParameter("player");
+        	if(needed_player!=null) {
+        		Joueur j = um.getJoueur(needed_player);
+        		um.addAmi(j, j_act,0);
+        	}
+        } else if(action.equals("SupprCandidatureAmi")) {
+        	String needed_player = request.getParameter("player");
+        	if(needed_player!=null) {
+        		Joueur j = um.getJoueur(needed_player);
+        		um.removeAmi(j_act, j);
+        	}
         }
+        request.getSession().setAttribute("JoueurActuel", um.getJoueur(j_act.getLogin()));
         request.getRequestDispatcher(nextPage).forward(request, response);
     }
 

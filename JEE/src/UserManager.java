@@ -28,11 +28,30 @@ public class UserManager implements UserManagerItf {
 		}
 	}
 	
-	public void addAmi(Joueur j_logged,Joueur j_asked) {
-		j_logged.addAmi(j_asked);
-		j_asked.addAmi(j_logged);
+	public void addAmi(Joueur j_logged,Joueur j_asked,int ami_type) {
+		j_logged=em.find(Joueur.class,j_logged.getLogin());
+		j_asked=em.find(Joueur.class, j_asked.getLogin());
+		if(ami_type==0) {
+			j_logged.addAmi(j_asked,"A");
+			j_asked.addAmi(j_logged,"A");
+		} else if(ami_type==1) {
+			j_logged.addAmi(j_asked,"C");
+			j_asked.addAmi(j_logged, "IC");
+		} else if(ami_type==2) {
+			j_logged.addAmi(j_asked,"IC");
+			j_asked.addAmi(j_logged, "C");
+		}
 		em.merge(j_logged);
 		em.merge(j_asked);
+		em.flush();
+	}
+	
+	public void removeAmi(Joueur j_logged,Joueur j_asked) {
+		j_logged.removeAmi(j_asked);
+		j_asked.removeAmi(j_logged);
+		em.merge(j_asked);
+		em.merge(j_logged);
+		em.flush();
 	}
 	
 	public void setEquipe(Joueur j_logged,Equipe e) {
@@ -79,16 +98,6 @@ public class UserManager implements UserManagerItf {
 			}
 		}
 		return mailTaken;
-	}
-	
-	public void addIncomingCandidatAmi(Joueur j_act,Joueur j_candidat) {
-		j_act.addIncomingCandidatureAmi(j_candidat);
-		em.merge(j_act);
-	}
-	
-	public void removeIncomingCandidatAmi(Joueur j_act,Joueur j_candidat) {
-		j_act.removeIncomingCandidatureAmi(j_candidat);
-		em.merge(j_act);
 	}
 	
 }
