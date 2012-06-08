@@ -23,6 +23,7 @@ body {
 
 a { color: #FF6600; }
 a:hover { color: #FFFFFF; }
+a:link { text-decoration: none ; }
 
 #templatemo_background_section_top {
 
@@ -106,15 +107,23 @@ a:hover { color: #FFFFFF; }
 #logged{
 	width: 338px;
 	height: 52px;
+	font-size:16px;
+	color:#999999;
+	float: right;
+	/* margin-top: 105px;
+	margin-right: 20px; */
+	/* background:url(../images/templatemo_search_box_bg.jpg) no-repeat;*/
+	width: 338px;
+	height: 52px;
 	float: right;
 	margin-top: 90px;
 	margin-right: 20px;
-	background:url(../images/templatemo_search_box_bg.jpg) no-repeat;
 }
 
+
 #lien_compte{
-	width: 90px;
-	height: 50px;
+	width: 85px;
+	height: 18px;
 	margin-top: 15px;
 	margin-left: 15px;
 	color: #FF6600;
@@ -122,13 +131,32 @@ a:hover { color: #FFFFFF; }
 	padding-left: 5px;
 }
 
+
+#button_logout{
+	background: url(../images/login_button.jpg); 
+	border: none;
+	cursor: pointer;
+	font-size: 12px;
+	font-weight: bold;
+	height: 25px;
+	margin-left: 160px;
+	padding: 5px;
+	text-align: center;
+	vertical-align: bottom;
+	white-space: pre;
+	width: 80px;
+	color: #fff;
+}
+
+
+
 #not_logged{
 	width: 338px;
 	height: 52px;
 	float: right;
 	margin-top: 90px;
 	margin-right: 20px;
-	background:url(../images/templatemo_search_box_bg.jpg) no-repeat;
+	/*background:url(../images/templatemo_search_box_bg.jpg) no-repeat;*/
 }
 
 #login{
@@ -139,6 +167,21 @@ a:hover { color: #FFFFFF; }
 	background: #000;
 	color: #FFF;
 	border: solid 1px #3b3b3b;
+	padding-top: 5px;
+	padding-left: 5px;
+}
+
+#error {
+	margin-top: 3px;
+	margin-left: 18px;
+	color: #FF0000;
+	padding-top: 5px;
+	padding-left: 5px;
+}
+
+#register {
+	margin-top: 3px;
+	margin-left: 237px;
 	padding-top: 5px;
 	padding-left: 5px;
 }
