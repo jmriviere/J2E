@@ -36,10 +36,11 @@
 						<input type="submit" name="Connexion" value="" alt="Connexion" id="button" title="Connexion" />
 					</form>
 					<% if(error_message!=null) { %>
-					<p id="error"> <font color="red"><%= error_message %></font><br /></p>
+					<p id="error"><%= error_message %></p>
+					<% } else { %>
+					<p id="register"><a href="CreationCompte.jsp">Inscription</a></p> 	
 					<% } %>
 				</div>
-
 				<% } else { %>
 				<div id="logged">
 					<form action="LoginServlet" method="post">
@@ -51,10 +52,7 @@
 							title="Deconnexion" />
 					</form>
 				</div>
-
 				<% } %>
-
-
 			</div>
 			<!-- end of headder -->
 			<div id="templatemo_menu_panel">
