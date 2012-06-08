@@ -61,11 +61,11 @@ public class LoginServlet extends HttpServlet {
 					request.getSession().setAttribute("JoueurActuel", j);
 					// logged
 				} else {
-					request.getSession().setAttribute("ErrorMessage", "Password doesn't match");
+					request.getSession().setAttribute("ErrorMessage", "Mauvais Password");
 					// not logged
 				}
 			} else {
-				request.getSession().setAttribute("ErrorMessage", "Login doesn't exist");
+				request.getSession().setAttribute("ErrorMessage", "	Mauvais Login");
 			}
 		} else if(action.equals("logout")) {
 			request.getSession().removeAttribute("JoueurActuel");

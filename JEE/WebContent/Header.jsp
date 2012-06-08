@@ -35,6 +35,9 @@
 						<input type="hidden" name="action" value="login" /> 
 						<input type="submit" name="Connexion" value="" alt="Connexion" id="button" title="Connexion" />
 					</form>
+					<% if(error_message!=null) { %>
+					<p id="error"> <font color="red"><%= error_message %></font><br /></p>
+					<% } %>
 				</div>
 
 				<% } else { %>
@@ -51,11 +54,7 @@
 
 				<% } %>
 
-				<% if(error_message!=null) { %>
-				<div id="Error">
-					<font color="red"><%= error_message %></font><br />
-				</div>
-				<% } %>
+
 			</div>
 			<!-- end of headder -->
 			<div id="templatemo_menu_panel">
