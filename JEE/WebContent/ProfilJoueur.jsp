@@ -79,7 +79,7 @@
                 				%>
 					<form action="UserServlet">
 						<input type="hidden" name="action" value="SupprCandidature">
-						Candidature actuelle : <a href="EquipeServlet?action=profilEquipe&ename=<%= ename %>"	id="lien_profilequipe"><%= ename%></a>
+						Candidature actuelle : <a href="EquipeServlet?action=profilEquipe&ename=<%= ename %>"	id="lien_profilequipe"><%= ename%></a></br>
 						<button type="submit" formmethod="post">Annuler la candidature</button>
 					</form>
 					<%
