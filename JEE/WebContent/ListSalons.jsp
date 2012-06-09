@@ -28,10 +28,10 @@
 								}
 							%>	
               	      			<li>
-              	      				<a href="NavigationServlet?action=profilSalon&sname=<%= sname %>">
+              	      				<a href="SalonServlet?action=profilSalon&sname=<%= sname %>">
               	      					<%= sname %>
               	     				</a>
-              	     				(<a href="NavigationServlet?action=profilEquipe&sname=<%= ename %>">
+              	     				(<a href="EquipeServlet?action=profilEquipe&ename=<%= ename %>">
               	      					<%= ename %>
               	     				</a>)
               	      			</li>     						
