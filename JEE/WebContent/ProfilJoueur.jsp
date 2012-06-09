@@ -122,7 +122,15 @@
                  	if(j_logged.getAmiType(j).equals("A")) { %>
 						<li><a
 							href="UserServlet?action=profil&amp;login=<%= j.getLogin() %>"
-							id="lien_compte"><%= j.getLogin()%></a></li>
+							id="lien_compte"><%= j.getLogin()%></a>
+							
+						<form action="UserServlet">									
+								<input type="hidden" name="action" value="SupprAmi">
+								<input type="hidden" name="player" value="<%=j.getLogin()%>">								
+								<button type="submit" formmethod="post">Supprimer</button>
+						</form>	
+							
+						</li>
 						<% } 
 						 } %>
 

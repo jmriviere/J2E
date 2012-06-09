@@ -104,7 +104,7 @@ public class UserServlet extends HttpServlet {
                     j.setRegion(region);
                 }
                 um.addUser(j);
-                nextPage ="";
+                nextPage ="Accueil.jsp";
             } else {
                 request.setAttribute("error", new Integer(error));
                 nextPage = "CreationCompte.jsp";
@@ -187,14 +187,19 @@ public class UserServlet extends HttpServlet {
         		Joueur j = um.getJoueur(needed_player);
         		um.addAmi(j, j_act,0);
         	}
-        } else if(action.equals("SupprCandidatureAmi")) {
+        } else if(action.equals("SupprCandidatureAmi") || action.equals("SupprAmi")) {
         	String needed_player = request.getParameter("player");
         	if(needed_player!=null) {
         		Joueur j = um.getJoueur(needed_player);
         		um.removeAmi(j_act, j);
         	}
+        } 
+        
+        // reset du joueur actuel selon les modifs de la BDD
+        if(j_act!=null) {
+        	request.getSession().setAttribute("JoueurActuel", um.getJoueur(j_act.getLogin()));
         }
-        request.getSession().setAttribute("JoueurActuel", um.getJoueur(j_act.getLogin()));
+        
         request.getRequestDispatcher(nextPage).forward(request, response);
     }
 

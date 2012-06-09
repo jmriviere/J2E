@@ -48,6 +48,8 @@ public class UserManager implements UserManagerItf {
 	}
 	
 	public void removeAmi(Joueur j_logged,Joueur j_asked) {
+		j_logged=em.find(Joueur.class,j_logged.getLogin());
+		j_asked=em.find(Joueur.class, j_asked.getLogin());
 		j_logged.removeAmi(j_asked);
 		j_asked.removeAmi(j_logged);
 		em.merge(j_asked);
