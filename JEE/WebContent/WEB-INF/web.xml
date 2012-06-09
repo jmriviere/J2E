@@ -54,4 +54,14 @@
     <servlet-name>EquipeServlet</servlet-name>
     <url-pattern>/EquipeServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TournoiServlet</display-name>
+    <servlet-name>TournoiServlet</servlet-name>
+    <servlet-class>servlets.TournoiServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TournoiServlet</servlet-name>
+    <url-pattern>/TournoiServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
