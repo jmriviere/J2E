@@ -48,17 +48,26 @@ public class NavigationServlet extends HttpServlet {
 		String action = request.getParameter("action");
 
 		String nextPage = "";
+		String page = "";
 		if (action.equals("listeJoueurs")) {
 			List<String> allJoueurs = userManager.allPlayers();
 			request.setAttribute("ListeJoueurs", allJoueurs);
-			nextPage="ListJoueurs.jsp";
+			nextPage="ListJoueurs.jsp"; 
+			page="ListJoueurs.jsp";
+			request.setAttribute("page", page);
 		} else if(action.equals("listeEquipes")) {
 			List<Equipe> listeEquipes = equipeManager.allEquipes();
 			request.setAttribute("ListeEquipes",listeEquipes);
 			nextPage="ListEquipes.jsp";
+			page = "ListEquipes.jsp";
+			request.setAttribute("page", page);
 		} else if(action.equals("creerEquipe")) {
-			nextPage="CreationEquipe.jsp";
-		} 
+			nextPage="CreationEquipe.jsp"; 
+			page="CreationEquipe.jsp";
+			request.setAttribute("page", page);
+		} else if(action.equals("accueil")) {
+			next
+		}
 		request.getRequestDispatcher(nextPage).forward(request, response);
 	}
 

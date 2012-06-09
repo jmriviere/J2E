@@ -143,5 +143,5 @@
 		<div id="templatemo_footer_section">Copyright © 2012 DreamTeam</div>
 	</div>
 </div>
-<body></body>
-<html></html>
+</body>
+</html>

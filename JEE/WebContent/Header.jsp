@@ -3,6 +3,9 @@
 <%@ page import="entities.Joueur"%>
 <%
 	Joueur j_act = (Joueur)request.getSession().getAttribute("JoueurActuel");
+	String current = (String)request.getAttribute("page");
+	current = ((current==null) ? "Accueil.jsp" : current);
+	System.out.println(current);
     String error_message = (String)request.getSession().getAttribute("ErrorMessage");
     if(error_message!=null) {
    		request.getSession().removeAttribute("ErrorMessage");
@@ -12,7 +15,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>JEEux</title>
+<title>JEEux></title>
 <meta name="keywords"
 	content="JEEux, jeux en ligne, compétition de jeux en ligne, plateforme de jeux, communauté de joueurs" />
 <meta name="description"
@@ -59,19 +62,19 @@
 				<div id="templatemo_menu_section">
 				<% if(j_act==null) { %>
 					<ul>
-               			<li><a href="Accueil.jsp" > Accueil</a></li>
-						<li><a href="ListJeux.jsp" > Liste des jeux </a></li>
-						<li><a href="NavigationServlet?action=listeEquipes" class = "current" > Liste des équipe </a></li>
+               			<li><a href="NavigationServlet?action=accueil" <% if(current.equals("Accueil.jsp")) {%> class="current"<% } %>> Accueil</a></li>
+						<li><a href="NavigationServlet?action=listeJeux" <% if(current.equals("ListJeux.jsp")) {%> class="current"<% } %>> Liste des jeux </a></li>
+						<li><a href="NavigationServlet?action=listeEquipes" <% if(current.equals("ListEquipes.jsp")) {%> class="current"<% } %>> Liste des équipe </a></li>
              		</ul>
              	<% } else { %>
 					<ul>
-              			<li><a href="Accueil.jsp" > Accueil</a></li>
-              			<li><a href="ListJeux.jsp" > Liste des jeux </a></li>
-						<li><a href="ListSalons.jsp" > Salon </a></li>
-						<li><a href="ListReplays.jsp" > Replays </a></li>
-						<li><a href="ListTournois.jsp" > Tournois </a></li>
-						<li><a href="NavigationServlet?action=listeEquipes"> Liste des équipes </a></li>
-						<li><a href="NavigationServlet?action=listeJoueurs"> Liste des joueurs </a></li>						
+              			<li><a href="NavigationServlet?action=accueil" <% if(current.equals("Accueil.jsp")) {%> class="current"<% } %>> Accueil </a></li>
+              			<li><a href="NavigationServlet?action=listeJeux" <% if(current.equals("ListJeux.jsp")) {%> class="current"<% } %>> Liste des jeux </a></li>
+						<li><a href="NavigationServlet?action=listeSalons" <% if(current.equals("ListSalons.jsp")) {%> class="current"<% } %>> Salon </a></li>
+						<li><a href="NavigationServlet?action=listeReplays" <% if(current.equals("ListReplays.jsp")) {%> class="current"<% } %>> Replays </a></li>
+						<li><a href="NavigationServlet?action=listeTournois" <% if(current.equals("ListTournois.jsp")) {%> class="current"<% } %>> Tournois </a></li>
+						<li><a href="NavigationServlet?action=listeEquipes" <% if(current.equals("ListEquipes.jsp")) {%> class="current"<% } %>> Liste des équipes </a></li>
+						<li><a href="NavigationServlet?action=listeJoueurs" <% if(current.equals("ListJoueurs.jsp")) {%> class="current"<% } %>> Liste des joueurs </a></li>						
             		</ul>
 				<% } %>
 				</div>
