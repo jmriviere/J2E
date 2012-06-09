@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ejb.EquipeManagerItf;
+import ejb.HautFaitManagerItf;
 import ejb.TournoiManagerItf;
 import ejb.UserManagerItf;
 import entities.Equipe;
+import entities.HautFait;
 import entities.Joueur;
 import entities.Tournoi;
 
@@ -21,6 +23,7 @@ public class TournoiServlet extends HttpServlet {
 	UserManagerItf userManager;
 	TournoiManagerItf tournoiManager;  
 	EquipeManagerItf equipeManager;
+	HautFaitManagerItf hautfaitManager;
 	
     /**
      * @throws NamingException 
@@ -32,6 +35,7 @@ public class TournoiServlet extends HttpServlet {
         userManager = (UserManagerItf) ic.lookup("UserManager1/local");
         tournoiManager = (TournoiManagerItf) ic.lookup("TournoiManager/local");
         equipeManager = (EquipeManagerItf) ic.lookup("EquipeManager/local");
+        hautfaitManager = (HautFaitManagerItf) ic.lookup("HautFaitManager/local");
         // TODO Auto-generated constructor stub
     }
 
@@ -117,11 +121,14 @@ public class TournoiServlet extends HttpServlet {
 			int max_score=-1;
 			for(Equipe e : t.getEquipes_participantes().keySet()) {
 				if(t.getEquipes_participantes().get(e)>max_score) {
+					max_score=t.getEquipes_participantes().get(e);
 					e_max_score=e;
 				}
 			}
-			//e_max_score a gagné le tournoi.
 			
+			HautFait hf = new HautFait(tname,max_score);
+			hautfaitManager.addHautFait(hf);
+			equipeManager.addHautFaitEquipe(e_max_score, hf);
 			
 			tournoiManager.removeTournoi(t);
 			nextPage = "Accueil.jsp";

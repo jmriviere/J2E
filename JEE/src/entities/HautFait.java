@@ -9,81 +9,34 @@ public class HautFait implements Serializable {
 
 	@Column(unique=true, nullable=false)
 	@Id
-	private String name;
+	private String nom_tournoi_gagne;
 	
-	private String description;
-	
-	@Column(nullable=false)
-	private int nbPoint;
-	
-	@Column(nullable=false)
-	private int nbVictoireTicTacToe;
-	
-	@Column(nullable=false)
-	private int nbVictoireShiFuMi;
+	private Integer score;
 	
 	public HautFait() {
-	}
-   
-	public HautFait(String name, String description, int nbPoint, int nbVictoireTicTacToe, int nbVictoireShiFuMi) {
-		this.setName(name);
-		this.setDescription(description);
-		this.setNbVictoireShiFuMi(nbVictoireShiFuMi);
-		this.setNbPoint(nbPoint);
-		this.setNbVictoireTicTacToe(nbVictoireTicTacToe);
+		this.setNom("");
+		this.setScore(0);
 	}
 	
-	public String getName() {
-		return this.name;
+	public HautFait(String tournoi,Integer superscore) {
+		this.nom_tournoi_gagne=tournoi;
+		this.score=superscore;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
+	public String getNom() {
+		return nom_tournoi_gagne;
 	}
-	
-	public String getDescription() {
-		return this.description;
+
+	public void setNom(String nom_tournoi_gagne) {
+		this.nom_tournoi_gagne = nom_tournoi_gagne;
 	}
-	
-	public void setDescription(String description) {
-		this.description = description;
+
+	public Integer getScore() {
+		return score;
 	}
-	
-	public int getNbPoint() {
-		return this.nbPoint;
+
+	public void setScore(Integer score) {
+		this.score = score;
 	}
-	
-	public void setNbPoint(int point) {
-		this.nbPoint = point;
-	}
-	
-	public int getNbVictoireTicTacToe() {
-		return this.nbVictoireTicTacToe;
-	}
-	
-	public void setNbVictoireTicTacToe(int nbVictoireTicTacToe) {
-		this.nbVictoireTicTacToe = nbVictoireTicTacToe;
-	}
-	
-	public int getNbVictoireShiFuMi() {
-		return this.nbVictoireShiFuMi;
-	}
-	
-	public void setNbVictoireShiFuMi(int nbVictoireShiFuMi) {
-		this.nbVictoireShiFuMi = nbVictoireShiFuMi;
-	}
-	
-	@Override
-	public String toString() {
-		return this.name;
-	}
-	
-	@Override
-	public boolean equals(Object other) {
-		if (!(other instanceof HautFait)) {
-			return false;
-		}
-		return this.getName().equals(((HautFait) other).getName());
-	}
-	
+
 }

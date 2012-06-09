@@ -1,9 +1,7 @@
 package entities;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -13,7 +11,6 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import entities.Equipe;
-import entities.HautFait;
 import entities.Partie;
 
 @Entity
@@ -70,9 +67,6 @@ public class Joueur implements Serializable {
     //@CollectionTable(name="example_attributes", joinColumns=@JoinColumn(name="example_id"))
 	private Map<Joueur,String> amis;
 	
-	@ManyToMany
-	private Set<HautFait> hautFait;
-	
 	public Joueur() {
 	}
 		
@@ -85,7 +79,6 @@ public class Joueur implements Serializable {
 		this.setCandidature(null);
 		this.setPartie(new HashSet<Partie>());
 		this.setAmis(new HashMap<Joueur,String>());
-		this.setHautFait(new HashSet<HautFait>());
 		this.setNbVictoireTicTacToe(0);
 		this.setNbVictoireShiFuMi(0);
 	}
@@ -202,18 +195,6 @@ public class Joueur implements Serializable {
 	public void addAmi(Joueur ami,String type){
 		this.amis.put(ami,type);
 	}	
-	
-	public Set<HautFait> getHautFait() {
-		return hautFait;
-	}
-
-	public void setHautFait(Set<HautFait> hautFait) {
-		this.hautFait = hautFait;
-	}
-	
-	public void addHautFait(HautFait hautFait) {
-		this.hautFait.add(hautFait);
-	}
 	
 	public int getNbPoint() {
 		return this.nbPoint;

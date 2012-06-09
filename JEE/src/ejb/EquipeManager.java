@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import entities.Equipe;
+import entities.HautFait;
 import entities.Joueur;
 
 @Stateless(name="EquipeManager")
@@ -71,4 +72,8 @@ public class EquipeManager implements EquipeManagerItf{
 		}
 	}
 	
+	public void addHautFaitEquipe(Equipe e, HautFait f) {
+		e.addHautFait(f);
+		em.merge(e);
+	}
 }

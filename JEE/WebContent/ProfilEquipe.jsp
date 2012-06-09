@@ -4,6 +4,7 @@
 
 <%@ page import="entities.Joueur"%>
 <%@ page import="entities.Equipe"%>
+<%@ page import="entities.HautFait"%>
 <%@ page import="java.util.Set"%>
 <%
 	Equipe e_act = (Equipe)request.getAttribute("EquipeActuelle");
@@ -131,6 +132,26 @@
 			</div>
 			<!-- end of section box -->
 			<% } %>
+			
+			<div class="templatemo_section_box">
+				<div class="templatemo_section_box_top">
+					<h1>Liste des haut faits</h1>
+				</div>
+				<div class="templatemo_section_box_mid">
+					<ul>
+						<% Set<HautFait> list_hf = e_act.getHautFait();
+                           for (HautFait f : list_hf) {%>
+						<li>
+						
+						Victoire du tournoi <%= f.getNom() %> avec un score de <%= f.getScore().toString() %>
+						
+						</li>
+						<% } %>
+
+					</ul>
+				</div>
+				<div class="templatemo_section_box_bottom"></div>
+			</div>
 
 		</div>
 		<!-- end of right Section -->

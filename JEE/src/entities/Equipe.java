@@ -31,7 +31,7 @@ public class Equipe implements Serializable {
 	@OneToOne
 	private Salon salon;
 	
-	@ManyToMany(fetch=FetchType.EAGER)
+	@OneToMany(fetch=FetchType.EAGER)
 	private Set<HautFait> hautFait;
 		
 	public Equipe() {
