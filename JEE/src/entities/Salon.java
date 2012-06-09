@@ -1,7 +1,9 @@
 package entities;
+
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,14 +19,14 @@ public class Salon implements Serializable {
 	private Equipe equipe;	
 	
 	@OneToMany
-	private List<Partie> partie;	
+	private Set<Partie> partie;	
 
 	public Salon() {
 	}
 	
 	public Salon(String name) {
 		this.setName(name);
-		this.setPartie(new ArrayList<Partie>());
+		this.setPartie(new HashSet<Partie>());
 	}
 	
 	public String getName() {
@@ -42,17 +44,17 @@ public class Salon implements Serializable {
 	public void setEquipe(Equipe equipe) {
 		this.equipe = equipe;
 	}
-
-	public List<Partie> getPartie() {
+	
+	public Set<Partie> getPartie() {
 		return this.partie;
+	}
+	
+	public void setPartie(Set<Partie> partie) {
+		this.partie = partie;
 	}
 	
 	public void addPartie(Partie partie) {
 		this.partie.add(partie);
-	}
-
-	public void setPartie(List<Partie> partie) {
-		this.partie = partie;
 	}
 	
 	@Override

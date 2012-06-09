@@ -1,6 +1,6 @@
 package ejb;
-import java.util.List;
 
+import java.util.List;
 import entities.Equipe;
 import entities.Joueur;
 

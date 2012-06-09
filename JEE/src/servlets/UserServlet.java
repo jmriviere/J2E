@@ -199,7 +199,7 @@ public class UserServlet extends HttpServlet {
         if(j_act!=null) {
         	request.getSession().setAttribute("JoueurActuel", um.getJoueur(j_act.getLogin()));
         }
-        
+        request.setAttribute("page", nextPage);
         request.getRequestDispatcher(nextPage).forward(request, response);
     }
 

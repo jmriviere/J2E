@@ -52,37 +52,28 @@ public class NavigationServlet extends HttpServlet {
 			List<String> allJoueurs = userManager.allPlayers();
 			request.setAttribute("ListeJoueurs", allJoueurs);
 			nextPage="ListJoueurs.jsp";
-			request.setAttribute("page", nextPage);
 		} else if(action.equals("listeEquipes")) {
 			List<Equipe> listeEquipes = equipeManager.allEquipes();
 			request.setAttribute("ListeEquipes",listeEquipes);
 			nextPage="ListEquipes.jsp";
-			request.setAttribute("page", nextPage);
 		} else if(action.equals("creerEquipe")) {
 			nextPage="CreationEquipe.jsp";
-			request.setAttribute("page", nextPage);
 		} else if(action.equals("accueil")) {
 			nextPage="Accueil.jsp";
-			request.setAttribute("page", nextPage);
 		} else if(action.equals("listeJeux")) {
 			nextPage="ListJeux.jsp";
-			request.setAttribute("page", nextPage);
 		} else if(action.equals("listeSalons")) {
 			nextPage="ListSalons.jsp";
-			request.setAttribute("page", nextPage);
 		} else if(action.equals("listeReplays")) {
 			nextPage="ListReplays.jsp";
-			request.setAttribute("page", nextPage);
 		} else if(action.equals("listeTournois")) {
 			nextPage="ListTournois.jsp";
-			request.setAttribute("page", nextPage);
 		} else if(action.equals("listeSalons")) {
 			nextPage="ListSalons.jsp";
-			request.setAttribute("page", nextPage);
 		}  else if(action.equals("creationCompte")) {
 			nextPage="CreationCompte.jsp";
-			request.setAttribute("page", nextPage);
-		} 
+		}
+		request.setAttribute("page", nextPage);
 		request.getRequestDispatcher(nextPage).forward(request, response);
 	}
 

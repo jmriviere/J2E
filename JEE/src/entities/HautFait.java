@@ -13,13 +13,13 @@ public class HautFait implements Serializable {
 	
 	private String description;
 	
-	@Column(nullable=false)
+	@Column(nullable=true)
 	private int nbPoint;
 	
-	@Column(nullable=false)
+	@Column(nullable=true)
 	private int nbVictoireTicTacToe;
 	
-	@Column(nullable=false)
+	@Column(nullable=true)
 	private int nbVictoireShiFuMi;
 	
 	public HautFait() {

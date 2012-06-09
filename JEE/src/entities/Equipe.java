@@ -1,4 +1,5 @@
 package entities;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -28,7 +29,7 @@ public class Equipe implements Serializable {
 	@OneToMany(mappedBy="candidature", fetch=FetchType.EAGER)
 	private Set<Joueur> candidats;
 	
-	@OneToOne
+	@OneToOne(mappedBy="equipe", fetch=FetchType.EAGER)
 	private Salon salon;
 	
 	@ManyToMany(fetch=FetchType.EAGER)

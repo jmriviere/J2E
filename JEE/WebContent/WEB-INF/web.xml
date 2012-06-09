@@ -54,4 +54,14 @@
     <servlet-name>EquipeServlet</servlet-name>
     <url-pattern>/EquipeServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SalonServlet</display-name>
+    <servlet-name>SalonServlet</servlet-name>
+    <servlet-class>servlets.SalonServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SalonServlet</servlet-name>
+    <url-pattern>/SalonServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
