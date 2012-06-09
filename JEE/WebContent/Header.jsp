@@ -50,7 +50,7 @@
 							href="UserServlet?action=profil&amp;login=<%= j_act.getLogin() %>"
 							id="lien_compte"><%= j_act.getLogin()%></a> <input type="hidden"
 							name="action" value="logout" /> <input type="submit"
-							name="Logout" value="" alt="Logout" id="button"
+							name="Logout" value="" alt="Logout" id="button_logout"
 							title="Deconnexion" />
 					</form>
 				</div>
