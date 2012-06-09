@@ -13,6 +13,10 @@
     }
     boolean amis = j_logged.hasAmi(j_asked);
     boolean act_profile = (j_asked.getLogin().equals(j_logged.getLogin()));    
+    boolean chef_equipe = false;
+    if(j_asked.hasEquipe()) {
+    	chef_equipe=(j_asked.getEquipe().getChef().equals(j_asked));
+    }
 %>
 <!-- end of templatemo_background_section_top-->
 
@@ -42,7 +46,7 @@
 									out.print("Sans equipe");
 								} else {
 									%> 
-									<a href="EquipeServlet?action=profilEquipe&ename=<%= j_asked.getEquipe().getName() %>"	id="lien_profilequipe"><%= j_asked.getEquipe().getName()%></a>
+									<a href="EquipeServlet?action=profilEquipe&ename=<%= j_asked.getEquipe().getName() %>"	id="lien_profilequipe"><%= j_asked.getEquipe().getName()%> <%= ( (chef_equipe)? "(Chef d'équipe)" : "" ) %></a>
 									 <%
 								}%></li>
 						<li><a href="hautsFaits.jsp">Hauts Faits</a></li>
