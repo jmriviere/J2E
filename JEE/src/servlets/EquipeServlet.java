@@ -53,13 +53,13 @@ public class EquipeServlet extends HttpServlet {
              String ename = request.getParameter("equipenamesignup");
              String slogan = request.getParameter("slogansignup");
              if(equipeManager.isNameTaken(ename)) {
-            	 nextPage="CreationEquipe.jsp";
-            	 request.setAttribute("ename_taken", new Boolean(true));
+            	nextPage="CreationEquipe.jsp";
+            	request.setAttribute("ename_taken", new Boolean(true));
              } else {
-            	 Joueur j_logged = (Joueur)request.getSession().getAttribute("JoueurActuel");
-            	 if(j_logged==null) {
+            	Joueur j_logged = (Joueur)request.getSession().getAttribute("JoueurActuel");
+            	if(j_logged==null) {
             		nextPage="Accueil.jsp";
-            		request.getSession().setAttribute("ErrorMessage", "On ne peut créer une équipe sans être inscrit.");         		
+            		request.getSession().setAttribute("ErrorMessage", "On ne peut créer une équipe sans être inscrit");         		
             	 } else {
             		 Equipe e = new Equipe(ename,j_logged);
             		 if(slogan!=null) {
@@ -67,7 +67,8 @@ public class EquipeServlet extends HttpServlet {
             		 }
             		 equipeManager.addEquipe(e);
             		 userManager.setEquipe(j_logged, e);
-            		 nextPage="Accueil.jsp";
+            		 nextPage="ProfilEquipe.jsp";
+            		 request.setAttribute("EquipeActuelle", e);
             	 }
             	 
 			}
@@ -79,10 +80,11 @@ public class EquipeServlet extends HttpServlet {
 				request.setAttribute("EquipeActuelle", e);
 			} else {
 				nextPage = "Accueil.jsp";
-				request.getSession().setAttribute("ErrorMessage","L'équipe de nom " + ename + " n'existe pas.");
+				request.getSession().setAttribute("ErrorMessage","L'équipe " + ename + " n'existe pas.");
 			}
 
 		}
+		request.setAttribute("page", nextPage);
         request.getRequestDispatcher(nextPage).forward(request, response);
 	}
 

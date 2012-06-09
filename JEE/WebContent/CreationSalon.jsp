@@ -1,40 +1,37 @@
 <jsp:include page="Header.jsp" />
 
-    <div id="templatemo_background_section_middle">
+	<div id="templatemo_background_section_middle">
       <div class="templatemo_container">
         <div id="templatemo_left_section">
           <div class="templatemo_post">
             <div class="templatemo_post_top">
-              <h1>Création d'équipe</h1>
+              <h1>Création de salon</h1>
             </div>
             <div class="templatemo_post_mid">
               <div id="register_box" class="register_form">
-                <form  action="EquipeServlet" autocomplete="on" method="post"> 
+                <form  action="SalonServlet" autocomplete="on" method="post"> 
                   <%
-                  	Boolean name_taken = (Boolean)request.getAttribute("ename_taken");
+                  	Boolean name_taken = (Boolean)request.getAttribute("sname_taken");
                   %>
                   <p> 
-                  <label for="equipenamesignup" class="uname" data-icon="u">* Nom de l'équipe</label><br/>
-                  <input id="equipenamesignup" name="equipenamesignup" required="required" type="text" placeholder="SuperNom" />
-                  <% 
-                  	if (name_taken != null) {
-                  		if(name_taken) {
-                  			out.println("<font color=\"red\"> Nom d'équipe déjà utilisé </font>");    
+                  	<label for="nameRegisterSalon" class="uname" data-icon="u">* Nom du salon</label><br/>
+                  	<input id="nameRegisterSalon" name="nameRegisterSalon" required="required" type="text" placeholder="Nom du salon" />
+                  	<% 
+                  		if (name_taken != null) {
+                  			if(name_taken) {
+                  			out.println("<font color=\"red\"> Nom de salon déjà utilisé </font>");    
+                  			}
                   		}
-                  	}
-                  %><br/>
-                
-                  <label for="slogansignup" class="youslogan" data-icon="e" >Slogan</label><br/>
-                  <input id="slogansignup" name="slogansignup" type="text" placeholder="SuperSlogan!"/><br/>                              
-                  <input type="hidden" name="action" value="registerEquipe"/>
+                  	%> <br/>                             
+                  	<input type="hidden" name="action" value="registerSalon"/>
                   </p>
                   <p class="signin button"> 
-                  <input type="submit" value="Création d'équipe"/> 
+                  	<input type="submit" value="Création du salon"/> 
                   </p>
                 </form> 
               </div>
               <div class="templatemo_post_bottom">
-                <span class="post">Devenez un respecté chef d'équipe de JEEux !</span><br/>
+                <span class="post">Créez le nouveau salon où l'on cause !</span><br/>
                 <span class="post">(*) Champ obligatoire</span>
               </div>
             </div>

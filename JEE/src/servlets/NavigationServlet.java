@@ -12,7 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import ejb.EquipeManagerItf;
 import ejb.TournoiManagerItf;
 import ejb.UserManagerItf;
+import ejb.SalonManagerItf;
 import entities.Equipe;
+import entities.Partie;
+import entities.Salon;
 import entities.Tournoi;
 
 /**
@@ -22,6 +25,7 @@ public class NavigationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	UserManagerItf userManager;
 	EquipeManagerItf equipeManager;
+	SalonManagerItf salonManager;
 	TournoiManagerItf tournoiManager;
 
 	/**
@@ -33,6 +37,7 @@ public class NavigationServlet extends HttpServlet {
 		InitialContext ic = new InitialContext();
 		userManager = (UserManagerItf) ic.lookup("UserManager1/local");
 		equipeManager = (EquipeManagerItf) ic.lookup("EquipeManager/local");
+		salonManager = (SalonManagerItf) ic.lookup("SalonManager/local");
 		tournoiManager = (TournoiManagerItf) ic.lookup("TournoiManager/local");
 	}
 
@@ -56,39 +61,33 @@ public class NavigationServlet extends HttpServlet {
 			List<String> allJoueurs = userManager.allPlayers();
 			request.setAttribute("ListeJoueurs", allJoueurs);
 			nextPage="ListJoueurs.jsp";
-			request.setAttribute("page", nextPage);
 		} else if(action.equals("listeEquipes")) {
 			List<Equipe> listeEquipes = equipeManager.allEquipes();
 			request.setAttribute("ListeEquipes",listeEquipes);
 			nextPage="ListEquipes.jsp";
-			request.setAttribute("page", nextPage);
 		} else if(action.equals("creerEquipe")) {
 			nextPage="CreationEquipe.jsp";
-			request.setAttribute("page", nextPage);
 		} else if(action.equals("accueil")) {
 			nextPage="Accueil.jsp";
-			request.setAttribute("page", nextPage);
 		} else if(action.equals("listeJeux")) {
 			nextPage="ListJeux.jsp";
-			request.setAttribute("page", nextPage);
 		} else if(action.equals("listeSalons")) {
+			List<Salon> listeSalons = salonManager.allSalons();
+			request.setAttribute("ListeSalons",listeSalons);
 			nextPage="ListSalons.jsp";
-			request.setAttribute("page", nextPage);
 		} else if(action.equals("listeReplays")) {
 			nextPage="ListReplays.jsp";
-			request.setAttribute("page", nextPage);
 		} else if(action.equals("listeTournois")) {
 			List<String> listeTournois = tournoiManager.allTournois();
 			request.setAttribute("ListeTournois",listeTournois);
 			nextPage="ListTournois.jsp";
-			request.setAttribute("page", nextPage);
-		} else if(action.equals("listeSalons")) {
-			nextPage="ListSalons.jsp";
-			request.setAttribute("page", nextPage);
-		}  else if(action.equals("creationCompte")) {
+		} else if(action.equals("creationSalon")) {
+			nextPage="CreationSalon.jsp";
+		}  else if(action.equals("creationCompte")) {	
 			nextPage="CreationCompte.jsp";
-			request.setAttribute("page", nextPage);
-		} 
+		}
+		
+		request.setAttribute("page", nextPage);
 		request.getRequestDispatcher(nextPage).forward(request, response);
 	}
 
