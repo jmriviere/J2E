@@ -1,7 +1,5 @@
 <jsp:include page="Header.jsp" />
 
-<!-- page accessible uniquement accessible si connecté apres gestion de profil prive et public -->
-
 <%@ page import="entities.Joueur"%>
 <%@ page import="entities.Equipe"%>
 <%@ page import="java.util.Set"%>

@@ -21,7 +21,7 @@ public class SalonManager implements SalonManagerItf{
 	
 	public List<Salon> allSalons() {
 		Query qu = em.createQuery("SELECT s.name FROM Salon s");
-		List<String> res = (List<String>) qu.getResultList();
+		List<String> res = (List<String>)qu.getResultList();
 		List<Salon> salons = new ArrayList<Salon>();
 		for (String sname : res) {
 			 salons.add(em.find(Salon.class, sname));

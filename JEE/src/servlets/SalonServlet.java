@@ -17,6 +17,7 @@ import entities.Joueur;
 import entities.Partie;
 import entities.Equipe;
 import entities.Salon;
+import entities.Joueur;
 
 /**
  * Servlet implementation class SalonServlet
@@ -32,7 +33,7 @@ public class SalonServlet extends HttpServlet {
     public SalonServlet() throws NamingException {
         super();
         InitialContext ic = new InitialContext();
-        salonManager = (SalonManagerItf) ic.lookup("UserManager1/local");
+        salonManager = (SalonManagerItf) ic.lookup("SalonManager/local");
         equipeManager = (EquipeManagerItf) ic.lookup("EquipeManager/local");
     }
 
@@ -67,7 +68,7 @@ public class SalonServlet extends HttpServlet {
         			nextPage="ProfilSalon.jsp";
         			request.setAttribute("SalonActuel", s);
         			salonManager.addSalon(s);
-        			Equipe eSalon = (Equipe) equipeManager.getEquipe((String)request.getAttribute("EquipeActuelle"));
+        			Equipe eSalon = j_logged.getEquipe();
         			if (eSalon!=null) {
         				salonManager.setEquipeSalon(s, eSalon);
         			}

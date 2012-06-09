@@ -9,7 +9,7 @@
             </div>
             <div class="templatemo_post_mid">
               <div id="register_box" class="register_form">
-                <form  action="EquipeServlet" autocomplete="on" method="post"> 
+                <form  action="SalonServlet" autocomplete="on" method="post"> 
                   <%
                   	Boolean name_taken = (Boolean)request.getAttribute("sname_taken");
                   %>

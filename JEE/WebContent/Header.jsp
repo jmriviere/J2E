@@ -69,7 +69,7 @@
 					<ul>
               			<li><a href="NavigationServlet?action=accueil" <% if(current.equals("Accueil.jsp")) {%> class="current"<% } %>> Accueil </a></li>
               			<li><a href="NavigationServlet?action=listeJeux" <% if(current.equals("ListJeux.jsp")) {%> class="current"<% } %>> Liste des jeux </a></li>
-						<li><a href="NavigationServlet?action=listeSalons" <% if(current.equals("ListSalons.jsp")) {%> class="current"<% } %>> Salon </a></li>
+						<li><a href="NavigationServlet?action=listeSalons" <% if(current.equals("ListSalons.jsp")) {%> class="current"<% } %>> Liste des salons </a></li>
 						<li><a href="NavigationServlet?action=listeReplays" <% if(current.equals("ListReplays.jsp")) {%> class="current"<% } %>> Replays </a></li>
 						<li><a href="NavigationServlet?action=listeTournois" <% if(current.equals("ListTournois.jsp")) {%> class="current"<% } %>> Tournois </a></li>
 						<li><a href="NavigationServlet?action=listeEquipes" <% if(current.equals("ListEquipes.jsp")) {%> class="current"<% } %>> Liste des équipes </a></li>

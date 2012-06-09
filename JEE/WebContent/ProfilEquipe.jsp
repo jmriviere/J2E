@@ -1,7 +1,5 @@
 <jsp:include page="Header.jsp" />
 
-<!-- page accessible uniquement accessible si connecté apres gestion de profil prive et public -->
-
 <%@ page import="entities.Joueur"%>
 <%@ page import="entities.Equipe"%>
 <%@ page import="java.util.Set"%>
@@ -75,10 +73,8 @@
 						<% Set<Joueur> list_membres = e_act.getMembre();
                            for (Joueur j : list_membres) {
                            	%>
-						<li><a
-							href="UserServlet?action=profil&amp;login=<%= j.getLogin() %>"
-							id="lien_compte"><%= j.getLogin()%></a>
-							
+						<li><a 
+							href="UserServlet?action=profil&amp;login=<%= j.getLogin() %>"><%= j.getLogin()%></a>
 							<% if(ischef && !j.equals(j_logged)) { %>
 							<form action="UserServlet">									
 								<input type="hidden" name="action" value="SupprEquipe">

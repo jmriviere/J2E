@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import ejb.EquipeManagerItf;
 import ejb.UserManagerItf;
+import ejb.SalonManagerItf;
 import entities.Equipe;
+import entities.Partie;
+import entities.Salon;
 
 /**
  * Servlet implementation class NavigationServlet
@@ -20,6 +23,7 @@ public class NavigationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	UserManagerItf userManager;
 	EquipeManagerItf equipeManager;
+	SalonManagerItf salonManager;
 
 	/**
 	 * @throws NamingException 
@@ -30,6 +34,7 @@ public class NavigationServlet extends HttpServlet {
 		InitialContext ic = new InitialContext();
 		userManager = (UserManagerItf) ic.lookup("UserManager1/local");
 		equipeManager = (EquipeManagerItf) ic.lookup("EquipeManager/local");
+		salonManager = (SalonManagerItf) ic.lookup("SalonManager/local");
 	}
 
 	/**
@@ -63,16 +68,19 @@ public class NavigationServlet extends HttpServlet {
 		} else if(action.equals("listeJeux")) {
 			nextPage="ListJeux.jsp";
 		} else if(action.equals("listeSalons")) {
+			List<Salon> listeSalons = salonManager.allSalons();
+			request.setAttribute("ListeSalons",listeSalons);
 			nextPage="ListSalons.jsp";
 		} else if(action.equals("listeReplays")) {
 			nextPage="ListReplays.jsp";
 		} else if(action.equals("listeTournois")) {
 			nextPage="ListTournois.jsp";
-		} else if(action.equals("listeSalons")) {
-			nextPage="ListSalons.jsp";
-		}  else if(action.equals("creationCompte")) {
+		} else if(action.equals("creationSalon")) {
+			nextPage="CreationSalon.jsp";
+		}  else if(action.equals("creationCompte")) {	
 			nextPage="CreationCompte.jsp";
 		}
+		
 		request.setAttribute("page", nextPage);
 		request.getRequestDispatcher(nextPage).forward(request, response);
 	}
