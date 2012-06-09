@@ -48,26 +48,38 @@ public class NavigationServlet extends HttpServlet {
 		String action = request.getParameter("action");
 
 		String nextPage = "";
-		String page = "";
 		if (action.equals("listeJoueurs")) {
 			List<String> allJoueurs = userManager.allPlayers();
 			request.setAttribute("ListeJoueurs", allJoueurs);
-			nextPage="ListJoueurs.jsp"; 
-			page="ListJoueurs.jsp";
-			request.setAttribute("page", page);
+			nextPage="ListJoueurs.jsp";
+			request.setAttribute("page", nextPage);
 		} else if(action.equals("listeEquipes")) {
 			List<Equipe> listeEquipes = equipeManager.allEquipes();
 			request.setAttribute("ListeEquipes",listeEquipes);
 			nextPage="ListEquipes.jsp";
-			page = "ListEquipes.jsp";
-			request.setAttribute("page", page);
+			request.setAttribute("page", nextPage);
 		} else if(action.equals("creerEquipe")) {
-			nextPage="CreationEquipe.jsp"; 
-			page="CreationEquipe.jsp";
-			request.setAttribute("page", page);
+			nextPage="CreationEquipe.jsp";
+			request.setAttribute("page", nextPage);
 		} else if(action.equals("accueil")) {
-			next
-		}
+			nextPage="Accueil.jsp";
+			request.setAttribute("page", nextPage);
+		} else if(action.equals("listeJeux")) {
+			nextPage="ListJeux.jsp";
+			request.setAttribute("page", nextPage);
+		} else if(action.equals("listeSalons")) {
+			nextPage="ListSalons.jsp";
+			request.setAttribute("page", nextPage);
+		} else if(action.equals("listeReplays")) {
+			nextPage="ListReplays.jsp";
+			request.setAttribute("page", nextPage);
+		} else if(action.equals("listeTournois")) {
+			nextPage="ListTournois.jsp";
+			request.setAttribute("page", nextPage);
+		} else if(action.equals("listeSalons")) {
+			nextPage="ListSalons.jsp";
+			request.setAttribute("page", nextPage);
+		} 
 		request.getRequestDispatcher(nextPage).forward(request, response);
 	}
 

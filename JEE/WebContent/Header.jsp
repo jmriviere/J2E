@@ -4,7 +4,7 @@
 <%
 	Joueur j_act = (Joueur)request.getSession().getAttribute("JoueurActuel");
 	String current = (String)request.getAttribute("page");
-	current = ((current==null) ? "Accueil.jsp" : current);
+	current = ((current==null) ? "" : current);
 	System.out.println(current);
     String error_message = (String)request.getSession().getAttribute("ErrorMessage");
     if(error_message!=null) {
