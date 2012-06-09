@@ -28,9 +28,12 @@
 								}
 							%>	
               	      			<li>
-              	      				<a href="SalonServlet?action=profilSalon&sname=<%= sname %>">
-              	      				(<%= ename %>)
+              	      				<a href="NavigationServlet?action=profilSalon&sname=<%= sname %>">
+              	      					<%= sname %>
               	     				</a>
+              	     				(<a href="NavigationServlet?action=profilEquipe&sname=<%= ename %>">
+              	      					<%= ename %>
+              	     				</a>)
               	      			</li>     						
 							<% } %>
 							</ul>

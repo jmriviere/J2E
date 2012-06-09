@@ -15,8 +15,6 @@
 	if(j_logged!=null && s_act.getEquipe()!=null) { 
 		ismembre = s_act.getEquipe().getMembre().contains(j_logged);
 	}
-
-	if(ismembre==true){ 
 %>
 	<!-- end of templatemo_background_section_top-->
 		<div id="templatemo_background_section_middle">
@@ -24,9 +22,13 @@
 				<div id="templatemo_left_section">
 					<div class="templatemo_post">
 						<div class="templatemo_post_top">
-							<h1>
-								Informations sur le salon <%= s_act.getName() %>
+						<% if(ismembre) { %>
+							<h1>	
+								<%= s_act.getName() %>, le salon des Winners !
 							</h1>
+							 <% } else {
+							 	out.println("<font color=\"red\"> Vous n'avez pas le droit d'entrer ici !</font>");
+							  	} %>
 						</div>
 						<div class="templatemo_post_mid"></div>
 					</div>
@@ -64,11 +66,5 @@
 			</div>
 		</div>
 	</body>
-</html>
-		
-		
-<% } else { %>
-		
-		
-		
-<% } %>
+</html>		
+

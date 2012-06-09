@@ -85,6 +85,8 @@ public class NavigationServlet extends HttpServlet {
 			nextPage="CreationSalon.jsp";
 		}  else if(action.equals("creationCompte")) {	
 			nextPage="CreationCompte.jsp";
+		} else if(action.equals("profilSalon")) {	
+			nextPage="ProfilSalon.jsp";
 		}
 		
 		request.setAttribute("page", nextPage);
