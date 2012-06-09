@@ -45,6 +45,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
+		String nextPage="Accueil.jsp";
 		if(action.equals("login")) {
 			String login = request.getParameter("login");
 			String pass = request.getParameter("pass");
@@ -72,7 +73,8 @@ public class LoginServlet extends HttpServlet {
 		} else if(action.equals("logout")) {
 			request.getSession().removeAttribute("JoueurActuel");
 		}
-		request.getRequestDispatcher("Accueil.jsp").forward(request, response);
+		request.setAttribute("page", nextPage);
+		request.getRequestDispatcher(nextPage).forward(request, response);
 		// TODO Auto-generated method stub
 	}
 

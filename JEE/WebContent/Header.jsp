@@ -4,8 +4,7 @@
 <%
 	Joueur j_act = (Joueur)request.getSession().getAttribute("JoueurActuel");
 	String current = (String)request.getAttribute("page");
-	current = ((current==null) ? "" : current);
-	System.out.println(current);
+	current = ((current==null) ? "Accueil.jsp" : current);
     String error_message = (String)request.getSession().getAttribute("ErrorMessage");
     if(error_message!=null) {
    		request.getSession().removeAttribute("ErrorMessage");
@@ -41,7 +40,7 @@
 					<% if(error_message!=null) { %>
 					<p id="error"><%= error_message %></p>
 					<% } else { %>
-					<p id="register"><a href="CreationCompte.jsp">Inscription</a></p> 	
+					<p id="register"><a href="NavigationServlet?action=creationCompte">Inscription</a></p> 	
 					<% } %>
 				</div>
 				<% } else { %>
