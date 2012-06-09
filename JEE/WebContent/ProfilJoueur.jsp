@@ -90,7 +90,7 @@
 				        <input type="hidden" name="ename"  value="<%=ename%>">	
 						Equipe actuelle : <a href="EquipeServlet?action=profilEquipe&ename=<%= ename %>"	id="lien_profilequipe"><%= ename%></a>
 						<button type="submit" formmethod="post">
-						<%= ( (j_logged.getEquipe().getChef().getLogin().equals(j_logged.getLogin()))? "Dissoudre l'équipe" : " l'équipe")%>
+						<%= ( (j_logged.getEquipe().getChef().getLogin().equals(j_logged.getLogin()))? "Dissoudre l'équipe" : " Quitter l'équipe")%>
 						</button>
 					</form>
 					<%

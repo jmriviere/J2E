@@ -10,11 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ejb.EquipeManagerItf;
+import ejb.TournoiManagerItf;
 import ejb.UserManagerItf;
 import ejb.SalonManagerItf;
 import entities.Equipe;
 import entities.Partie;
 import entities.Salon;
+import entities.Tournoi;
 
 /**
  * Servlet implementation class NavigationServlet
@@ -24,6 +26,7 @@ public class NavigationServlet extends HttpServlet {
 	UserManagerItf userManager;
 	EquipeManagerItf equipeManager;
 	SalonManagerItf salonManager;
+	TournoiManagerItf tournoiManager;
 
 	/**
 	 * @throws NamingException 
@@ -35,6 +38,7 @@ public class NavigationServlet extends HttpServlet {
 		userManager = (UserManagerItf) ic.lookup("UserManager1/local");
 		equipeManager = (EquipeManagerItf) ic.lookup("EquipeManager/local");
 		salonManager = (SalonManagerItf) ic.lookup("SalonManager/local");
+		tournoiManager = (TournoiManagerItf) ic.lookup("TournoiManager/local");
 	}
 
 	/**
@@ -74,6 +78,8 @@ public class NavigationServlet extends HttpServlet {
 		} else if(action.equals("listeReplays")) {
 			nextPage="ListReplays.jsp";
 		} else if(action.equals("listeTournois")) {
+			List<String> listeTournois = tournoiManager.allTournois();
+			request.setAttribute("ListeTournois",listeTournois);
 			nextPage="ListTournois.jsp";
 		} else if(action.equals("creationSalon")) {
 			nextPage="CreationSalon.jsp";

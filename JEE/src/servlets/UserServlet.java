@@ -161,9 +161,9 @@ public class UserServlet extends HttpServlet {
 	        		nextPage="Accueil.jsp";
 	        		
 	        	} else {	        		
-	        		um.setEquipe(j_act,null);
+	        		um.setEquipe(j_act,null);       		
 	        		nextPage = "ProfilJoueur.jsp";        
-	        		request.setAttribute("asked_player", j_act.getLogin());
+	        		request.setAttribute("asked_player", um.getJoueur(j_act.getLogin()));
 	        	}
 	        		
         	} else {
