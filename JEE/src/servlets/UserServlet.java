@@ -116,7 +116,7 @@ public class UserServlet extends HttpServlet {
         		request.setAttribute("asked_player", um.getJoueur(asked_login));
         	} else {
         		nextPage = "Accueil.jsp";
-        		request.getSession().setAttribute("ErrorMessage", "On ne peut consulter les pages de membres sans être inscrit.");
+        		request.getSession().setAttribute("ErrorMessage", "Inscrivez vous pour pouvoir consulter cette page");
         	}
         	
         } else if(action.equals("RajoutAmi")) { 	
