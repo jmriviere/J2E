@@ -13,7 +13,8 @@
 	boolean ismembre=true;
 
 	if(j_logged!=null && s_act.getEquipe()!=null) { 
-		ismembre = s_act.getEquipe().getMembre().contains(j_logged);
+		ismembre = (s_act.getEquipe().equals(j_logged.getEquipe()));
+		System.out.println(ismembre);
 	}
 %>
 	<!-- end of templatemo_background_section_top-->
