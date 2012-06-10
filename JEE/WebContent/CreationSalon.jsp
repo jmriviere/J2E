@@ -5,7 +5,7 @@
         <div id="templatemo_left_section">
           <div class="templatemo_post">
             <div class="templatemo_post_top">
-              <h1>Création de salon</h1>
+              <h1>Crï¿½ation de salon</h1>
             </div>
             <div class="templatemo_post_mid">
               <div id="register_box" class="register_form">
@@ -19,19 +19,19 @@
                   	<% 
                   		if (name_taken != null) {
                   			if(name_taken) {
-                  			out.println("<font color=\"red\"> Nom de salon déjà utilisé </font>");    
+                  			out.println("<font color=\"red\"> Nom de salon dï¿½jï¿½ utilisï¿½ </font>");    
                   			}
                   		}
                   	%> <br/>                             
                   	<input type="hidden" name="action" value="registerSalon"/>
                   </p>
                   <p class="signin button"> 
-                  	<input type="submit" value="Création du salon"/> 
+                  	<input type="submit" value="Crï¿½ation du salon"/> 
                   </p>
                 </form> 
               </div>
               <div class="templatemo_post_bottom">
-                <span class="post">Créez le nouveau salon où l'on cause !</span><br/>
+                <span class="post">Crï¿½ez le nouveau salon oï¿½ l'on cause !</span><br/>
                 <span class="post">(*) Champ obligatoire</span>
               </div>
             </div>
@@ -46,8 +46,8 @@
               <div class="templatemo_section_box_mid"> <!-- TODO rajouter les ancres correspondantes + ortho -->
                 <a href="#morpion"><img alt="Le morpion !"  src="images/tic_tac_toe.jpg" /></a> 
                 <a href="#shifumi"><img alt="Le chifoumi !"  src="images/chifoumi.jpg" /></a>
-                <a href="#echec"><img alt="Les Échecs !"  src="images/echec.jpg" /></a>
-                <a href="#"><img alt="À venir..."  src="images/a_venir.jpg" /></a>
+                <a href="#echec"><img alt="Les ï¿½checs !"  src="images/echec.jpg" /></a>
+                <a href="#"><img alt="ï¿½ venir..."  src="images/a_venir.jpg" /></a>
                 <div class="clear">&nbsp;</div>
               </div>
               <div class="clear">&nbsp;</div>
@@ -59,22 +59,15 @@
               <h1>A propos</h1>
             </div>
             <div class="templatemo_section_box_mid">
-              <p>Ce site est un projet scolaire de l'école ENSEEIHT ayant pour
-              but de créer un site dynamique en utilisant la technologie J2E.
+              <p>Ce site est un projet scolaire de l'ï¿½cole ENSEEIHT ayant pour
+              but de crï¿½er un site dynamique en utilisant la technologie J2E.
               Les membre du groupe sont Guillaume Casanova, Marine Lavaux,
-              Pierre Tysebaert et Rémi Palandri</p>
+              Pierre Tysebaert et Rï¿½mi Palandri</p>
             </div>
             <div class="templatemo_section_box_bottom"></div>
           </div><!-- end of section box -->
         </div><!-- end of right Section -->
       </div><!-- end of container-->
     </div><!-- end of background middle-->
-    <div id="templatemo_bottom_panel">
-      <div id="templatemo_bottom_section">
-        <div id="templatemo_footer_section">
-          Copyright © 2012 DreamTeam
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+
+<jsp:include page="Footer.jsp" />

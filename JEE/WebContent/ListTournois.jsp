@@ -40,10 +40,5 @@
 	<!-- end of container-->
 </div>
 <!-- end of background middle-->
-<div id="templatemo_bottom_panel">
-	<div id="templatemo_bottom_section">
-		<div id="templatemo_footer_section">Copyright © 2012 DreamTeam</div>
-	</div>
-</div>
-<body></body>
-<html></html>
+
+<jsp:include page="Footer.jsp" />

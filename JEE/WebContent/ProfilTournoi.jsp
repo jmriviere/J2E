@@ -1,7 +1,5 @@
 <jsp:include page="Header.jsp" />
 
-<!-- page accessible uniquement accessible si connecté apres gestion de profil prive et public -->
-
 <%@ page import="entities.Joueur"%>
 <%@ page import="entities.Equipe"%>
 <%@ page import="entities.Tournoi"%>
@@ -42,10 +40,10 @@
 					<ul>
 						<li>Manager : <a
 							href="UserServlet?action=profil&amp;login=<%= t_act.getManager().getLogin() %>"
-							id="lien_compte"><%= t_act.getManager().getLogin() + " de l'équipe " + t_act.getManager().getEquipe().getName() %></a>
+							id="lien_compte"><%= t_act.getManager().getLogin() + " de l'ï¿½quipe " + t_act.getManager().getEquipe().getName() %></a>
 						</li>
 						<% if(t_act.getNombre_max_equipes()!=-1) { %>
-						<li>Nombre maximum d'équipes : <%= t_act.getNombre_max_equipes().toString() %></li>
+						<li>Nombre maximum d'ï¿½quipes : <%= t_act.getNombre_max_equipes().toString() %></li>
 						<% } %>
 						<% 
 						if(isEquipeChef && !equipeInTournoi) {  %>
@@ -76,7 +74,7 @@
 		<div id="templatemo_right_section">
 			<div class="templatemo_section_box">
 				<div class="templatemo_section_box_top">
-					<h1>Liste des équipes participantes</h1>
+					<h1>Liste des ï¿½quipes participantes</h1>
 				</div>
 				<div class="templatemo_section_box_mid">
 					<ul>
@@ -111,10 +109,5 @@
 	<!-- end of container-->
 </div>
 <!-- end of background middle-->
-<div id="templatemo_bottom_panel">
-	<div id="templatemo_bottom_section">
-		<div id="templatemo_footer_section">Copyright © 2012 DreamTeam</div>
-	</div>
-</div>
-</body>
-</html>
+
+<jsp:include page="Footer.jsp" />

@@ -6,5 +6,5 @@
         </div>
       </div>
     </div>
-  </body>
-</html>
+
+<jsp:include page="Footer.jsp" />

@@ -28,13 +28,13 @@
 			<div class="templatemo_post">
 				<div class="templatemo_post_top">
 					<h1>
-						Informations sur l'équipe
+						Informations sur l'ï¿½quipe
 						<%= e_act.getName() %> <%= ( ismembre? "Membre" : "") %>
 					</h1>
 				</div>
 				<div class="templatemo_post_mid">
 					<ul>
-						<li>Chef d'équipe : <a
+						<li>Chef d'ï¿½quipe : <a
 							href="UserServlet?action=profil&amp;login=<%= j_chef.getLogin() %>"
 							id="lien_compte"><%= j_chef.getLogin()%></a>
 						</li>
@@ -56,7 +56,7 @@
 					<form action="UserServlet">
 						<input type="hidden" name="action" value="SupprEquipe">
 						<input type="hidden" name="ename"  value="<%=e_act.getName()%>">
-						<button type="submit" formmethod="post">Dissoudre l'équipe</button>
+						<button type="submit" formmethod="post">Dissoudre l'ï¿½quipe</button>
 					</form>
 				</div>
 				<% } %>
@@ -155,10 +155,5 @@
 	<!-- end of container-->
 </div>
 <!-- end of background middle-->
-<div id="templatemo_bottom_panel">
-	<div id="templatemo_bottom_section">
-		<div id="templatemo_footer_section">Copyright © 2012 DreamTeam</div>
-	</div>
-</div>
-</body>
-</html>
+
+<jsp:include page="Footer.jsp" />
