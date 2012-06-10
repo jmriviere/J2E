@@ -1,11 +1,7 @@
 package servlets;
 
-
-import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 
 import javax.servlet.ServletException;
@@ -25,7 +21,7 @@ public class MorpionServlet extends HttpServlet {
      */
     public MorpionServlet() {
         super();
-        this.coupCourant = "-1";
+        this.coupCourant = "-2";
     }
 
 	/**
@@ -39,58 +35,38 @@ public class MorpionServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		System.out.println(this.coupCourant);
-		String coup = request.getParameter("coup");
-		//if (coup.equals("jeu")) {
-			try {
-				response.setContentType("application/x-java-serialized-object");
-			
-				String msg = "fail";
-				while (msg.equals("fail")) {
-					try {
-						InputStream ins = request.getInputStream();
-						ObjectInputStream inputFromApplet = new ObjectInputStream(
-								ins);
-						msg = (String) inputFromApplet.readObject();
-					} catch (EOFException eofe) {
-						//e.printStackTrace();
-						msg = "fail";
-						System.out.println(msg);
-					}
-				}
-				System.out.println(msg);
-				OutputStream outs = response.getOutputStream();
-				ObjectOutputStream oos = new ObjectOutputStream(outs);
-				
-				if (msg.equals("attente")) {
-					oos.writeObject(this.coupCourant);
-					oos.flush();
-					oos.close();
-				} else {
-					this.coupCourant = msg;
-					System.out.println("coup joue: " + this.coupCourant);
-					oos.writeObject("hack");
-					oos.flush();
-					oos.close();
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		/*} else if (coup.equals("attente")) {
-			try {
-				response.setContentType("application/x-java-serialized-object");
-				OutputStream outs = response.getOutputStream();
-				ObjectOutputStream oos = new ObjectOutputStream(outs);
-				oos.writeObject(this.coupCourant);
-				oos.flush();
-				oos.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		*/
-	}
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO implement
+        System.out.println(this.coupCourant);
+        String coup = request.getParameter("coup");
+        System.out.println("parameter coup:" + coup);
+        byte[] buf = new byte[32];
+        if (coup.equals("jeu")) {
+            try {
+                int len = 0;
+                response.setContentType("application/x-java-serialized-object");
+                InputStream ins = request.getInputStream();
+                while(len == 0) {
+                	 len = ins.read(buf);
+                }
+                System.out.println(len);
+                String sbuf = new String(buf);
+                this.coupCourant = sbuf;
+                System.out.println("coup joue: " + this.coupCourant);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (coup.equals("attente")) {
+            try {
+                response.setContentType("application/x-java-serialized-object");
+                OutputStream outs = response.getOutputStream();
+                buf = this.coupCourant.getBytes();
+                outs.write(buf);
+                outs.flush();
+                outs.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
