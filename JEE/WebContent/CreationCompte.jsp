@@ -1,6 +1,5 @@
 <jsp:include page="Header.jsp" />
 
-<!-- page accessible uniquement accessible si non connecté -->
 
     <div id="templatemo_background_section_middle">
       <div class="templatemo_container">
@@ -21,7 +20,7 @@
                   <% 
                   	if (error != null) {
                   		if ((error/2)%2 == 1) {
-                  			out.println("<font color=\"red\"> Pseudo déja utilisé. </font>");
+                  			out.println("<font color=\"red\"> Pseudo dÃ©ja utilisÃ©. </font>");
                   		}
                   	}
                   %><br/>
@@ -42,11 +41,11 @@
                   <% 
                   	if (error != null) {
                   		if ((error/4)%2 == 1) {
-                  			out.println("<font color=\"red\"> Mail déja utilisé. </font>");
+                  			out.println("<font color=\"red\"> Mail dÃ©ja utilisÃ©. </font>");
                   		}
                   	}
                   %><br/>
-                  <label for="namesignup" class="uname" data-icon="e" >Prénom</label><br/>
+                  <label for="namesignup" class="uname" data-icon="e" >PrÃ©nom</label><br/>
                   <input id="namesignup" name="namesignup" type="text" placeholder="Roger"/><br/>
                   <label for="snamesignup" class="uname" data-icon="e" >Nom</label><br/>
                   <input id="snamesignup" name="snamesignup" type="text" placeholder="Dufour"/><br/>
@@ -55,7 +54,7 @@
                     <option value="--">--</option>
                     <option value="homme">homme</option>
                     <option value="femme">femme</option>
-                    <option value="br">brésilien</option>
+                    <option value="br">brÃ©silien</option>
                   </select>
                   <br/>
                   <label for="regionsignup" class="youregion" data-icon="e" >Region</label><br/>
@@ -75,7 +74,7 @@
                 </form> 
               </div>
               <div class="templatemo_post_bottom">
-                <span class="post">Déjà membre ? Identifiez vous en haut à droite.</span><br/>
+                <span class="post">DÃ©jÃ  membre ? Identifiez vous en haut Ã  droite.</span><br/>
                 <span class="post">(*) Champs obligatoires.</span>
               </div>
             </div>
@@ -90,8 +89,8 @@
               <div class="templatemo_section_box_mid"> <!-- TODO rajouter les ancres correspondantes + ortho -->
                 <a href="#morpion"><img alt="Le morpion !"  src="images/tic_tac_toe.jpg" /></a> 
                 <a href="#shifumi"><img alt="Le chifoumi !"  src="images/chifoumi.jpg" /></a>
-                <a href="#echec"><img alt="Les Échecs !"  src="images/echec.jpg" /></a>
-                <a href="#"><img alt="À venir..."  src="images/a_venir.jpg" /></a>
+                <a href="#echec"><img alt="Les Ã©checs !"  src="images/echec.jpg" /></a>
+                <a href="#"><img alt="Ã  venir..."  src="images/a_venir.jpg" /></a>
                 <div class="clear">&nbsp;</div>
               </div>
               <div class="clear">&nbsp;</div>
@@ -103,10 +102,10 @@
               <h1>A propos</h1>
             </div>
             <div class="templatemo_section_box_mid">
-              <p>Ce site est un projet scolaire de l'école ENSEEIHT ayant pour
-              but de créer un site dynamique en utilisant la technologie J2E.
+              <p>Ce site est un projet scolaire de l'Ã©cole ENSEEIHT ayant pour
+              but de crÃ©er un site dynamique en utilisant la technologie J2E.
               Les membre du groupe sont Guillaume Casanova, Marine Lavaux,
-              Pierre Tysebaert et Rémi Palandri</p>
+              Pierre Tysebaert et RÃ©mi Palandri</p>
             </div>
             <div class="templatemo_section_box_bottom"></div>
           </div><!-- end of section box -->
@@ -116,7 +115,7 @@
     <div id="templatemo_bottom_panel">
       <div id="templatemo_bottom_section">
         <div id="templatemo_footer_section">
-          Copyright © 2012 DreamTeam
+          Copyright Â© 2012 DreamTeam
         </div>
       </div>
     </div>

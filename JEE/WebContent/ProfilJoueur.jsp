@@ -30,7 +30,7 @@
 				</div>
 				<div class="templatemo_post_mid">
 					<ul>
-						<li>Nom et prénom : <%= ((j_asked.getPrenom()==null) ? " - " : j_asked.getPrenom()) %>
+						<li>Nom et prÃ©nom : <%= ((j_asked.getPrenom()==null) ? " - " : j_asked.getPrenom()) %>
 							<%= ((j_asked.getNom()==null) ? " - " : j_asked.getNom()) %>
 						</li>
 						<li>Pseudo : <%=j_asked.getLogin()%></li>
@@ -44,7 +44,7 @@
 									out.print("Sans equipe");
 								} else {
 									%> 
-									<a href="EquipeServlet?action=profilEquipe&ename=<%= j_asked.getEquipe().getName() %>"	id="lien_profilequipe"><%= j_asked.getEquipe().getName()%> <%= ( (chef_equipe)? "(Chef d'équipe)" : "" ) %></a>
+									<a href="EquipeServlet?action=profilEquipe&ename=<%= j_asked.getEquipe().getName() %>"	id="lien_profilequipe"><%= j_asked.getEquipe().getName()%> <%= ( (chef_equipe)? "(Chef d'ï¿½quipe)" : "" ) %></a>
 									 <%
 								}%></li>
 						<li><a href="hautsFaits.jsp">Hauts Faits</a></li>
@@ -66,7 +66,7 @@
 						<input type="hidden" name="action" value="BeginDiscussion">
 						<input type="hidden" name="joueurCible"
 							value="<%=j_asked.getLogin()%>">
-						<button type="submit" formmethod="post">Inviter à
+						<button type="submit" formmethod="post">Inviter Ã 
 							discuter</button>
 					</form>
 					<%
@@ -90,7 +90,7 @@
 				        <input type="hidden" name="ename"  value="<%=ename%>">	
 						Equipe actuelle : <a href="EquipeServlet?action=profilEquipe&ename=<%= ename %>"	id="lien_profilequipe"><%= ename%></a>
 						<button type="submit" formmethod="post">
-						<%= ( (j_logged.getEquipe().getChef().getLogin().equals(j_logged.getLogin()))? "Dissoudre l'équipe" : " Quitter l'équipe")%>
+						<%= ( (j_logged.getEquipe().getChef().getLogin().equals(j_logged.getLogin()))? "Dissoudre l'Ã©quipe" : " Quitter l'ï¿½quipe")%>
 						</button>
 					</form>
 					<%
@@ -184,8 +184,8 @@
 <!-- end of background middle-->
 <div id="templatemo_bottom_panel">
 	<div id="templatemo_bottom_section">
-		<div id="templatemo_footer_section">Copyright © 2012 DreamTeam</div>
+		<div id="templatemo_footer_section">Copyright Â© 2012 DreamTeam</div>
 	</div>
 </div>
-<body></body>
-<html></html>
+</body>
+</html>

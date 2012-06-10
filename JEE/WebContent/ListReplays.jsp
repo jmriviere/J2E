@@ -1,7 +1,5 @@
 <jsp:include page="Header.jsp" />
 
-<!-- page accessible uniquement accessible si connecté -->
-
     	<div id="templatemo_background_section_middle">
     		<div class="templatemo_container">
     			<div id="templatemo_left_section"> </div><!-- end of left section-->
@@ -11,7 +9,7 @@
 		<div id="templatemo_bottom_panel">
     		<div id="templatemo_bottom_section">
 	 			<div id="templatemo_footer_section">
-        			Copyright © 2012 DreamTeam
+        			Copyright Â© 2012 DreamTeam
         		</div>
        		</div>
     	</div>
