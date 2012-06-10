@@ -28,17 +28,18 @@
 			<div class="templatemo_post">
 				<div class="templatemo_post_top">
 					<h1>
-						Informations sur l'�quipe
+						Informations sur l'equipe
 						<%= e_act.getName() %> <%= ( ismembre? "Membre" : "") %>
 					</h1>
 				</div>
 				<div class="templatemo_post_mid">
 					<ul>
-						<li>Chef d'�quipe : <a
+						<li>Chef d'equipe : <a
 							href="UserServlet?action=profil&amp;login=<%= j_chef.getLogin() %>"
 							id="lien_compte"><%= j_chef.getLogin()%></a>
 						</li>
 						<li>Slogan : <%=((e_act.getSlogan()==null) ? "" : e_act.getSlogan())%></li>
+						
 						
 						<% if(!hasequipe && !hascandidature) {  %>
 							<form action="UserServlet">
@@ -46,17 +47,20 @@
 								<input type="hidden" name="ename"  value="<%=e_act.getName()%>">
 								<button type="submit" formmethod="post">Rejoindre</button>
 							</form>
-						<% } %>
+						<% }  %>
 					</ul>
 					<br></br>
-					
+					<% if(ischef) {  %>
+						<a href="NavigationServlet?action=creationSalon">Créez le salon de l'équipe !</a>
+					<% }  %>
+					<br></br>
 				</div>
 				<%if(ischef) { %>
 				<div class="templatemo_post_bottom">
 					<form action="UserServlet">
 						<input type="hidden" name="action" value="SupprEquipe">
 						<input type="hidden" name="ename"  value="<%=e_act.getName()%>">
-						<button type="submit" formmethod="post">Dissoudre l'�quipe</button>
+						<button type="submit" formmethod="post">Dissoudre l'equipe</button>
 					</form>
 				</div>
 				<% } %>
